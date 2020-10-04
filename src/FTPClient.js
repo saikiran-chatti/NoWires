@@ -17,6 +17,29 @@ class FTPClient {
     async parentList() {
         let self = this;
         self.client.ftp.verbose = true
+        
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,z
+                
+            })
+            console.log(await self.client.list())
+            console.log(await self.client.pwd()); // access pwd after giving port, host address
+
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    async accessFolder(path) {
+        let self = this
+        self.client.ftp.verbose = true
+
         try {
             await self.client.access({
                 host: self.settings.host,
@@ -26,11 +49,9 @@ class FTPClient {
                 secure: self.settings.secure
             })
             console.log(await self.client.list())
+        } catch(err){
+            console.log(err);
         }
-        catch (err) {
-            console.log(err)
-        }
-        self.client.close()
 
     }
 
