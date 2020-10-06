@@ -5,6 +5,7 @@ const { setFlagsFromString } = require('v8');
 class FTPClient {
     constructor(host = 'localhost', port = 21, username = 'anonymous', password = 'guest', secure = false) {
         this.client = new ftp.Client();
+        this.path = '/'
         this.settings = {
             host: host,
             port: port,
@@ -17,23 +18,31 @@ class FTPClient {
     async parentList() {
         let self = this;
         self.client.ftp.verbose = true
-        
+
         try {
             await self.client.access({
                 host: self.settings.host,
                 port: self.settings.port,
                 user: self.settings.user,
-                password: self.settings.password,z
-                
+                password: self.settings.password,
+                // secure: self.settings.secure
+
             })
-            console.log(await self.client.list())
+            let result = await self.client.list()
+            console.log(result.length);
+            // self.sendListToFile();
             console.log(await self.client.pwd()); // access pwd after giving port, host address
 
         }
         catch (err) {
             console.log(err)
         }
+        self.client.close();
 
+    }
+
+    sendListToFile() {
+        
     }
 
     async accessFolder(path) {
@@ -46,13 +55,18 @@ class FTPClient {
                 port: self.settings.port,
                 user: self.settings.user,
                 password: self.settings.password,
-                secure: self.settings.secure
+                // secure: self.settings.secure
             })
-            console.log(await self.client.list())
-        } catch(err){
+            await self.client.cd(path)
+            // await console.log(self.client.pwd());
+            let result = await self.client.list()
+            console.log(result);
+            await console.log('Path changed successfully');
+
+        } catch (err) {
             console.log(err);
         }
-
+        self.client.close();
     }
 
     close() {
