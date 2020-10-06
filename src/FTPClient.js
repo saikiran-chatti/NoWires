@@ -42,8 +42,30 @@ class FTPClient {
     }
 
     sendListToFile() {
-        
+
     }
+
+    async downloadFullDirectory(localPath, remotePath) {
+        let self = this;
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+            await self.client.downloadToDir(localPath, remotePath)
+            console.log('Downloaded successfully');
+        }
+        catch (err) {
+            console.log(err)
+        }
+        self.client.close();
+    }
+
 
     async accessFolder(path) {
         let self = this
@@ -72,6 +94,7 @@ class FTPClient {
     close() {
         this.client.close();
     }
+
 
     changePermissions(perms, filepath) {
         let cmd = 'SITE CHMOD ' + perms + ' ' + filepath;

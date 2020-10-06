@@ -7,8 +7,9 @@ const client = new ftp('192.168.0.5',2232,'anonymous','guest')
 // });
 
 // Access a specific folder
- client.accessFolder('/Download')
+//client.accessFolder('/Download')
 
 // how to call default parameters which are in middle
-
-
+let localPath = 'C:/Users/ACER/Desktop/data'
+let remotePath = '/memes'
+client.downloadFullDirectory(localPath,remotePath)
