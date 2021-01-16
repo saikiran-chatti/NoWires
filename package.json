@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jayanthsaikiran/NoWires#readme",
   "dependencies": {
-    "basic-ftp": "^4.6.2"
+    "basic-ftp": "^4.6.2",
+    "create-react-app": "^4.0.1",
+    "express": "^4.17.1"
   }
 }

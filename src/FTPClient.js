@@ -42,7 +42,7 @@ class FTPClient {
     }
 
     sendListToFile() {
-
+        
     }
 
     async downloadFullDirectory(localPath, remotePath) {
