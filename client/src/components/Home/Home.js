@@ -7,13 +7,12 @@ const Home = () => {
             <div className="l-main">
                 <section className="home" id="home">
                     <div className="homeContainer bd-grid">
-                        
-                    </div>
 
-                    <div className="homeData">
-                        <h1 className="homeTitle">Coffee <br /> Drink 3D</h1>
-                        <p className="homeDescription">Let's help discover the best coffee drink <br /> of the week.</p>
-                        <a href="#" className="homeButton">Get Started</a>
+                        <div className="homeData">
+                            <h1 className="homeTitle">Coffee <br /> Drink 3D</h1>
+                            <p className="homeDescription">Let's help discover the best coffee drink <br /> of the week.</p>
+                            <a href="#" className="homeButton">Get Started</a>
+                        </div>
                     </div>
                 </section>
             </div>

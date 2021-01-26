@@ -1,15 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 :root {
   --header-height: 3rem;
-  /* Colors */
+  /*===== Colors =====*/
   --first-color: #FCA4A6;
   --first-color-dark: #C1576A;
   --first-color-darken: #A83E51;
   --white-color: #FCF8F8;
-  /* Font and typography */
-  --body-font: 'GilroyBold', sans-serif;
+  /*===== Font and typography =====*/
+  --body-font: 'Poppins', sans-serif;
   --big-font-size: 2.5rem;
   --normal-font-size: .938rem;
-  /* z index */
+  /*===== z index =====*/
   --z-fixed: 100;
 }
 
@@ -20,7 +21,7 @@
   }
 }
 
-/*BASE*/
+/*===== BASE =====*/
 
 *, ::before, ::after {
   box-sizing: border-box;
@@ -50,4 +51,57 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .navToggle, .navClose {
+    display: none;
+  }
+  .navList {
+    display: flex;
+  }
+  .navItem {
+    margin-left: 3rem;
+    margin-bottom: 0;
+  }
+  .homeContainer {
+    height: 100vh;
+    grid-template-columns: repeat(2, max-content);
+    grid-template-rows: 1fr;
+    row-gap: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .homeImg {
+    order: 1;
+    width: 375px;
+    height: 289px;
+  }
+  .homeImg img {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .homeContainer {
+    justify-content: initial;
+    column-gap: 4.5rem;
+  }
+  .homeImg {
+    width: 604px;
+    height: 466px;
+  }
+  .homeImg img {
+    width: 604px;
+  }
 }

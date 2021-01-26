@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Header.css'
 import { Link } from 'react-router-dom'
 import { BiMenuAltLeft } from 'react-icons/bi';
+import { IoCloseOutline } from 'react-icons/io5';
+
 
 const Header = () => {
     return (
@@ -17,7 +19,7 @@ const Header = () => {
 
                 <div className="navMenu" id="nav-menu">
                     <div className="navClose" id="nav-close">
-                        <i className='bx bx-x'></i>
+                        <IoCloseOutline />
                     </div>
 
                     <ul className="navList">
