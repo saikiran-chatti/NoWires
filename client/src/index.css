@@ -5,33 +5,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root {
-  --header-height: 3rem;
-  /* Colors */
-  --first-color: #FCA4A6;
-  --first-color-dark: #C1576A;
-  --first-color-darken: #A83E51;
-  --white-color: #FCF8F8;
-  /* Font and typography */
-  --body-font: 'Poppins', sans-serif;
-  --big-font-size: 2.5rem;
-  --normal-font-size: .938rem;
-  /* z index */
-  --z-fixed: 100;
+@font-face {
+  font-family: "GilroyMedium";
+  src: local("GilroyMedium"), url("./fonts/Gilroy/Gilroy-Medium.ttf");
+  font-weight: 500;
 }
 
 @font-face {
-  font-family: "GilroyRegular";
-  src: local("GilroyRegular"), url("./fonts/Gilroy/Gilroy-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-family: "GilroyLight";
+  src: local("GilroyLight"), url("./fonts/Gilroy/Gilroy-Light.ttf");
 }
 
 @font-face {
   font-family: "GilroyBold";
-  src: local("GilroyBold"), url("./fonts/Gilroy/Gilroy-Bold.ttf") format("truetype");
+  src: local("GilroyBold"), url("./fonts/Gilroy/Gilroy-Bold.ttf");
   font-weight: normal;
 }
 
-code {
-  font-family: "GilroyRegular", "GilroyBold";
-}

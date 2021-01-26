@@ -1,19 +1,5 @@
 /*===== HOME =====*/
 
-:root {
-    --header-height: 3rem;
-    /* Colors */
-    --first-color: #FCA4A6;
-    --first-color-dark: #C1576A;
-    --first-color-darken: #A83E51;
-    --white-color: #FCF8F8;
-    /* Font and typography */
-    --body-font: 'Poppins', sans-serif;
-    --big-font-size: 2.5rem;
-    --normal-font-size: .938rem;
-    /* z index */
-    --z-fixed: 100;
-}
 
 @media screen and (min-width: 768px) {
     :root {
@@ -37,7 +23,6 @@ body {
 }
 
 .home {
-    font-family: GilroyBold;
     background-color: var(--first-color);
     overflow: hidden;
 }
