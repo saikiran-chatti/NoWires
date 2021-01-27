@@ -55,7 +55,7 @@
 }
 
 .navClose, .navLink, .navLogo, .navToggle {
-    color: var(--white-color);
+    color: var(--black-color);
 }
 
 .navLink:hover {

@@ -24,12 +24,13 @@
 }
 
 .homeData {
-    color: var(--white-color);
+    color: var(--black-color);
+    width: 500px;
 }
 
 .homeTitle {
-    font-size: var(--big-font-size);
-    line-height: 1.3;
+    font-size: 3.2rem;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
 

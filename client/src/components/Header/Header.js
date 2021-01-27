@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Header.css'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 
@@ -10,7 +10,7 @@ const Header = () => {
         <header className="l-header">
             <nav className="nav bd-grid">
                 <div>
-                    <a href="#" className="navLogo">Coffee</a>
+                    <a href="/home" className="navLogo">No Wires</a>
                 </div>
 
                 <div className="navToggle" id="nav-toggle">
@@ -23,10 +23,10 @@ const Header = () => {
                     </div>
 
                     <ul className="navList">
-                        <li className="navItem"><a href="#home" className="navLink active">Home</a></li>
-                        <li className="navItem"><a href="#about" className="navLink">About</a></li>
-                        <li className="navItem"><a href="#skills" className="navLink">Blog</a></li>
-                        <li className="navItem"><a href="#contact" className="navLink">Contact</a></li>
+                        <li className="navItem"><a href="/home" className="navLink active">Home</a></li>
+                        <li className="navItem"><a href="/about" className="navLink">About</a></li>
+                        <li className="navItem"><a href="/skills" className="navLink">Blog</a></li>
+                        <li className="navItem"><a href="/contact" className="navLink">Contact</a></li>
 
                         {/* <Link to="/" style={{ textDecoration: "none" }}>
                             <li className="navItem">Home</li>
