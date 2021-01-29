@@ -7,8 +7,10 @@ const Home = () => {
             <section className="home" id="home">
                 <div className="homeContainer bd-grid">
                     <div className="homeImg">
-                        <img alt="mockup"
+                        <img className="mockup" alt="mockup"
                             src="/images/mockup@1x.svg" />
+
+                        {/* <img className="qrcode" src="/images/qr-code.png" /> */}
                     </div>
                     <div className="homeData">
                         <p className="homeTitle">Transfer files seamlessly without hassle, wires</p>

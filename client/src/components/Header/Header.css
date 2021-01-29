@@ -100,15 +100,15 @@
         align-items: center;
         justify-content: center;
     }
-    .homeImg {
+    /* .homeImg {
         order: 1;
         width: 375px;
         height: 289px;
     }
     .homeImg img {
         width: 375px;
-        height: 480px;
-    }
+        height: 580px;
+    } */
 }
 
 @media screen and (min-width: 1024px) {
@@ -120,10 +120,10 @@
         justify-content: initial;
         column-gap: 4.5rem;
     }
-    .homeImg {
+    /* .homeImg {
         width: 604px;
         height: 466px;
-    }
+    } */
     /* .homeImg img {
         width: 604px;
     } */
