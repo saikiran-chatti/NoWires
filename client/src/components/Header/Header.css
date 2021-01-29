@@ -75,24 +75,6 @@
 
 /* Media Queries */
 
-@media screen and (min-width: 1024px) {
-    .bd-grid {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .homeContainer {
-        justify-content: initial;
-        column-gap: 4.5rem;
-    }
-    .homeImg {
-        width: 604px;
-        height: 466px;
-    }
-    .homeImg img {
-        width: 604px;
-    }
-}
-
 @media screen and (min-width: 768px) {
     body {
         margin: 0;
@@ -125,5 +107,24 @@
     }
     .homeImg img {
         width: 375px;
+        height: 480px;
     }
+}
+
+@media screen and (min-width: 1024px) {
+    .bd-grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .homeContainer {
+        justify-content: initial;
+        column-gap: 4.5rem;
+    }
+    .homeImg {
+        width: 604px;
+        height: 466px;
+    }
+    /* .homeImg img {
+        width: 604px;
+    } */
 }
