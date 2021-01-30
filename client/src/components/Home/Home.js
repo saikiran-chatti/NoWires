@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react'
+import { TweenMax } from 'gsap'
+
 import './Home.css'
 
 const Home = () => {
+
+    useEffect(() => {
+        TweenMax.from('.homeTitle   ', { opacity: 0, duration: 1, delay: 1.6, y: 30 });
+        TweenMax.from('.homeDescription', { opacity: 0, duration: 1, delay: 1.8, y: 30 })
+        TweenMax.from('.homeButton', { opacity: 0, duration: 1, delay: 2.1, y: 30 })
+        TweenMax.from('.homeImg', { opacity: 0, duration: 1, delay: 1.3, y: 30 })
+
+    }, [])
+
     return (
         <div className="l-main">
             <section className="home" id="home">
