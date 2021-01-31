@@ -1,0 +1,552 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:500,600,400,700");
+* {
+  box-sizing: border-box;
+}
+.file-dashboard {
+  align-items: flex-start;
+  display: flex;
+  height: 931.82px;
+  overflow: hidden;
+  width: 1310.37px;
+}
+.file-dashboard .address {
+  align-self: flex-start;
+  letter-spacing: 0.6px;
+  margin-left: 151px;
+  min-height: 27px;
+  text-align: left;
+}
+.file-dashboard .address-1 {
+  letter-spacing: 0.6px;
+  margin-left: 151px;
+  min-height: 27px;
+  min-width: 55px;
+  text-align: left;
+}
+.file-dashboard .address-2 {
+  letter-spacing: 0.6px;
+  margin-left: 151px;
+  min-height: 27px;
+  min-width: 54px;
+  text-align: left;
+}
+.file-dashboard .address-3 {
+  letter-spacing: 0.6px;
+  margin-left: 145px;
+  min-height: 27px;
+  min-width: 55px;
+  text-align: left;
+}
+.file-dashboard .address-4 {
+  letter-spacing: 0.6px;
+  margin-left: 145px;
+  min-height: 27px;
+  text-align: left;
+}
+.file-dashboard .assignment-iii {
+  letter-spacing: 0.6px;
+  margin-left: 10px;
+  min-height: 27px;
+  min-width: 138px;
+  text-align: left;
+}
+.file-dashboard .assignment-iv {
+  letter-spacing: 0.6px;
+  margin-left: 10px;
+  min-height: 27px;
+  min-width: 140px;
+  text-align: left;
+}
+.file-dashboard .auto-flex {
+  align-items: flex-end;
+  display: flex;
+  height: 28px;
+  margin-right: 142.16px;
+  margin-top: 45px;
+  min-width: 597px;
+}
+.file-dashboard .auto-flex1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 417px;
+  width: 246px;
+}
+.file-dashboard .auto-flex10 {
+  align-items: flex-start;
+  display: flex;
+  height: 28px;
+  margin-right: 142.16px;
+  margin-top: 30px;
+  min-width: 597px;
+}
+.file-dashboard .auto-flex11 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 56px;
+  margin-top: 49.91px;
+  min-height: 720px;
+  width: 890px;
+}
+.file-dashboard .auto-flex12 {
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  margin-left: -15.03px;
+  margin-top: 176px;
+  min-width: 208px;
+}
+.file-dashboard .auto-flex13 {
+  align-items: center;
+  display: flex;
+  margin-right: 43.81px;
+  margin-top: 30px;
+  min-width: 114px;
+}
+.file-dashboard .auto-flex14 {
+  align-items: flex-start;
+  display: flex;
+  height: 18px;
+  margin-right: 21.88px;
+  margin-top: 35px;
+  min-width: 122px;
+}
+.file-dashboard .auto-flex15 {
+  align-items: center;
+  display: flex;
+  margin-right: 38px;
+  margin-top: 36px;
+  min-width: 119px;
+}
+.file-dashboard .auto-flex2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 76px;
+  min-height: 325px;
+  width: 246px;
+}
+.file-dashboard .auto-flex3 {
+  align-items: flex-end;
+  display: flex;
+  height: 417px;
+  min-width: 568px;
+}
+.file-dashboard .auto-flex4 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 41px;
+  min-height: 417px;
+  width: 281px;
+}
+.file-dashboard .auto-flex5 {
+  align-items: flex-end;
+  display: flex;
+  min-width: 890px;
+}
+.file-dashboard .auto-flex6 {
+  align-items: center;
+  display: flex;
+  height: 27px;
+  margin-right: 142.16px;
+  margin-top: 30px;
+  min-width: 597px;
+}
+.file-dashboard .auto-flex7 {
+  align-items: center;
+  display: flex;
+  height: 27px;
+  margin-right: 143.16px;
+  margin-top: 30px;
+  min-width: 596px;
+}
+.file-dashboard .auto-flex8 {
+  align-items: flex-end;
+  display: flex;
+  height: 28px;
+  margin-right: 142.48px;
+  margin-top: 30px;
+  min-width: 597px;
+}
+.file-dashboard .auto-flex9 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 662px;
+  width: 890px;
+}
+.file-dashboard .collapse-icon {
+  align-self: flex-end;
+  height: 39px;
+  margin-right: -0.25px;
+  margin-top: 379px;
+  width: 46px;
+}
+.file-dashboard .dashboard {
+  height: 25px;
+  margin-bottom: 0.37px;
+  margin-left: 41px;
+  width: 25px;
+}
+.file-dashboard .dashboard-1 {
+  letter-spacing: 0px;
+  margin-left: 24px;
+  margin-top: 0.09px;
+  min-height: 16px;
+  text-align: left;
+  width: 86px;
+}
+.file-dashboard .dashboard-copy {
+  letter-spacing: 0.6px;
+  min-height: 33px;
+  opacity: 0.9;
+  text-align: left;
+  width: 169px;
+}
+.file-dashboard .date {
+  letter-spacing: 0.6px;
+  margin-left: 106px;
+  min-height: 27px;
+  min-width: 107px;
+  text-align: left;
+}
+.file-dashboard .date-1 {
+  letter-spacing: 0.6px;
+  margin-left: 115px;
+  min-height: 27px;
+  min-width: 107px;
+  text-align: left;
+}
+.file-dashboard .date-2 {
+  letter-spacing: 0.6px;
+  margin-left: 117px;
+  min-height: 27px;
+  min-width: 107px;
+  text-align: left;
+}
+.file-dashboard .date-3 {
+  letter-spacing: 0.6px;
+  margin-left: 73px;
+  min-height: 27px;
+  min-width: 113px;
+  text-align: left;
+}
+.file-dashboard .date-4 {
+  align-self: flex-end;
+  letter-spacing: 0.6px;
+  margin-left: 122px;
+  min-height: 27px;
+  min-width: 113px;
+  text-align: left;
+}
+.file-dashboard .documents {
+  letter-spacing: 0.6px;
+  margin-top: 13px;
+  min-height: 27px;
+  text-align: left;
+}
+.file-dashboard .file-size {
+  letter-spacing: 0.6px;
+  margin-top: 38px;
+  min-height: 27px;
+  text-align: left;
+  width: 103px;
+}
+.file-dashboard .files-icon- {
+  height: 69px;
+  margin-left: 11.2px;
+  width: 58px;
+}
+.file-dashboard .files-icon--1 {
+  height: 23px;
+  width: 18px;
+}
+.file-dashboard .files-icon-docx {
+  align-self: center;
+  height: 23px;
+  margin-top: 1px;
+  width: 18px;
+}
+.file-dashboard .files-icon-picture {
+  height: 69px;
+  margin-left: 13.2px;
+  width: 58px;
+}
+.file-dashboard .files-icon-picture-1 {
+  align-self: center;
+  height: 23px;
+  margin-bottom: 1px;
+  width: 18px;
+}
+.file-dashboard .last-modified {
+  letter-spacing: 0.6px;
+  margin-right: 56.36px;
+  margin-top: 110px;
+  min-height: 27px;
+  text-align: left;
+  width: 131px;
+}
+.file-dashboard .message {
+  height: 17px;
+  width: 15px;
+}
+.file-dashboard .messages {
+  align-self: flex-end;
+  letter-spacing: 0px;
+  margin-left: 28px;
+  min-height: 16px;
+  text-align: left;
+  width: 79px;
+}
+.file-dashboard .name {
+  align-self: center;
+  letter-spacing: 0.6px;
+  margin-right: 32.23px;
+  margin-top: 31px;
+  min-height: 27px;
+  text-align: left;
+  width: 73px;
+}
+.file-dashboard .no-wires {
+  letter-spacing: 0px;
+  margin-right: 30.99px;
+  min-height: 25px;
+  min-width: 76px;
+  text-align: left;
+}
+.file-dashboard .oval-5 {
+  height: 11px;
+  width: 11px;
+}
+.file-dashboard .oval-9 {
+  height: 20px;
+  left: 5px;
+  position: absolute;
+  top: 4px;
+  width: 19px;
+}
+.file-dashboard .overlap-group {
+  align-items: flex-start;
+  background-size: 100% 100%;
+  border-radius: <codegenerator_web.anima_models.admodel_corner_radius.ADModelCornerRadius object at 0x7fef07d48d30>px;
+  display: flex;
+  min-width: 1311px;
+  padding: 0 0.3px;
+}
+.file-dashboard .overlap-group1 {
+  height: 30px;
+  margin-left: 25.75px;
+  position: relative;
+  width: 30px;
+}
+.file-dashboard .overlap-group2 {
+  align-self: flex-start;
+  height: 27px;
+  margin-left: 10px;
+  position: relative;
+  width: 182px;
+}
+.file-dashboard .overlap-group3 {
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 58px;
+  min-height: 188px;
+  padding: 19px 27.3px;
+  width: 246px;
+}
+.file-dashboard .overlap-group4 {
+  align-items: flex-start;
+  align-self: center;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1px;
+  min-width: 18px;
+}
+.file-dashboard .overlap-group5 {
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 188px;
+  padding: 19px 27.3px;
+  width: 246px;
+}
+.file-dashboard .overlap-group6 {
+  align-self: flex-end;
+  margin-top: 61px;
+}
+.file-dashboard .overlap-group7 {
+  align-items: flex-start;
+  background-size: 100% 100%;
+  display: flex;
+  height: 31px;
+  justify-content: flex-end;
+  min-width: 31px;
+  padding: 10px 10px;
+}
+.file-dashboard .path-6 {
+  height: 6px;
+  left: 19px;
+  position: absolute;
+  top: 20px;
+  width: 7px;
+}
+.file-dashboard .photos {
+  letter-spacing: 0.6px;
+  margin-top: 13px;
+  min-height: 27px;
+  text-align: left;
+}
+.file-dashboard .project-report-1 {
+  letter-spacing: 0.6px;
+  margin-left: 10px;
+  min-height: 27px;
+  min-width: 149px;
+  text-align: left;
+}
+.file-dashboard .recently-used {
+  letter-spacing: 0.6px;
+  margin-left: 0.32px;
+  margin-top: 52px;
+  min-height: 27px;
+  text-align: left;
+  width: 163px;
+}
+.file-dashboard .sidebar {
+  align-items: center;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  height: 932px;
+  overflow: hidden;
+  padding: 46.9px 0;
+  width: 273px;
+}
+.file-dashboard .span1 {
+  color: rgba(48, 48, 48, 1);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  letter-spacing: 0.45px;
+}
+.file-dashboard .span2 {
+  color: rgba(48, 48, 48, 1);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+}
+.file-dashboard .telisiney-na-nuvve {
+  left: 0px;
+  letter-spacing: 0.6px;
+  position: absolute;
+  text-align: left;
+  top: 0px;
+}
+.file-dashboard .text- {
+  letter-spacing: 0.6px;
+  margin-top: 3px;
+  min-height: 36px;
+  text-align: left;
+}
+.file-dashboard .trade {
+  height: 26px;
+  width: 25px;
+}
+.file-dashboard .trade-1 {
+  letter-spacing: 0px;
+  margin-left: 24px;
+  margin-top: 0.27px;
+  min-height: 16px;
+  text-align: left;
+  width: 69px;
+}
+.file-dashboard .view-all {
+  align-self: center;
+  letter-spacing: 0.6px;
+  margin-left: 38.32px;
+  margin-top: 52px;
+  min-height: 20px;
+  text-align: left;
+  width: 91px;
+}
+.file-dashboard .wallet {
+  height: 25px;
+  width: 25px;
+}
+.file-dashboard .wallet-1 {
+  letter-spacing: 0.45px;
+  margin-bottom: 0.02px;
+  margin-left: 24px;
+  min-height: 16px;
+  text-align: left;
+  width: 64px;
+}
+.file-dashboard .weekend-trip {
+  letter-spacing: 0.6px;
+  margin-left: 10px;
+  min-height: 27px;
+  min-width: 133px;
+  text-align: left;
+}
+.poppins-bold-black-27-3px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 27.3px;
+  font-style: normal;
+  font-weight: 700;
+}
+.poppins-medium-black-18px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+}
+.poppins-medium-black-24px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+}
+.poppins-normal-black-12-7px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  font-style: normal;
+  font-weight: 400;
+}
+.poppins-normal-black-18px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+.poppins-normal-mine-shaft-12-7px {
+  color: var(--mine-shaft);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+}
+.poppins-normal-mine-shaft-12-7px-2 {
+  color: var(--mine-shaft);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  font-style: normal;
+  font-weight: 400;
+}
+.poppins-semi-bold-black-16-4px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 16.4px;
+  font-style: normal;
+  font-weight: 600;
+}
+:root {
+  --mine-shaft: rgba(48, 48, 48, 1);
+}

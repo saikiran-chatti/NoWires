@@ -67,6 +67,10 @@
     cursor: pointer;
 }
 
+.navLogo, .navToggle, .navItem {
+    visibility: hidden;
+}
+
 /*=== Show menu ===*/
 
 .show {
@@ -112,6 +116,11 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .bd-grid-header {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .bd-grid {
         margin-left: auto;
         margin-right: auto;
