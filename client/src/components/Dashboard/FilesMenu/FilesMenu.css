@@ -1,0 +1,460 @@
+.files-menu {
+    position: absolute;
+    width: 1071.09px;
+    height: 720px;
+    left: 330px;
+    top: 50px;
+}
+
+/* @import url("https://fonts.googleapis.com/css?family=Poppins:700,400,500,600");
+* {
+  box-sizing: border-box;
+} */
+
+.address {
+    align-self: flex-start;
+    letter-spacing: 0.6px;
+    margin-left: 151px;
+    min-height: 27px;
+    text-align: left;
+}
+
+.address-1 {
+    letter-spacing: 0.6px;
+    margin-left: 151px;
+    min-height: 27px;
+    min-width: 55px;
+    text-align: left;
+}
+
+.address-2 {
+    letter-spacing: 0.6px;
+    margin-left: 151px;
+    min-height: 27px;
+    min-width: 54px;
+    text-align: left;
+}
+
+.address-3 {
+    letter-spacing: 0.6px;
+    margin-left: 145px;
+    min-height: 27px;
+    min-width: 55px;
+    text-align: left;
+}
+
+.address-4 {
+    letter-spacing: 0.6px;
+    margin-left: 145px;
+    min-height: 27px;
+    text-align: left;
+}
+
+.assignment-iii {
+    letter-spacing: 0.6px;
+    margin-left: 10px;
+    min-height: 27px;
+    min-width: 138px;
+    text-align: left;
+}
+
+.assignment-iv {
+    letter-spacing: 0.6px;
+    margin-left: 10px;
+    min-height: 27px;
+    min-width: 140px;
+    text-align: left;
+}
+
+.files-menu-auto-flex {
+    align-items: flex-end;
+    display: flex;
+    height: 28px;
+    margin-right: 142.48px;
+    margin-top: 45px;
+    min-width: 597px;
+}
+
+.files-menu-auto-flex1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 417px;
+    width: 246px;
+}
+
+.files-menu-auto-flex10 {
+    align-items: flex-start;
+    display: flex;
+    height: 28px;
+    margin-left: 75.2px;
+    margin-top: 30px;
+    min-width: 597px;
+}
+
+.files-menu-auto-flex2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 76px;
+    min-height: 325px;
+    width: 246px;
+}
+
+.files-menu-auto-flex3 {
+    align-items: flex-end;
+    display: flex;
+    height: 417px;
+    min-width: 568px;
+}
+
+.files-menu-auto-flex4 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 41px;
+    min-height: 417px;
+    width: 281px;
+}
+
+.files-menu-auto-flex5 {
+    align-items: flex-end;
+    display: flex;
+    min-width: 890px;
+}
+
+.files-menu-auto-flex6 {
+    align-items: center;
+    display: flex;
+    height: 27px;
+    margin-right: 142.48px;
+    margin-top: 30px;
+    min-width: 597px;
+}
+
+.files-menu-auto-flex7 {
+    align-items: center;
+    display: flex;
+    height: 27px;
+    margin-right: 143.48px;
+    margin-top: 30px;
+    min-width: 596px;
+}
+
+.files-menu-auto-flex8 {
+    align-items: flex-end;
+    display: flex;
+    height: 28px;
+    margin-right: 142.48px;
+    margin-top: 30px;
+    min-width: 597px;
+}
+
+.files-menu-auto-flex9 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: -0.32px;
+    min-height: 662px;
+    width: 890px;
+}
+
+.dashboard-copy {
+    letter-spacing: 0.6px;
+    min-height: 33px;
+    opacity: 0.9;
+    text-align: left;
+    width: 169px;
+}
+
+.date {
+    letter-spacing: 0.6px;
+    margin-left: 106px;
+    min-height: 27px;
+    min-width: 107px;
+    text-align: left;
+}
+
+.date-1 {
+    letter-spacing: 0.6px;
+    margin-left: 115px;
+    min-height: 27px;
+    min-width: 107px;
+    text-align: left;
+}
+
+.date-2 {
+    letter-spacing: 0.6px;
+    margin-left: 117px;
+    min-height: 27px;
+    min-width: 107px;
+    text-align: left;
+}
+
+.date-3 {
+    letter-spacing: 0.6px;
+    margin-left: 73px;
+    min-height: 27px;
+    min-width: 113px;
+    text-align: left;
+}
+
+.date-4 {
+    align-self: flex-end;
+    letter-spacing: 0.6px;
+    margin-left: 122px;
+    min-height: 27px;
+    min-width: 113px;
+    text-align: left;
+}
+
+.documents {
+    letter-spacing: 0.6px;
+    margin-top: 13px;
+    min-height: 27px;
+    text-align: left;
+}
+
+.file-size {
+    letter-spacing: 0.6px;
+    margin-top: 38px;
+    min-height: 27px;
+    text-align: left;
+    width: 103px;
+}
+
+.files-icon- {
+    height: 69px;
+    margin-left: 11.2px;
+    width: 58px;
+}
+
+.files-icon--1 {
+    height: 23px;
+    width: 18px;
+}
+
+.files-icon-docx {
+    align-self: center;
+    height: 23px;
+    margin-top: 1px;
+    width: 18px;
+}
+
+.files-icon-picture {
+    height: 69px;
+    margin-left: 13.2px;
+    width: 58px;
+}
+
+.files-icon-picture-1 {
+    align-self: center;
+    height: 23px;
+    margin-bottom: 1px;
+    width: 18px;
+}
+
+.last-modified {
+    letter-spacing: 0.6px;
+    margin-right: 57px;
+    margin-top: 110px;
+    min-height: 27px;
+    text-align: left;
+    width: 131px;
+}
+
+.main-menu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    overflow: hidden;
+    width: 1071px;
+}
+
+.name {
+    align-self: center;
+    letter-spacing: 0.6px;
+    margin-right: 32.55px;
+    margin-top: 31px;
+    min-height: 27px;
+    text-align: left;
+    width: 73px;
+}
+
+.oval-9 {
+    height: 20px;
+    left: 5px;
+    position: absolute;
+    top: 4px;
+    width: 19px;
+}
+
+.files-menu-overlap-group {
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 24px rgba(176, 190, 197, 0.25);
+    display: flex;
+    flex-direction: column;
+    min-height: 188px;
+    padding: 19px 27px;
+    width: 246px;
+}
+
+.files-menu-overlap-group1 {
+    align-self: flex-start;
+    height: 27px;
+    margin-left: 10px;
+    position: relative;
+    width: 182px;
+}
+
+.files-menu-overlap-group2 {
+    align-items: flex-start;
+    align-self: flex-end;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 24px rgba(176, 190, 197, 0.25);
+    display: flex;
+    flex-direction: column;
+    margin-top: 61px;
+    min-height: 188px;
+    padding: 19px 27px;
+    width: 246px;
+}
+
+.files-menu-overlap-group3 {
+    height: 30px;
+    margin-left: 26.07px;
+    position: relative;
+    width: 30px;
+}
+
+.files-menu-overlap-group4 {
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 24px rgba(176, 190, 197, 0.32);
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.32px;
+    margin-top: 58px;
+    min-height: 188px;
+    padding: 19px 27px;
+    width: 246px;
+}
+
+.files-menu-overlap-group5 {
+    align-items: flex-start;
+    align-self: center;
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-music@3x.png);
+    background-size: 100% 100%;
+    display: flex;
+    margin-bottom: 1px;
+    min-width: 18px;
+}
+
+.path-6 {
+    height: 6px;
+    left: 19px;
+    position: absolute;
+    top: 20px;
+    width: 7px;
+}
+
+.photos {
+    letter-spacing: 0.6px;
+    margin-top: 13px;
+    min-height: 27px;
+    text-align: left;
+}
+
+.poppins-bold-black-27-3px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 27.3px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.poppins-medium-black-18px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.poppins-medium-black-24px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.poppins-normal-black-18px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.project-report-1 {
+    letter-spacing: 0.6px;
+    margin-left: 10px;
+    min-height: 27px;
+    min-width: 149px;
+    text-align: left;
+}
+
+.recently-used {
+    letter-spacing: 0.6px;
+    margin-left: 0.32px;
+    margin-top: 52px;
+    min-height: 27px;
+    text-align: left;
+    width: 163px;
+}
+
+.telisiney-na-nuvve {
+    left: 0px;
+    letter-spacing: 0.6px;
+    position: absolute;
+    text-align: left;
+    top: 0px;
+}
+
+.text- {
+    letter-spacing: 0.6px;
+    margin-top: 3px;
+    min-height: 36px;
+    text-align: left;
+}
+
+.videos {
+    letter-spacing: 0.6px;
+    margin-top: 13px;
+    min-height: 27px;
+    text-align: left;
+}
+
+.view-all {
+    align-self: center;
+    letter-spacing: 0.6px;
+    margin-left: 38px;
+    margin-top: 52px;
+    min-height: 20px;
+    text-align: left;
+    width: 91px;
+}
+
+.weekend-trip {
+    letter-spacing: 0.6px;
+    margin-left: 10px;
+    min-height: 27px;
+    min-width: 133px;
+    text-align: left;
+}
