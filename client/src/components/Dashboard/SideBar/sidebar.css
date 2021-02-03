@@ -1,0 +1,75 @@
+/* Sidebar */
+
+.sidebar {
+    position: absolute;
+    width: 272.99px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient( 180deg, #fdfbfb 0%, #fbf9fa 19.06%, #f2f2f7 99.99%, #ebedee 100%);
+    background-blend-mode: darken;
+}
+
+/* Sidebar - Logo */
+
+.logo {
+    width: 102.4px;
+    height: 25px;
+    left: 54.6px;
+    top: 62px;
+}
+
+.logo_title {
+    position: absolute;
+    width: 74px;
+    height: 25px;
+    right: 115.99px;
+    top: 62px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16.3796px;
+    line-height: 25px;
+    /* identical to box height */
+    color: #000000;
+}
+
+/* Sidebar Menu */
+
+.sidebar_menu {
+    position: absolute;
+    width: 133.4px;
+    height: 199.08px;
+    left: 58px;
+    top: 267px;
+}
+
+/* Menu */
+
+.menu1 {
+    width: 133.4px;
+    height: 24.57px;
+    left: 58px;
+    top: 267px;
+}
+
+.menu2 {
+    width: 111.4px;
+    height: 24.57px;
+    left: 58px;
+    top: 325.24px;
+}
+
+.menu3 {
+    width: 120.03px;
+    height: 17.44px;
+    left: 64.77px;
+    top: 386.47px;
+}
+
+.menu4 {
+    width: 116.4px;
+    height: 24.57px;
+    left: 58.4px;
+    top: 441.52px;
+}
