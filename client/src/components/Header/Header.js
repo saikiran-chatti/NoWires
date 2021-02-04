@@ -3,6 +3,7 @@ import './Header.css'
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { TweenMax } from 'gsap'
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -31,10 +32,21 @@ const Header = () => {
                     </div>
 
                     <ul className="navList">
-                        <li className="navItem"><a href="/home" className="navLink active">Home</a></li>
-                        <li className="navItem"><a href="/about" className="navLink">About</a></li>
-                        <li className="navItem"><a href="/skills" className="navLink">Blog</a></li>
-                        <li className="navItem"><a href="/contact" className="navLink">Contact</a></li>
+                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                            <li className="navItem"><a href="/home" className="navLink active">Home</a></li>
+                        </Link>
+
+                        <Link to="/myOrders" style={{ textDecoration: "none" }}>
+                            <li className="navItem"><a href="/about" className="navLink">About</a></li>
+                        </Link>
+
+                        <Link to="/myOrders" style={{ textDecoration: "none" }}>
+                            <li className="navItem"><a href="/skills" className="navLink">Blog</a></li>
+                        </Link>
+
+                        <Link to="/myOrders" style={{ textDecoration: "none" }}>
+                            <li className="navItem"><a href="/contact" className="navLink">Contact</a></li>
+                        </Link>
 
                     </ul>
                 </div>

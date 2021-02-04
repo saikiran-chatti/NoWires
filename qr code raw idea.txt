@@ -1,0 +1,9 @@
+qr code idea:
+
+1.) when nowires.com is fetched, then a random string(x) is generated and a document with the name x is created.
+2.) Based on this x, we create a qrcode. 
+3.) When a phone scans that code, it receives that x value and using x as document name, it inserts
+    the required ftp: url in the document.
+4.) Once there is value in the document, the webpage automatically opens the url present in the
+    document.
+5.) After session is closed, the document should be deleted.

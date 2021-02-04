@@ -13,7 +13,7 @@ const FilesMenu = () => {
                                 <div class="files-menu-overlap-group4">
                                     <img
                                         class="files-icon-"
-                                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/files-icon-docx-1@3x.png"
+                                        src="/images/icons/icon-DOCX.svg"
                                     />
                                     <div class="documents poppins-medium-black-18px">Documents</div>
                                     <div class="text- poppins-medium-black-24px">10%</div>
@@ -25,7 +25,7 @@ const FilesMenu = () => {
                                 <div class="files-menu-overlap-group">
                                     <img
                                         class="files-icon-picture"
-                                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/files-icon-picture-1@3x.png"
+                                        src="/images/icons/icon-picture.svg"
                                     />
                                     <div class="photos poppins-medium-black-18px">Photos</div>
                                     <div class="text- poppins-medium-black-24px">50%</div>
@@ -47,7 +47,7 @@ const FilesMenu = () => {
                             <div class="files-menu-overlap-group2">
                                 <img
                                     class="files-icon-"
-                                    src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/files-icon-video@3x.png"
+                                    src="/images/icons/icon-video.svg"
                                 />
                                 <div class="videos poppins-medium-black-18px">Videos</div>
                                 <div class="text- poppins-medium-black-24px">40%</div>
@@ -59,7 +59,7 @@ const FilesMenu = () => {
                     <div class="files-menu-auto-flex">
                         <img
                             class="files-icon-docx"
-                            src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-docx@3x.png"
+                            src="/images/icons/icon-DOCX.svg"
                         />
                         <div class="project-report-1 poppins-medium-black-18px">Project Report 1</div>
                         <div class="date poppins-medium-black-18px">31 Jan 2021</div>
@@ -68,7 +68,7 @@ const FilesMenu = () => {
                     <div class="files-menu-auto-flex6">
                         <img
                             class="files-icon--1"
-                            src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-pdf-1@3x.png"
+                            src="/images/icons/icon-PDF.svg"
                         />
                         <div class="assignment-iv poppins-medium-black-18px">Assignment IV</div>
                         <div class="date-1 poppins-medium-black-18px">31 Jan 2021</div>
@@ -77,7 +77,7 @@ const FilesMenu = () => {
                     <div class="files-menu-auto-flex7">
                         <img
                             class="files-icon--1"
-                            src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-pdf@3x.png"
+                            src="/images/icons/icon-PDF.svg"
                         />
                         <div class="assignment-iii poppins-medium-black-18px">Assignment III</div>
                         <div class="date-2 poppins-medium-black-18px">31 Jan 2021</div>
@@ -87,12 +87,12 @@ const FilesMenu = () => {
                         <div class="files-menu-overlap-group5">
                             <img
                                 class="files-icon--1"
-                                src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-music@3x.png"
+                                src="/images/icons/icon-music.svg"
                             />
                         </div>
                         <div class="files-menu-overlap-group1">
                             <div class="telisiney-na-nuvve poppins-medium-black-18px">Telisiney Na Nuvve</div>
-                            <div class="telisiney-na-nuvve poppins-medium-black-18px">Telisiney Na Nuvve</div>
+                            {/* <div class="telisiney-na-nuvve poppins-medium-black-18px">Telisiney Na Nuvve</div> */}
                         </div>
                         <div class="date-3 poppins-medium-black-18px">30 Jan 2021</div>
                         <div class="address-3 poppins-medium-black-18px">10 Mb</div>
@@ -101,7 +101,7 @@ const FilesMenu = () => {
                 <div class="files-menu-auto-flex10">
                     <img
                         class="files-icon-picture-1"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/files-icon-picture@3x.png"
+                        src="/images/icons/icon-picture.svg"
                     />
                     <div class="weekend-trip poppins-medium-black-18px">Weekend Trip</div>
                     <div class="date-4 poppins-medium-black-18px">30 Jan 2021</div>
