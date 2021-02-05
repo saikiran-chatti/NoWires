@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { TweenMax } from 'gsap'
+import axios from 'axios'
 import Header from '../Header/Header'
 import './Home.css'
 
@@ -12,6 +13,21 @@ const Home = () => {
         TweenMax.from('.homeImg', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.3, y: 30 })
 
     }, [])
+
+
+    //axios
+    const data = { url: 'test' }
+    axios({
+        url: '/createQRDoc',
+        method: 'POST',
+        data: data
+    })
+        .then((res) => {
+            console.log('retrieved fetch method');
+        })
+        .catch(() => {
+            console.log('Error while fetching post method');
+        })
 
     return (
         <div className="l-main">
