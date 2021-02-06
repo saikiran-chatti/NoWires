@@ -23,12 +23,6 @@ mongoose.connection.on('connected', () => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// newQRCode.save((error) => {
-//     if (error)
-//         console.log('Error while saving');
-//     else
-//         console.log('Data saved');
-// })
 app.use(morgan('tiny'))
 
 app.use('/', routes)

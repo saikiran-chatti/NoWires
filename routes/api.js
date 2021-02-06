@@ -4,19 +4,15 @@ const QRCodeModel = require('../models/QRCode')
 const router = express.Router();
 
 // Routes
-router.get('/test', (req, res) => {
-    QRCode.toDataURL('Jayanth Saikiran').then(url => {
-        res.send(`
-        <h2>QRCode Generated</h2>
-        <div><img src='${url}'/></div>
-      `)
+router.get('/generateQRImage', (req, res) => {
+    QRCode.toDataURL('Add border radius to QR Code, It looks like shit !!!').then(url => {
+        res.send(url)
     }).catch(err => {
-        console.debug(err)
+        console.log(err);
     })
 });
 
 router.post('/createQRDoc', (req, res) => {
-
     console.log('Body', req.body);
     const data = req.body;
     const dataInstance = new QRCodeModel(data)
@@ -33,6 +29,20 @@ router.post('/createQRDoc', (req, res) => {
     })
 })
 
+router.get('/fetchUniqueId', (req, res) => {
+    console.log('fetchUnique');
+    console.log(req.body);
+    QRCodeModel.find({ uniq_id: req.body.uniq_id })
+        .then((data) => {
+            console.log('reached then');
+            console.log(data);
+            res.send(data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+})
+
 router.get('/saveData', (req, res) => {
     const data = {
         url: "api url"
@@ -47,6 +57,8 @@ router.get('/saveData', (req, res) => {
     })
 })
 
+
+
 router.get('/fetchData', (req, res) => {
 
     QRCodeModel.find({})
@@ -59,8 +71,5 @@ router.get('/fetchData', (req, res) => {
         })
 })
 
-router.get('/', (req, res) => {
-    res.status(200).send('Hello World!\n');
-});
 
 module.exports = router;

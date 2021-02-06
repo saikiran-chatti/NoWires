@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // MongoDB schemas
 const Schema = mongoose.Schema;
 const QRCodeSchema = new Schema({
-    url: String,
+    uniq_id: String,
     date: {
         type: String,
         default: Date.now()
