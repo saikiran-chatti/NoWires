@@ -3,9 +3,16 @@ const QRCode = require('qrcode')
 const QRCodeModel = require('../models/QRCode')
 const router = express.Router();
 
+const randomIdGenerator = () => {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 // Routes
 router.get('/generateQRImage', (req, res) => {
-    QRCode.toDataURL('Add border radius to QR Code, It looks like shit !!!').then(url => {
+
+    let randomStr = randomIdGenerator() + randomIdGenerator()
+    console.log(randomStr);
+    QRCode.toDataURL(randomStr).then(url => {
         res.send(url)
     }).catch(err => {
         console.log(err);
