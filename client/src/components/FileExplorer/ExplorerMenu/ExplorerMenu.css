@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:700,300,500");
+* {
+    box-sizing: border-box;
+}
+
+.bizarre-border-1px {
+    border: 1px solid var(--bizarre);
+}
+
+.create-folder {
+    height: 38px;
+    left: 33px;
+    letter-spacing: 0.6px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 129px;
+}
+
+.dashboard-copy {
+    letter-spacing: 0.6px;
+    margin-top: 0.42px;
+    min-height: 33px;
+    opacity: 0.9;
+    width: 182px;
+}
+
+.directory-path {
+    align-items: center;
+    display: flex;
+    margin-left: 35px;
+    margin-top: 42px;
+    min-width: 800px;
+}
+
+.frame-1 {
+    align-items: flex-start;
+    display: flex;
+    margin-left: 406px;
+    min-width: 163px;
+}
+
+.header {
+    align-items: flex-start;
+    align-self: center;
+    display: flex;
+    height: 38px;
+    margin-right: 26px;
+    margin-top: 42px;
+    padding: 8px 16px;
+    width: 1007px;
+}
+
+.icons8-add-older-50-1 {
+    height: 20px;
+    left: 13px;
+    object-fit: cover;
+    position: absolute;
+    top: 9px;
+    width: 20px;
+}
+
+.last-modified {
+    height: 21px;
+    letter-spacing: 0.6px;
+    margin-left: 277px;
+    min-height: 21px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.main-menu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 810px;
+    overflow: hidden;
+    width: 1071px;
+}
+
+.oval-9 {
+    height: 20px;
+    left: 5px;
+    position: absolute;
+    top: 4px;
+    width: 19px;
+}
+
+.overlap-group {
+    height: 20px;
+    margin-left: -1px;
+    position: relative;
+    width: 21px;
+}
+
+.overlap-group1 {
+    height: 38px;
+    position: relative;
+    width: 162px;
+}
+
+.overlap-group2 {
+    height: 30px;
+    margin-left: 453px;
+    margin-top: -0.09px;
+    position: relative;
+    width: 30px;
+}
+
+.path-6 {
+    height: 6px;
+    left: 19px;
+    position: absolute;
+    top: 20px;
+    width: 7px;
+}
+
+.place {
+    height: 21px;
+    letter-spacing: 0.6px;
+    min-height: 21px;
+    width: 66px;
+}
+
+.poppins-bold-black-27-3px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 27.3px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.poppins-light-black-14px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.poppins-medium-black-14px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.rectangle-1 {
+    height: 38px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 160px;
+}
+
+.rectangle-10 {
+    background-color: var(--mine-shaft);
+    border-radius: 2px;
+    height: 18px;
+    left: 0px;
+    position: absolute;
+    top: 2px;
+    width: 21px;
+}
+
+.rectangle-5-copy {
+    background-color: var(--mine-shaft);
+    border-radius: 2px;
+    height: 10px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 11px;
+}
+
+.rectangle-9 {
+    background-color: black;
+    border-radius: 1px;
+    height: 7px;
+    left: 8px;
+    position: absolute;
+    top: 2px;
+    width: 10px;
+}
+
+.size {
+    height: 21px;
+    letter-spacing: 0.6px;
+    margin-left: 267px;
+    min-height: 21px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.text-1 {
+    height: 20px;
+    letter-spacing: 0.6px;
+    margin-left: 13px;
+    min-height: 20px;
+    width: 162px;
+}
+
+.title {
+    align-items: flex-start;
+    display: flex;
+    height: 53px;
+    min-width: 1071px;
+}
+
+:root {
+    --bizarre: rgba(231, 220, 220, 1);
+    --mine-shaft: rgba(48, 48, 48, 1);
+}
+
+.valign-text-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
