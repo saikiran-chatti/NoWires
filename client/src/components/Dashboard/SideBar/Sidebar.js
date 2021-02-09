@@ -9,15 +9,15 @@ const Sidebar = () => {
 
             <div class="auto-flex">
                 <div class="overlap-group">
-                    <img
+                    {/* <img
                         class="oval-5"
                         src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/oval-5@2x.svg"
-                    />
+                    /> */}
                 </div>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
                         class="dashboard"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/dashboard@2x.svg"
+                        src="/images/icons/Dashboard.svg"
                     />
                 </Link>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
@@ -33,7 +33,7 @@ const Sidebar = () => {
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
                         class="wallet"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/wallet@2x.svg"
+                        src="/images/icons/Wallet.svg"
                     />
                 </Link>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
@@ -44,7 +44,7 @@ const Sidebar = () => {
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
                         class="message"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/message@2x.svg"
+                        src="/images/icons/Message.svg"
                     />
                 </Link>
 
@@ -58,7 +58,7 @@ const Sidebar = () => {
                 <Link to="/" style={{ textDecoration: "none" }}>
                     <img
                         class="trade"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/trade@2x.svg"
+                        src="/images/icons/Trade.svg"
                     />
                 </Link>
                 <Link to="/" style={{ textDecoration: "none" }}>

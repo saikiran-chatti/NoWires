@@ -37,12 +37,12 @@ const FilesMenu = () => {
                             <div class="files-menu-overlap-group3">
                                 <img
                                     class="oval-9"
-                                    src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/oval-9@2x.svg"
+                                    src="/images/icons/Magnifier.svg"
                                 />
-                                <img
+                                {/* <img
                                     class="path-6"
-                                    src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/path-6@2x.svg"
-                                />
+                                    src="/images/icons/Magnifier.svg"
+                                /> */}
                             </div>
                             <div class="files-menu-overlap-group2">
                                 <img
