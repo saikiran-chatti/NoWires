@@ -64,8 +64,6 @@ router.get('/saveData', (req, res) => {
     })
 })
 
-
-
 router.get('/fetchData', (req, res) => {
 
     QRCodeModel.find({})

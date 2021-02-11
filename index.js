@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan')
 const routes = require('./routes/api.js')
+const ftpRoutes = require('./routes/ftpRoutes.js')
 const mongoose = require('mongoose');
 const app = express()
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(morgan('tiny'))
 
 app.use('/', routes)
+app.use('/', ftpRoutes)
 
 
 app.listen(port, hostname, () => {

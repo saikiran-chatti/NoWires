@@ -1,15 +1,10 @@
 const ftp = require('./FTPClient')
 const express = require('express')
 const app = express()
-var QRCode = require('qrcode')
-
-QRCode.toDataURL('I am a pony!', function (err, url) {
-    console.log(url)
-})
 
 app.use(express.json())
 
-const client = new ftp('192.168.0.5', 2232, 'anonymous', 'guest')
+const client = new ftp('192.168.0.4', 2232, 'anonymous', 'guest')
 
 // client.parentList().then( (result) => {
 //     console.log('Task done');    
