@@ -18,14 +18,14 @@ const ExplorerMenu = () => {
                 </div>
             </div>
             <div class="directory-path">
-                <div class="overlap-group">
+                <div class="overlap-group-1">
                     <div class="rectangle-9"></div>
                     <div class="rectangle-10"></div>
                     <div class="rectangle-5-copy"></div>
                 </div>
                 <p class="text-1 valign-text-middle poppins-medium-black-14px">All Files&nbsp;&nbsp;&gt; Important</p>
                 <div class="frame-1">
-                    <div class="overlap-group1">
+                    <div class="overlap-group">
                         <div class="rectangle-1 bizarre-border-1px"></div>
                         <div class="rectangle-1 bizarre-border-1px"></div>
                         <div class="create-folder valign-text-middle poppins-light-black-14px">Create Folder</div>
@@ -41,7 +41,18 @@ const ExplorerMenu = () => {
                 <div class="last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
                 <div class="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
+            <div class="data">
+                <div class="overlap-group-1">
+                    <div class="rectangle-9-1"></div>
+                    <div class="rectangle-10-1"></div>
+                    <div class="rectangle-5-copy-1"></div>
+                </div>
+                <div class="client-documents poppins-medium-black-14px">Client Documents</div>
+                <div class="date poppins-medium-black-14px">21 May 2019</div>
+                <div class="address poppins-medium-black-14px">175 Mb</div>
+            </div>
         </div>
+
     )
 }
 

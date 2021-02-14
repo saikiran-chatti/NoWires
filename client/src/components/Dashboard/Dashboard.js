@@ -1,11 +1,11 @@
 import React from 'react'
 import FilesMenu from './FilesMenu/FilesMenu'
-import Sidebar from './SideBar/Sidebar'
+import Sidebar2 from './SideBar/Sidebar2'
 
 const Dashboard = () => {
     return (
         <div className="dashboardMain">
-            <Sidebar />
+            <Sidebar2 />
             <FilesMenu />
         </div>
     )

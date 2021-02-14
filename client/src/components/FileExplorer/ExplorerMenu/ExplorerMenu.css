@@ -3,8 +3,23 @@
     box-sizing: border-box;
 }
 
+.address {
+    letter-spacing: 0.6px;
+    margin-left: 268px;
+    margin-top: 1px;
+    min-height: 21px;
+}
+
 .bizarre-border-1px {
     border: 1px solid var(--bizarre);
+}
+
+.client-documents {
+    letter-spacing: 0.6px;
+    margin-left: 20px;
+    margin-top: 1px;
+    min-height: 21px;
+    min-width: 138px;
 }
 
 .create-folder {
@@ -23,6 +38,24 @@
     min-height: 33px;
     opacity: 0.9;
     width: 182px;
+}
+
+.data {
+    align-items: flex-start;
+    display: flex;
+    height: 45px;
+    margin-left: 35px;
+    margin-top: 36px;
+    overflow: hidden;
+    padding: 7px 0;
+    width: 854px;
+}
+
+.date {
+    letter-spacing: 0.6px;
+    margin-left: 170px;
+    min-height: 21px;
+    min-width: 90px;
 }
 
 .directory-path {
@@ -70,6 +103,7 @@
 }
 
 .main-menu {
+    left: 330px;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -87,16 +121,16 @@
 }
 
 .overlap-group {
+    height: 38px;
+    position: relative;
+    width: 162px;
+}
+
+.overlap-group-1 {
     height: 20px;
     margin-left: -1px;
     position: relative;
     width: 21px;
-}
-
-.overlap-group1 {
-    height: 38px;
-    position: relative;
-    width: 162px;
 }
 
 .overlap-group2 {
@@ -164,6 +198,16 @@
     width: 21px;
 }
 
+.rectangle-10-1 {
+    background-color: var(--golden-tainoi);
+    border-radius: 2px;
+    height: 18px;
+    left: 0px;
+    position: absolute;
+    top: 2px;
+    width: 21px;
+}
+
 .rectangle-5-copy {
     background-color: var(--mine-shaft);
     border-radius: 2px;
@@ -174,8 +218,28 @@
     width: 11px;
 }
 
+.rectangle-5-copy-1 {
+    background-color: var(--golden-tainoi);
+    border-radius: 2px;
+    height: 10px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 11px;
+}
+
 .rectangle-9 {
     background-color: black;
+    border-radius: 1px;
+    height: 7px;
+    left: 8px;
+    position: absolute;
+    top: 2px;
+    width: 10px;
+}
+
+.rectangle-9-1 {
+    background-color: var(--casablanca);
     border-radius: 1px;
     height: 7px;
     left: 8px;
@@ -210,6 +274,8 @@
 
 :root {
     --bizarre: rgba(231, 220, 220, 1);
+    --casablanca: rgba(249, 181, 82, 1);
+    --golden-tainoi: rgba(255, 207, 92, 1);
     --mine-shaft: rgba(48, 48, 48, 1);
 }
 

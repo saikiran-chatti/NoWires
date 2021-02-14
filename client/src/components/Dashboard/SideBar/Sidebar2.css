@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:600,400");
+* {
+  box-sizing: border-box;
+}
+
+.poppins-normal-black-12-7px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-normal-mine-shaft-12-7px {
+  color: var(--mine-shaft);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+}
+
+.poppins-normal-mine-shaft-12-7px-2 {
+  color: var(--mine-shaft);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.poppins-semi-bold-black-16-4px {
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 16.4px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.sidebar {
+  position: absolute;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #FDFBFB 0%, #FBF9FA 19.06%, #F2F2F7 99.99%, #EBEDEE 100%);
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 272px;
+}
+
+.sidebar .auto-flex {
+  align-items: flex-start;
+  display: flex;
+  height: 203px;
+  margin-left: -15px;
+  margin-top: 177px;
+  min-width: 207px;
+}
+
+.sidebar .dashboard {
+  align-self: flex-end;
+  height: 25px;
+  width: 25px;
+}
+
+.sidebar .dashboard-1 {
+  height: 16px;
+  letter-spacing: 0px;
+  margin-left: 25px;
+  min-height: 16px;
+  width: 86px;
+}
+
+.sidebar .frame-3 {
+  align-items: flex-start;
+  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/oval-5-copy@2x.svg);
+  background-size: 100% 100%;
+  display: flex;
+  height: 31px;
+  justify-content: flex-end;
+  min-width: 31px;
+  padding: 10px 10px;
+}
+
+.sidebar .logo {
+  margin-top: 61px;
+  align-items: flex-end;
+  align-self: center;
+  display: flex;
+  height: 25px;
+  margin-right: 52.59px;
+  min-width: 104px;
+}
+
+.sidebar .logo-1 {
+  height: 54px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 54px;
+}
+
+.sidebar .menu-1 {
+  align-items: center;
+  display: flex;
+  height: 26px;
+  min-width: 136px;
+  padding: 0.2px 0;
+}
+
+.sidebar .menu-2 {
+  align-items: center;
+  display: flex;
+  margin-top: 30px;
+  min-width: 137px;
+}
+
+.sidebar .menu-3 {
+  align-items: flex-start;
+  display: flex;
+  height: 26px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  min-width: 136px;
+  padding: 1px 0;
+}
+
+.sidebar .menu-4 {
+  align-items: flex-start;
+  display: flex;
+  height: 26px;
+  margin-top: 30px;
+  min-width: 136px;
+}
+
+.sidebar .message {
+  height: 21px;
+  width: 14px;
+}
+
+.sidebar .messages {
+  align-self: center;
+  letter-spacing: 0px;
+  margin-left: 30px;
+  min-height: 16px;
+  width: 86px;
+}
+
+.sidebar .no-wires {
+  left: 52px;
+  letter-spacing: 0px;
+  position: absolute;
+  top: 7px;
+}
+
+.sidebar .oval-5 {
+  height: 11px;
+  width: 11px;
+}
+
+.sidebar .overlap-group {
+  height: 54px;
+  margin-bottom: -21.9px;
+  margin-left: -23px;
+  position: relative;
+  width: 128px;
+}
+
+.sidebar .sidebar-menu {
+  align-items: flex-start;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-left: 42px;
+  min-height: 199px;
+  width: 134px;
+}
+
+.sidebar .span1 {
+  color: rgba(48, 48, 48, 1);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+  letter-spacing: 0.45px;
+}
+
+.sidebar .span2 {
+  color: rgba(48, 48, 48, 1);
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 12.7px;
+}
+
+.sidebar .trade {
+  height: 25px;
+  margin-top: -0.22px;
+  width: 25px;
+}
+
+.sidebar .trade-1 {
+  align-self: center;
+  letter-spacing: 0px;
+  margin-left: 25px;
+  min-height: 16px;
+  width: 86px;
+}
+
+.sidebar .wallet {
+  align-self: flex-end;
+  height: 26px;
+  margin-bottom: -0.05px;
+  width: 25px;
+}
+
+.sidebar .wallet-1 {
+  height: 16px;
+  letter-spacing: 0.45px;
+  margin-left: 25px;
+  min-height: 16px;
+  width: 86px;
+}
+
+:root {
+  --mine-shaft: rgba(48, 48, 48, 1);
+}
+
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
