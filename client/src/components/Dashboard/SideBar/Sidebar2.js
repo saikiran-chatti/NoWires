@@ -9,7 +9,7 @@ const Sidebar2 = () => {
                 <div class="overlap-group">
                     <img
                         class="logo-1"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/logo@2x.svg"
+                        src="/images/icons/Logo.svg"
                     />
                     <div class="no-wires poppins-semi-bold-black-16-4px">No Wires</div>
                 </div>
@@ -18,57 +18,57 @@ const Sidebar2 = () => {
                 <div class="frame-3">
                     <img
                         class="oval-5"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/oval-5@2x.svg"
+                        src="/images/icons/shadow.svg"
                     />
                 </div>
                 <div class="sidebar-menu">
                     <div class="menu-1">
-                        <Link to="/dashboard" style={{ textDecoration: "none"}}>
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <img
                                 class="dashboard"
-                                src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/dashboard@2x.svg"
+                                src="/images/icons/Dashboard.svg"
                             />
-                        </Link>
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        {/* </Link> */}
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <div class="dashboard-1 valign-text-middle poppins-normal-mine-shaft-12-7px">
                                 <span> <span class="span1">Dashboar</span><span class="span2">d</span> </span>
                             </div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div class="menu-2">
-                        <Link to="/explorer" style={{ textDecoration: "none" }}>
+                        {/* <Link to="/explorer" style={{ textDecoration: "none" }}> */}
                             <img
                                 class="wallet"
-                                src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/wallet@2x.svg"
+                                src="/images/icons/Wallet.svg"
                             />
-                        </Link>
-                        <Link to="/explorer" style={{ textDecoration: "none" }}>
+                        {/* </Link> */}
+                        {/* <Link to="/explorer" style={{ textDecoration: "none" }}> */}
                             <div class="wallet-1 valign-text-middle poppins-normal-black-12-7px">Files</div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div class="menu-3">
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <img
                                 class="message"
-                                src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/message@2x.svg"
+                                src="/images/icons/Message.svg"
                             />
-                        </Link>
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        {/* </Link> */}
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <div class="messages poppins-normal-mine-shaft-12-7px">
                                 <span class="span1">Message</span><span class="span2">s</span>
                             </div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <div class="menu-4">
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <img
                                 class="trade"
-                                src="https://anima-uploads.s3.amazonaws.com/projects/602927e76276ff3c9500c632/releases/60292aeb6887d819c8dec42f/img/trade@2x.svg"
+                                src="/images/icons/Trade.svg"
                             />
-                        </Link>
-                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        {/* </Link> */}
+                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                             <div class="trade-1 poppins-normal-mine-shaft-12-7px-2">Settings</div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

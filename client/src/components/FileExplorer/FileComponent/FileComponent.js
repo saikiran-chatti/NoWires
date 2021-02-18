@@ -1,0 +1,19 @@
+import React from 'react';
+import './FileComponent.css'
+
+const FileComponent = () => {
+    return (
+        <div class="file-data">
+            <div class="overlap-group-1">
+                <div class="rectangle-9-1"></div>
+                <div class="rectangle-10-1"></div>
+                <div class="rectangle-5-copy-1"></div>
+            </div>
+            <div class="client-documents poppins-medium-black-14px">Client Documents</div>
+            <div class="date poppins-medium-black-14px">21 May 2019</div>
+            <div class="address poppins-medium-black-14px">175 Mb</div>
+        </div>
+    )
+}
+
+export default FileComponent;

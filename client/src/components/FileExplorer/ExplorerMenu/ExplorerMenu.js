@@ -1,20 +1,21 @@
 import React from 'react';
+import FileComponent from '../FileComponent/FileComponent';
 import './ExplorerMenu.css'
 
 const ExplorerMenu = () => {
     return (
-        <div class="main-menu">
-            <div class="title">
+        <div class="explorer-main-menu">
+            <div class="explorer-title">
                 <h1 class="dashboard-copy poppins-bold-black-27-3px">File Explorer</h1>
                 <div class="overlap-group2">
                     <img
                         class="oval-9"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/60215157549e4b815d2730da/releases/6021516115cbf1db4fd05411/img/oval-9@2x.svg"
+                        src="/images/icons/Magnifier.svg"
                     />
-                    <img
+                    {/* <img
                         class="path-6"
-                        src="https://anima-uploads.s3.amazonaws.com/projects/60215157549e4b815d2730da/releases/6021516115cbf1db4fd05411/img/path-6@2x.svg"
-                    />
+                        src="/images/icons/Magnifier.svg"
+                    /> */}
                 </div>
             </div>
             <div class="directory-path">
@@ -31,25 +32,19 @@ const ExplorerMenu = () => {
                         <div class="create-folder valign-text-middle poppins-light-black-14px">Create Folder</div>
                         <img
                             class="icons8-add-older-50-1"
-                            src="https://anima-uploads.s3.amazonaws.com/projects/60215157549e4b815d2730da/releases/6021516115cbf1db4fd05411/img/icons8-add-folder-50-1@2x.png"
+                            src="/images/icons/addFolder.svg"
                         />
                     </div>
                 </div>
             </div>
-            <div class="header">
+            <div class="explorer-header">
                 <div class="place valign-text-middle poppins-light-black-14px">Name</div>
-                <div class="last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
+                <div class="explorer-last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
                 <div class="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
-            <div class="data">
-                <div class="overlap-group-1">
-                    <div class="rectangle-9-1"></div>
-                    <div class="rectangle-10-1"></div>
-                    <div class="rectangle-5-copy-1"></div>
-                </div>
-                <div class="client-documents poppins-medium-black-14px">Client Documents</div>
-                <div class="date poppins-medium-black-14px">21 May 2019</div>
-                <div class="address poppins-medium-black-14px">175 Mb</div>
+            <div class="explorer-data">
+                <FileComponent />
+                <FileComponent />
             </div>
         </div>
 

@@ -1,0 +1,62 @@
+.file-data {
+    align-items: flex-start;
+    display: flex;
+    height: 45px;
+    margin-left: 35px;
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 7px 0;
+    width: 854px;
+}
+
+.rectangle-9-1 {
+    background-color: var(--casablanca);
+    border-radius: 1px;
+    height: 7px;
+    left: 8px;
+    position: absolute;
+    top: 2px;
+    width: 10px;
+}
+
+.rectangle-10-1 {
+    background-color: var(--golden-tainoi);
+    border-radius: 2px;
+    height: 18px;
+    left: 0px;
+    position: absolute;
+    top: 2px;
+    width: 21px;
+}
+
+.rectangle-5-copy-1 {
+    background-color: var(--golden-tainoi);
+    border-radius: 2px;
+    height: 10px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 11px;
+}
+
+.client-documents {
+    letter-spacing: 0.6px;
+    margin-left: 20px;
+    margin-top: 1px;
+    min-height: 21px;
+    min-width: 138px;
+}
+
+.date {
+    letter-spacing: 0.6px;
+    margin-left: 170px;
+    min-height: 21px;
+    min-width: 90px;
+}
+
+.address {
+    letter-spacing: 0.6px;
+    margin-left: 268px;
+    margin-top: 1px;
+    min-height: 21px;
+}
