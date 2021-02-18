@@ -1,8 +1,23 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import FileComponent from '../FileComponent/FileComponent';
+import axios from 'axios'
 import './ExplorerMenu.css'
 
 const ExplorerMenu = () => {
+
+    const [fileList, setFileList] = useState([]);
+
+    useEffect(() => {
+        axios.get('/parentList')
+            .then((res) => {
+                setFileList(res.data);
+                console.log(fileList);
+            })
+            .catch(() => {
+                console.log('error while fetching files list');
+            });
+    }, [])
+
     return (
         <div class="explorer-main-menu">
             <div class="explorer-title">
@@ -43,8 +58,13 @@ const ExplorerMenu = () => {
                 <div class="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
             <div class="explorer-data">
-                <FileComponent />
-                <FileComponent />
+                {fileList.map(item => {
+                    return <FileComponent
+                        name={item.name}
+                        type={item.type}
+                        size={item.size}
+                        lastMod={item.modifiedAt} />
+                })}
             </div>
         </div>
 

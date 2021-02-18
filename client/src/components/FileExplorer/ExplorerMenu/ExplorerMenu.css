@@ -50,14 +50,8 @@
 }
 
 .explorer-data {
-    /* align-items: flex-start;
-    display: flex;
-    height: 45px;
-    margin-left: 35px;
-    margin-top: 20px;
-    overflow: hidden;
-    padding: 7px 0;
-    width: 854px; */
+    height:550px;
+    overflow-y: scroll;
 }
 
 /* .date {
@@ -217,6 +211,7 @@
     top: 0px;
     width: 11px;
 }
+
 /* 
 .rectangle-5-copy-1 {
     background-color: var(--golden-tainoi);
@@ -283,4 +278,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C0C0C0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
