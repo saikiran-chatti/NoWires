@@ -4,7 +4,7 @@ import ExplorerMenu from './ExplorerMenu/ExplorerMenu';
 
 const FileExplorer = () => {
     return (
-        <div class="FileExplorer">
+        <div className="FileExplorer">
             <SideBar></SideBar>
             <ExplorerMenu></ExplorerMenu>
         </div>

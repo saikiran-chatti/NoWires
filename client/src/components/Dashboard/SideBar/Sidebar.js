@@ -4,69 +4,69 @@ import './Sidebar2.css'
 
 const Sidebar = () => {
     return (
-        <div class="sidebar">
-            <div class="no-wires poppins-semi-bold-black-16-4px">No Wires</div>
+        <div className="sidebar">
+            <div className="no-wires poppins-semi-bold-black-16-4px">No Wires</div>
 
-            <div class="auto-flex">
-                <div class="overlap-group">
+            <div className="auto-flex">
+                <div className="overlap-group">
                     {/* <img
-                        class="oval-5"
+                        className="oval-5"
                         src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a44326fe923c6f32018a2/img/oval-5@2x.svg"
                     /> */}
                 </div>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
-                        class="dashboard"
+                        className="dashboard"
                         src="/images/icons/Dashboard.svg"
                     />
                 </Link>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
 
-                    <div class="dashboard-1 poppins-normal-mine-shaft-12-7px">
-                        <span class="span1">Dashboar</span><span class="span2">d</span>
+                    <div className="dashboard-1 poppins-normal-mine-shaft-12-7px">
+                        <span className="span1">Dashboar</span><span className="span2">d</span>
                     </div>
                 </Link>
 
             </div>
 
-            <div class="auto-flex1">
+            <div className="auto-flex1">
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
-                        class="wallet"
+                        className="wallet"
                         src="/images/icons/Wallet.svg"
                     />
                 </Link>
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                    <div class="wallet-1 poppins-normal-black-12-7px">Files</div>
+                    <div className="wallet-1 poppins-normal-black-12-7px">Files</div>
                 </Link>
             </div>
-            <div class="auto-flex2">
+            <div className="auto-flex2">
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
                     <img
-                        class="message"
+                        className="message"
                         src="/images/icons/Message.svg"
                     />
                 </Link>
 
                 <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                    <div class="messages poppins-normal-mine-shaft-12-7px">
-                        <span class="span1">Message</span><span class="span2">s</span>
+                    <div className="messages poppins-normal-mine-shaft-12-7px">
+                        <span className="span1">Message</span><span className="span2">s</span>
                     </div>
                 </Link>
             </div>
-            <div class="auto-flex3">
+            <div className="auto-flex3">
                 <Link to="/" style={{ textDecoration: "none" }}>
                     <img
-                        class="trade"
+                        className="trade"
                         src="/images/icons/Trade.svg"
                     />
                 </Link>
                 <Link to="/" style={{ textDecoration: "none" }}>
-                    <div class="trade-1 poppins-normal-mine-shaft-12-7px-2">Settings</div>
+                    <div className="trade-1 poppins-normal-mine-shaft-12-7px-2">Settings</div>
                 </Link>
             </div>
             <img
-                class="collapse-icon"
+                className="collapse-icon"
                 src="https://anima-uploads.s3.amazonaws.com/projects/601a44218a5833fdfc9347e7/releases/601a518698ecce32c69c9cfb/img/collapse-icon@2x.svg"
             />
         </div>

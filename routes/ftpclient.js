@@ -28,9 +28,6 @@ class FTPClient {
                 // secure: self.settings.secure
             })
             let result = await self.client.list()
-            console.log(result.length);
-            // self.sendListToFile();
-            console.log(await self.client.pwd()); // access pwd after giving port, host address
 
             return result;
         }

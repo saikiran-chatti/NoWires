@@ -19,47 +19,49 @@ const ExplorerMenu = () => {
     }, [])
 
     return (
-        <div class="explorer-main-menu">
-            <div class="explorer-title">
-                <h1 class="dashboard-copy poppins-bold-black-27-3px">File Explorer</h1>
-                <div class="overlap-group2">
+        <div className="explorer-main-menu">
+            <div className="explorer-title">
+                <h1 className="dashboard-copy poppins-bold-black-27-3px">File Explorer</h1>
+                <div className="overlap-group2">
                     <img
-                        class="oval-9"
+                        alt="magnifier"
+                        className="oval-9"
                         src="/images/icons/Magnifier.svg"
                     />
                     {/* <img
-                        class="path-6"
+                        className="path-6"
                         src="/images/icons/Magnifier.svg"
                     /> */}
                 </div>
             </div>
-            <div class="directory-path">
-                <div class="overlap-group-1">
-                    <div class="rectangle-9"></div>
-                    <div class="rectangle-10"></div>
-                    <div class="rectangle-5-copy"></div>
+            <div className="directory-path">
+                <div className="overlap-group-1">
+                    <div className="rectangle-9"></div>
+                    <div className="rectangle-10"></div>
+                    <div className="rectangle-5-copy"></div>
                 </div>
-                <p class="text-1 valign-text-middle poppins-medium-black-14px">All Files&nbsp;&nbsp;&gt; Important</p>
-                <div class="frame-1">
-                    <div class="overlap-group">
-                        <div class="rectangle-1 bizarre-border-1px"></div>
-                        <div class="rectangle-1 bizarre-border-1px"></div>
-                        <div class="create-folder valign-text-middle poppins-light-black-14px">Create Folder</div>
+                <p className="text-1 valign-text-middle poppins-medium-black-14px">All Files&nbsp;&nbsp;&gt; Important</p>
+                <div className="frame-1">
+                    <div className="overlap-group">
+                        <div className="rectangle-1 bizarre-border-1px"></div>
+                        <div className="rectangle-1 bizarre-border-1px"></div>
+                        <div className="create-folder valign-text-middle poppins-light-black-14px">Create Folder</div>
                         <img
-                            class="icons8-add-older-50-1"
+                            alt="addFolder"
+                            className="icons8-add-older-50-1"
                             src="/images/icons/addFolder.svg"
                         />
                     </div>
                 </div>
             </div>
-            <div class="explorer-header">
-                <div class="place valign-text-middle poppins-light-black-14px">Name</div>
-                <div class="explorer-last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
-                <div class="size valign-text-middle poppins-light-black-14px">Size</div>
+            <div className="explorer-header">
+                <div className="place valign-text-middle poppins-light-black-14px">Name</div>
+                <div className="explorer-last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
+                <div className="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
-            <div class="explorer-data">
-                {fileList.map(item => {
-                    return <FileComponent
+            <div className="explorer-data">
+                {fileList.map((item, index) => {
+                    return <FileComponent key={index}
                         name={item.name}
                         type={item.type}
                         size={item.size}

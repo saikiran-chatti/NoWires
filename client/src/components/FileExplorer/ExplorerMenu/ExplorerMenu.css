@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:700,300,500");
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .explorer-main-menu {
@@ -50,8 +51,11 @@
 }
 
 .explorer-data {
-    height:550px;
+    width: 854px;
+    height: 550px;
+    overflow-x: hidden;
     overflow-y: scroll;
+    ;
 }
 
 /* .date {
@@ -78,14 +82,13 @@
 
 .explorer-header {
     align-items: flex-start;
-    align-self: center;
     display: flex;
     height: 38px;
-    margin-right: 26px;
+    /* margin-right: 26px; */
     margin-top: 42px;
     margin-left: 35px;
     padding: 8px 0px;
-    width: 1007px;
+    width: 854px;
 }
 
 .icons8-add-older-50-1 {
@@ -100,7 +103,7 @@
 .explorer-last-modified {
     height: 21px;
     letter-spacing: 0.6px;
-    margin-left: 277px;
+    margin-left: 280px;
     min-height: 21px;
     min-width: 100px;
     text-align: center;
@@ -246,7 +249,7 @@
 .size {
     height: 21px;
     letter-spacing: 0.6px;
-    margin-left: 267px;
+    margin-left: 154px;
     min-height: 21px;
     min-width: 30px;
     text-align: center;
