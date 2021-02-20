@@ -6,9 +6,10 @@ import './ExplorerMenu.css'
 const ExplorerMenu = () => {
 
     const [fileList, setFileList] = useState([]);
+    const [currentDirectoryPath, setCurrentDirectoryPath] = useState('Internal Storage >');
 
     useEffect(() => {
-        axios.get('/parentList')
+        axios.get('/rootDirectory')
             .then((res) => {
                 setFileList(res.data);
                 console.log(fileList);
@@ -40,7 +41,7 @@ const ExplorerMenu = () => {
                     <div className="rectangle-10"></div>
                     <div className="rectangle-5-copy"></div>
                 </div>
-                <p className="text-1 valign-text-middle poppins-medium-black-14px">All Files&nbsp;&nbsp;&gt; Important</p>
+                <p className="text-1 valign-text-middle poppins-medium-black-14px">{currentDirectoryPath}</p>
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>

@@ -1,5 +1,6 @@
 const ftp = require('basic-ftp');
 const fs = require('fs');
+const Lists = require('../ftp/list')
 // const { setFlagsFromString } = require('v8');
 
 class FTPClient {
@@ -15,38 +16,24 @@ class FTPClient {
         };
     }
 
-    async parentList() {
-        let self = this;
-        self.client.ftp.verbose = true
-
+    // List operations
+    async rootFolder() {
+        let res = null
         try {
-            await self.client.access({
-                host: self.settings.host,
-                port: self.settings.port,
-                user: self.settings.user,
-                password: self.settings.password,
-                // secure: self.settings.secure
-            })
-            let result = await self.client.list()
-
-            return result;
+            res = await Lists.parentList(this.client, this.settings);
         }
         catch (err) {
-            console.log(err)
+            console.log(err);
         }
-        self.client.close();
-
+        return res;
     }
 
-    sendListToFile() {
-        console.log('triggered');
-        return { data: "test" }
-    }
 
-    async downloadFullDirectory(localPath, remotePath) {
+    // Download
+    async downloadDirectory(localPath, remotePath) {
         let self = this;
         self.client.ftp.verbose = true
-
+        
         try {
             await self.client.access({
                 host: self.settings.host,
