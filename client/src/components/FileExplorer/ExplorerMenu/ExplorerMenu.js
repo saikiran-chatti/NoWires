@@ -60,13 +60,14 @@ const ExplorerMenu = () => {
                 <div className="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
             <div className="explorer-data">
-                {fileList.map((item, index) => {
+                {fileList.length ? fileList.map((item, index) => {
                     return <FileComponent key={index}
                         name={item.name}
                         type={item.type}
                         size={item.size}
                         lastMod={item.modifiedAt} />
-                })}
+                }) : null}
+                {/* Add lottie animation if no files are present */}
             </div>
         </div>
 

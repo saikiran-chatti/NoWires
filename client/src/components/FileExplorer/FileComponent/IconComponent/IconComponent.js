@@ -34,7 +34,11 @@ export const IconComponent = (props) => {
                     <img src="/images/icons/icon-PDF.svg" alt="pdf" />
                 </div>)
 
-            case 'picture':
+            case 'jpeg':
+            case 'jpg':
+            case 'gif':
+            case 'tiff':
+            case 'png':
                 return (<div className="overlap-group-1">
                     <img src="/images/icons/icon-picture.svg" alt="filepicture" />
                 </div>)
@@ -44,7 +48,14 @@ export const IconComponent = (props) => {
                     <img src="/images/icons/icon-PPT.svg" alt="ppt" />
                 </div>)
 
-            case 'video':
+            case 'mp4':
+            case 'mkv':
+            case 'mov':
+            case 'wmv':
+            case 'flv':
+            case 'avi':
+            case 'avchd':
+            case 'webm':
                 return (<div className="overlap-group-1">
                     <img src="/images/icons/icon-video.svg" alt="video" />
                 </div>)
