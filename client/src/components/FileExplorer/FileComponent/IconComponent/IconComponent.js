@@ -3,7 +3,7 @@ import React from 'react';
 export const IconComponent = (props) => {
 
     const fileType = props.type
-    if (fileType == 2)
+    if (fileType === 2)
         return (<div className="overlap-group-1">
             <div className="rectangle-9-1"></div>
             <div className="rectangle-10-1"></div>
@@ -16,15 +16,14 @@ export const IconComponent = (props) => {
             case null:
                 return null
 
-            case 'folder':
-
-
             case 'docs':
                 return (<div className="overlap-group-1">
                     <img src="/images/icons/icon-DOCX.svg" alt="docs" />
                 </div>)
 
-            case 'music':
+            case 'mp3':
+            case 'flac':
+            case 'amr':
                 return (<div className="overlap-group-1">
                     <img src="/images/icons/icon-music.svg" alt="music" />
                 </div>)

@@ -15,7 +15,7 @@ const FileComponent = (props) => {
         })
 
         let ext = ''
-        if (props.name.search('.') != -1)
+        if (props.name.search('.') !== -1)
             ext = props.name.split('.').pop();
 
         setFileProp(prevState => {

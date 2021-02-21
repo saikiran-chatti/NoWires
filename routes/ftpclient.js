@@ -51,7 +51,7 @@ class FTPClient {
         self.client.close();
     }
 
-
+    //Folder operations
     async changePath(path) {
         let self = this
         self.client.ftp.verbose = true
@@ -68,6 +68,28 @@ class FTPClient {
             // await console.log(self.client.pwd());
             let result = await self.client.list()
             await console.log('Path changed successfully');
+            return result;
+
+        } catch (err) {
+            console.log(err);
+        }
+        self.client.close();
+    }
+
+    async createFolder(name) {
+        let self = this
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+            await self.client.send('MKD NoWires')
+            let result = await self.client.list()
             return result;
 
         } catch (err) {

@@ -29,6 +29,17 @@ const ExplorerMenu = () => {
         }
     }, [currentDirectoryPath])
 
+    //CreateFolder
+    const createFolder = folderName => {
+        axios.post('/createFolder', { name: folderName })
+            .then(res => {
+                setFileList(res.data);
+            })
+            .catch(() => {
+                console.log('error while fetching files list');
+            });
+    }
+
     const changePath = (name, type) => {
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name)
@@ -40,7 +51,7 @@ const ExplorerMenu = () => {
 
     const goBack = () => {
         const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
-        if (p != '') {
+        if (p !== '') {
             axios.post('/changePath', { path: p })
                 .then(res => {
                     setFileList(res.data);
@@ -80,14 +91,17 @@ const ExplorerMenu = () => {
                 <p className="text-1 valign-text-middle poppins-medium-black-14px">
                     {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
                 <span class="goBack">
-                    <img onClick={() => goBack()}
+                    <img alt="goBack" onClick={() => goBack()}
                         class="goBackImg" src="/images/icons/goBack.svg"></img>
                 </span>
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>
                         <div className="rectangle-1 bizarre-border-1px"></div>
-                        <div className="create-folder valign-text-middle poppins-light-black-14px">Create Folder</div>
+                        <div className="create-folder valign-text-middle poppins-light-black-14px"
+                            onClick={() => createFolder("NoWires")} >
+                            Create Folder
+                        </div>
                         <img
                             alt="addFolder"
                             className="icons8-add-older-50-1"

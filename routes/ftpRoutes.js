@@ -28,4 +28,13 @@ router.post('/changePath', (req, res) => {
     });
 })
 
+router.post('/createFolder', (req, res) => {
+    const client = new ftp('192.168.0.5', 2232, 'android', 'android')
+    const name = req.body.name;
+
+    client.createFolder(name).then(result => {
+        res.send(result);
+    });
+})
+
 module.exports = router;
