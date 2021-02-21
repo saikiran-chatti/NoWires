@@ -260,7 +260,8 @@
     letter-spacing: 0.6px;
     margin-left: 13px;
     min-height: 20px;
-    width: 162px;
+    min-width: 162px;
+    max-width: 700px;
 }
 
 .explorer-title {

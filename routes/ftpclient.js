@@ -33,7 +33,7 @@ class FTPClient {
     async downloadDirectory(localPath, remotePath) {
         let self = this;
         self.client.ftp.verbose = true
-        
+
         try {
             await self.client.access({
                 host: self.settings.host,
@@ -52,7 +52,7 @@ class FTPClient {
     }
 
 
-    async accessFolder(path) {
+    async changePath(path) {
         let self = this
         self.client.ftp.verbose = true
 
@@ -67,8 +67,8 @@ class FTPClient {
             await self.client.cd(path)
             // await console.log(self.client.pwd());
             let result = await self.client.list()
-            console.log(result);
             await console.log('Path changed successfully');
+            return result;
 
         } catch (err) {
             console.log(err);

@@ -43,8 +43,11 @@
     margin-left: 20px;
     margin-top: 1px;
     min-height: 21px;
+    max-height: 21px;
     min-width: 200px;
-    width: 200px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .date {

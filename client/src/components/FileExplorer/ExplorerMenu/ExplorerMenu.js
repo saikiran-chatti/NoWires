@@ -6,18 +6,37 @@ import './ExplorerMenu.css'
 const ExplorerMenu = () => {
 
     const [fileList, setFileList] = useState([]);
-    const [currentDirectoryPath, setCurrentDirectoryPath] = useState('Internal Storage >');
+    const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
 
     useEffect(() => {
-        axios.get('/rootDirectory')
-            .then((res) => {
-                setFileList(res.data);
-                console.log(fileList);
-            })
-            .catch(() => {
-                console.log('error while fetching files list');
-            });
-    }, [])
+        if (currentDirectoryPath === '/') {
+            axios.get('/rootDirectory')
+                .then((res) => {
+                    setFileList(res.data);
+                })
+                .catch(() => {
+                    console.log('error while fetching files list');
+                });
+        }
+        else {
+            axios.post('/changePath', { path: currentDirectoryPath })
+                .then(res => {
+                    setFileList(res.data);
+                })
+                .catch(() => {
+                    console.log('error while fetching files list');
+                });
+        }
+    }, [currentDirectoryPath])
+
+    const changePath = (name, type) => {
+        if (type === 2) {
+            setCurrentDirectoryPath(currentDirectoryPath + '/' + name)
+        }
+        else {
+            alert('Need to implement Download function');
+        }
+    }
 
     return (
         <div className="explorer-main-menu">
@@ -41,7 +60,8 @@ const ExplorerMenu = () => {
                     <div className="rectangle-10"></div>
                     <div className="rectangle-5-copy"></div>
                 </div>
-                <p className="text-1 valign-text-middle poppins-medium-black-14px">{currentDirectoryPath}</p>
+                <p className="text-1 valign-text-middle poppins-medium-black-14px">
+                    {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>
@@ -63,6 +83,7 @@ const ExplorerMenu = () => {
             <div className="explorer-data">
                 {fileList.length ? fileList.map((item, index) => {
                     return <FileComponent key={index}
+                        onClick={() => changePath(item.name, item.type)}
                         name={item.name}
                         type={item.type}
                         size={item.size}

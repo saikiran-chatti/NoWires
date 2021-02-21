@@ -52,7 +52,7 @@ const FileComponent = (props) => {
     }
 
     return (
-        <div className="file-data">
+        <div className="file-data" onClick={props.onClick}>
             <IconComponent type={props.type} extension={fileProp.extension} />
             <div className="client-documents poppins-medium-black-14px">{props.name}</div>
             <div className="date poppins-medium-black-14px">{fileProp.lastMod}</div>
