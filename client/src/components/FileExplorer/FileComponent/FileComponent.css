@@ -1,4 +1,5 @@
 .file-data {
+    cursor: pointer;
     align-items: flex-start;
     display: flex;
     height: 45px;

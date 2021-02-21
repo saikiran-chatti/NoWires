@@ -38,6 +38,23 @@ const ExplorerMenu = () => {
         }
     }
 
+    const goBack = () => {
+        const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
+        if (p != '') {
+            axios.post('/changePath', { path: p })
+                .then(res => {
+                    setFileList(res.data);
+                })
+                .catch(() => {
+                    console.log('error while going back');
+                });
+            setCurrentDirectoryPath(currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')))
+        }
+        else {
+            alert('nope nope')
+        }
+    }
+
     return (
         <div className="explorer-main-menu">
             <div className="explorer-title">
@@ -62,6 +79,10 @@ const ExplorerMenu = () => {
                 </div>
                 <p className="text-1 valign-text-middle poppins-medium-black-14px">
                     {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
+                <span class="goBack">
+                    <img onClick={() => goBack()}
+                        class="goBackImg" src="/images/icons/goBack.svg"></img>
+                </span>
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>

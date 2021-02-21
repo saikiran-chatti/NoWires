@@ -22,25 +22,13 @@ const FileComponent = (props) => {
             console.log(ext);
             return { ...prevState, extension: ext.toLowerCase() }
         })
-    }, [])
+    }, [fileProp])
 
     const formatDate = (date) => {
         let d = new Date(date);
         let x = d.toDateString().split(" ");
         return x[2] + " " + x[1] + " " + x[3];
     }
-
-    // const formatSize = (bytes, decimals = 2) => {
-    //     if (bytes === 0) return '0 Bytes';
-
-    //     const k = 1024;
-    //     const dm = decimals < 0 ? 0 : decimals;
-    //     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-    //     const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-    //     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-    // }
 
     function formatBytes(a, type, b = 2) {
         if (type === 2)

@@ -117,6 +117,19 @@
     width: 19px;
 }
 
+/* GoBack */
+
+.goBack {
+    cursor: pointer;
+    margin-left: 10px;
+    max-height: 21px;
+}
+
+.goBackImg {
+    max-height: 21px;
+    max-width: 18px;
+}
+
 .overlap-group {
     height: 38px;
     position: relative;
