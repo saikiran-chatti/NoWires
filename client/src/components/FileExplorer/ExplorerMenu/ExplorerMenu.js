@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import FileComponent from '../FileComponent/FileComponent';
 import axios from 'axios'
 import './ExplorerMenu.css'
+import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 
 const ExplorerMenu = () => {
 
@@ -66,6 +67,21 @@ const ExplorerMenu = () => {
         }
     }
 
+    const handleDrop = files => {
+        // Implement upload function
+
+        for (let i = 0; i < files.length; i++) {
+            alert(files[i].name)
+            axios.post('/handleDrag', { file: files[i], path: currentDirectoryPath })
+                .then(res => {
+                    setFileList(res.data);
+                })
+                .catch(() => {
+                    console.log('error while going back');
+                });
+        }
+    }
+
     return (
         <div className="explorer-main-menu">
             <div className="explorer-title">
@@ -115,17 +131,21 @@ const ExplorerMenu = () => {
                 <div className="explorer-last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
                 <div className="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
-            <div className="explorer-data">
-                {fileList.length ? fileList.map((item, index) => {
-                    return <FileComponent key={index}
-                        onClick={() => changePath(item.name, item.type)}
-                        name={item.name}
-                        type={item.type}
-                        size={item.size}
-                        lastMod={item.modifiedAt} />
-                }) : null}
-                {/* Add lottie animation if no files are present */}
-            </div>
+
+            <DragAndDrop handleDrop={handleDrop}>
+                <div className="explorer-data">
+                    {fileList.length ? fileList.map((item, index) => {
+                        return <FileComponent key={index}
+                            onClick={() => changePath(item.name, item.type)}
+                            name={item.name}
+                            type={item.type}
+                            size={item.size}
+                            lastMod={item.modifiedAt} />
+                    }) : null}
+                    {/* Add lottie animation if no files are present */}
+                </div>
+            </DragAndDrop>
+
         </div>
 
     )

@@ -68,6 +68,8 @@ class FTPClient {
             // await console.log(self.client.pwd());
             let result = await self.client.list()
             await console.log('Path changed successfully');
+            self.client.close();
+
             return result;
 
         } catch (err) {
@@ -90,6 +92,7 @@ class FTPClient {
             })
             await self.client.send('MKD NoWires')
             let result = await self.client.list()
+            self.client.close();
             return result;
 
         } catch (err) {
@@ -97,6 +100,54 @@ class FTPClient {
         }
         self.client.close();
     }
+
+    async uploadFile(data, path) {
+        let self = this
+        self.client.ftp.verbose = true
+        console.log('path: ' + path);
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+            path = path + '/convocation.pdf'
+            await self.client.uploadFrom('D:/convocation.pdf', path);
+            let result = await self.client.list()
+            self.client.close();
+            return result;
+        } catch (err) {
+            console.log(err);
+        }
+        self.client.close();
+    }
+
+    async uploadDragFile(data, path) {
+        let self = this
+        self.client.ftp.verbose = true
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+            path = path + '/convocation.pdf'
+            console.log(path + ' ' + typeof path);;
+            let d = fs.createReadStream(data)
+            await self.client.uploadFrom(d,path);
+            let result = await self.client.list()
+            self.client.close();
+            return result;
+        } catch (err) {
+            console.log(err);
+        }
+        self.client.close();
+    }
+
 
     close() {
         this.client.close();

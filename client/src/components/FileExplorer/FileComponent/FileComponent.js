@@ -22,7 +22,7 @@ const FileComponent = (props) => {
             console.log(ext);
             return { ...prevState, extension: ext.toLowerCase() }
         })
-    }, [fileProp])
+    }, [])
 
     const formatDate = (date) => {
         let d = new Date(date);

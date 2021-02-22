@@ -15,6 +15,7 @@ class ListFiles {
                 // secure: self.settings.secure
             })
             let result = await client.list()
+            client.close();
             return result;
         }
         catch (err) {

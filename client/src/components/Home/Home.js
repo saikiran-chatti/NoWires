@@ -38,7 +38,7 @@ const Home = () => {
                     <div className="homeImg">
                         <img className="mockup" alt="mockup"
                             src="/images/mockup2@1x.svg" />
-                        <img className="qrcode" src={qrcodeImg} />
+                        <img alt="qrcode" className="qrcode" src={qrcodeImg} />
                     </div>
                     <div className="homeData">
                         <p className="homeTitle">Transfer files seamlessly without hassle, wires</p>
