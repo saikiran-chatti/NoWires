@@ -74,7 +74,7 @@ const ExplorerMenu = () => {
         // Implement upload function
 
         for (let i = 0; i < files.length; i++) {
-
+            alert('Under development')
         }
     }
 
@@ -117,6 +117,7 @@ const ExplorerMenu = () => {
                     modalClosed={closeModal}
                     color="#fff">
                     <CreateFolder
+                        create={(folderName) => createFolder(folderName)}
                         closeHandler={closeModal}
                         path={currentDirectoryPath} />
                 </Modal>

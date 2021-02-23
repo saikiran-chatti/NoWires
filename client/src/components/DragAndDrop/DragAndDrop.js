@@ -65,7 +65,7 @@ class DragAndDrop extends Component {
                             backgroundColor: 'rgba(255,255,255,.8)',
                             position: 'absolute',
                             top: 0,
-                            bottom: 0,
+                            bottom: 30,
                             left: 0,
                             right: 0,
                             zIndex: 9999

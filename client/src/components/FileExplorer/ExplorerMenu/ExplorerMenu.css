@@ -7,9 +7,9 @@
 .explorer-main-menu {
     position: absolute;
     width: 1071px;
-    height: 720px;
+    height: 100%;
     left: 330px;
-    top: 50px;
+    padding-top: 50px;
     overflow: hidden;
 }
 

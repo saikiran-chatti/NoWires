@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateFolder.css'
 
 const CreateFolder = props => {
+
+    const [value, setValue] = useState('')
+
+    const handleChange = (e) => {
+        setValue(e.target.value)
+    }
+
+    const create = () => {
+        props.create(value);
+        props.closeHandler();
+    }
+
     return (
-        <div className="popup">
-            <div className="header">
-                <span className="popup-heading">Create Folder</span>
+        <div class="popup">
+            <div class="header">
+                <span class="popup-heading">Create Folder</span>
                 <span id="path">Internal Storage</span>
             </div>
-            <input className="popup-input" type="text" placeholder="Enter folder name"></input>
+            <div class="bottom">
+                <input class="popup-input"
+                    value={value} type="text"
+                    placeholder="Enter folder name"
+                    onChange={handleChange}>
+                </input>
+                <button class="create" onClick={create}>Create</button>
+            </div>
         </div>
     )
 }

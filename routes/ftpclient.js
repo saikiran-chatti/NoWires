@@ -90,7 +90,8 @@ class FTPClient {
                 password: self.settings.password,
                 // secure: self.settings.secure
             })
-            await self.client.send('MKD NoWires')
+            let command = 'MKD ' + name
+            await self.client.send(command)
             let result = await self.client.list()
             self.client.close();
             return result;
@@ -138,7 +139,7 @@ class FTPClient {
             path = path + '/convocation.pdf'
             console.log(path + ' ' + typeof path);;
             let d = fs.createReadStream(data)
-            await self.client.uploadFrom(data.asAFile(),path);
+            await self.client.uploadFrom(data.asAFile(), path);
             let result = await self.client.list()
             self.client.close();
             return result;

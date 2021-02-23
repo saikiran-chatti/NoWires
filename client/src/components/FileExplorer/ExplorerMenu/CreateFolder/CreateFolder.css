@@ -1,3 +1,4 @@
+
 .popup {
     position: relative;
     font-family: "Poppins", Helvetica, Arial, serif;
@@ -6,14 +7,14 @@
     border-radius: 10px;
     width: 400px;
     height: 140px;
-    box-shadow: rgb(0 0 0 / 12%) 0px 30px 60px
+    box-shadow: rgb(0 0 0 / 12%) 0px 30px 60px;
 }
 
 .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px;
+    margin: 30px;
 }
 
 .popup-heading {}
@@ -24,13 +25,34 @@
     font-weight: 100;
 }
 
-.popup-input {
+.bottom {
     position: absolute;
-    border: 0px solid;
-    width: 250px;
-    background-color: #F8F9FA;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 15px;
+    width: 100%;
     bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.popup-input {
+    margin-left: 30px;
+    padding-left: 10px;
+    border: 0px solid;
+    width: 200px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.create {
+    cursor: pointer;
+    margin-right: 30px;
+    border: 0px solid;
+    background-color: #303030;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 5px;
+}
+
+.create:hover {
+    background-color: #000;
 }
