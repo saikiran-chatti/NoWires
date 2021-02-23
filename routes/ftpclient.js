@@ -78,7 +78,7 @@ class FTPClient {
         self.client.close();
     }
 
-    async createFolder(name) {
+    async createFolder(name, path) {
         let self = this
         self.client.ftp.verbose = true
 
@@ -90,6 +90,8 @@ class FTPClient {
                 password: self.settings.password,
                 // secure: self.settings.secure
             })
+            let cwd = 'CWD ' + path;
+            await self.client.send(cwd)
             let command = 'MKD ' + name
             await self.client.send(command)
             let result = await self.client.list()

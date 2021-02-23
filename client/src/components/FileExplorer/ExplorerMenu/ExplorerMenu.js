@@ -35,7 +35,8 @@ const ExplorerMenu = () => {
 
     //CreateFolder
     const createFolder = folderName => {
-        axios.post('/createFolder', { name: folderName })
+
+        axios.post('/createFolder', { name: folderName, path: currentDirectoryPath })
             .then(res => {
                 setFileList(res.data);
             })
@@ -99,6 +100,7 @@ const ExplorerMenu = () => {
                 </div>
             </div>
             <div className="directory-path">
+
                 <div className="overlap-group-1">
                     <div className="rectangle-9"></div>
                     <div className="rectangle-10"></div>

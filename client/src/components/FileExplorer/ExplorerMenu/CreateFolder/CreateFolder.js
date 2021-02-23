@@ -18,7 +18,7 @@ const CreateFolder = props => {
         <div class="popup">
             <div class="header">
                 <span class="popup-heading">Create Folder</span>
-                <span id="path">Internal Storage</span>
+                <span id="path">{props.path}</span>
             </div>
             <div class="bottom">
                 <input class="popup-input"
