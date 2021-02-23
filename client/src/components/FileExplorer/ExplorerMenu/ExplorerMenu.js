@@ -1,13 +1,16 @@
 import { React, useEffect, useState } from 'react';
 import FileComponent from '../FileComponent/FileComponent';
+import Modal from '../../Modal/Modal'
 import axios from 'axios'
 import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
+import CreateFolder from './CreateFolder/CreateFolder'
 
 const ExplorerMenu = () => {
 
     const [fileList, setFileList] = useState([]);
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
+    const [modalState, setModalState] = useState(false);
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
@@ -71,15 +74,12 @@ const ExplorerMenu = () => {
         // Implement upload function
 
         for (let i = 0; i < files.length; i++) {
-            alert(files[i].name)
-            axios.post('/handleDrag', { file: files[i], path: currentDirectoryPath })
-                .then(res => {
-                    setFileList(res.data);
-                })
-                .catch(() => {
-                    console.log('error while going back');
-                });
+
         }
+    }
+
+    const closeModal = () => {
+        setModalState(false);
     }
 
     return (
@@ -110,12 +110,23 @@ const ExplorerMenu = () => {
                     <img alt="goBack" onClick={() => goBack()}
                         class="goBackImg" src="/images/icons/goBack.svg"></img>
                 </span>
+
+                {/* Modal */}
+                <Modal
+                    show={modalState}
+                    modalClosed={closeModal}
+                    color="#fff">
+                    <CreateFolder
+                        closeHandler={closeModal}
+                        path={currentDirectoryPath} />
+                </Modal>
+
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>
                         <div className="rectangle-1 bizarre-border-1px"></div>
                         <div className="create-folder valign-text-middle poppins-light-black-14px"
-                            onClick={() => createFolder("NoWires")} >
+                            onClick={() => setModalState(true)} >
                             Create Folder
                         </div>
                         <img

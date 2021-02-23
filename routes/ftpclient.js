@@ -138,7 +138,7 @@ class FTPClient {
             path = path + '/convocation.pdf'
             console.log(path + ' ' + typeof path);;
             let d = fs.createReadStream(data)
-            await self.client.uploadFrom(d,path);
+            await self.client.uploadFrom(data.asAFile(),path);
             let result = await self.client.list()
             self.client.close();
             return result;
