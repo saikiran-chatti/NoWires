@@ -51,6 +51,36 @@ class FTPClient {
         self.client.close();
     }
 
+    async downloadFile(name, remotePath) {
+        let self = this;
+        const localPath = "C:/Users/ACER/Desktop/No Wires";
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+
+            fs.mkdir(localPath, err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log("New directory successfully created.")
+                }
+            })
+            await self.client.downloadTo(localPath + '/' + name, remotePath + '/' + name)
+            return 'Downloaded successfully.'
+        }
+        catch (err) {
+            console.log(err)
+        }
+        self.client.close();
+    }
+
     //Folder operations
     async changePath(path) {
         let self = this

@@ -50,7 +50,14 @@ const ExplorerMenu = () => {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name)
         }
         else {
-            alert('Need to implement Download function');
+            // Download file function..
+            axios.post('/downloadFile', { path: currentDirectoryPath, name: name })
+                .then(res => {
+                    alert(res.data + ' Implement a download progress bar');
+                })
+                .catch(() => {
+                    console.log('error while going back');
+                });
         }
     }
 
