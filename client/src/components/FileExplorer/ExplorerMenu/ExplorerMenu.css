@@ -131,6 +131,12 @@
     max-width: 18px;
 }
 
+.upload {
+    cursor: pointer;
+    margin-left: 10px;
+    max-height: 21px;
+}
+
 .overlap-group {
     height: 38px;
     position: relative;

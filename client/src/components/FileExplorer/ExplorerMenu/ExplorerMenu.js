@@ -78,11 +78,44 @@ const ExplorerMenu = () => {
         }
     }
 
+    const uploadFile = () => {
+
+    }
+
+    const getCodedBuffer = file => {
+        return new Promise(function (resolve, reject) {
+            let fileReader = new FileReader();
+            fileReader.readAsArrayBuffer(file);
+
+            fileReader.onload = function (ev) {
+                const array = new Uint8Array(ev.target.result);
+                // const fileByteArray = [];
+                let codedBuffer = '';
+
+                for (let i = 0; i < array.length; i++) {
+                    // fileByteArray.push(array[i]);
+                    codedBuffer += String.fromCharCode(array[i]);
+                }
+                resolve(codedBuffer);  // successful
+            }
+            fileReader.onerror = reject; // call reject if error
+        })
+    }
+
     const handleDrop = files => {
         // Implement upload function
 
         for (let i = 0; i < files.length; i++) {
-            alert('Under development')
+            getCodedBuffer(files[i]).then(result => {
+                axios.post('/handleDrop', { value: result, fileName: files[i].name })
+                    .then(res => {
+                        setFileList(res.data);
+                        alert('Uploaded. Implement an upload progress bar!!')
+                    })
+                    .catch(err => {
+                        alert('error occured while uploading')
+                    });
+            })
         }
     }
 
@@ -119,7 +152,10 @@ const ExplorerMenu = () => {
                     <img alt="goBack" onClick={() => goBack()}
                         class="goBackImg" src="/images/icons/goBack.svg"></img>
                 </span>
-
+                {/* 
+                <span class="upload">
+                    <input type="file" name="u" />
+                </span> */}
                 {/* Modal */}
                 <Modal
                     show={modalState}

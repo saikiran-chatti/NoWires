@@ -2,7 +2,7 @@ const ftp = require('./FTPClient')
 const express = require('express')
 const app = express()
 
-app.use(express.json())
+// app.use(express.json())
 
 const client = new ftp('192.168.0.4', 2232, 'anonymous', 'guest')
 

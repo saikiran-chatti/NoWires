@@ -1,6 +1,7 @@
 const ftp = require('./ftpclient')
 const express = require('express');
 const { response } = require('express');
+
 const router = express.Router();
 
 router.get('/rootDirectory', (req, res) => {
@@ -40,12 +41,10 @@ router.post('/uploadFile', (req, res) => {
     })
 })
 
-router.post('/handleDrag', (req, res) => {
+router.post('/handleDrop', (req, res) => {
     const client = new ftp('192.168.0.3', 2232, 'android', 'android')
-    const file = req.body.file;
-    const path = req.body.path;
-
-    client.uploadDragFile(file, path).then(result => {
+    
+    client.uploadDragFile(req.body).then(result => {
         res.send(result)
     })
 })

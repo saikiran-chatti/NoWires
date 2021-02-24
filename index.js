@@ -4,6 +4,7 @@ const routes = require('./routes/api.js')
 const ftpRoutes = require('./routes/ftpRoutes.js')
 const mongoose = require('mongoose');
 const app = express()
+const bodyParser = require('body-parser');
 
 const hostname = '127.0.0.1'
 const port = 8000
@@ -21,7 +22,10 @@ mongoose.connection.on('connected', () => {
     console.log('MongoDB is connected');
 })
 
-app.use(express.json())
+// app.use(express.json())
+app.use(bodyParser.json({ limit: "5000mb" }))
+app.use(bodyParser.urlencoded({ limit: "5000mb", extended: true, parameterLimit: 50000 }))
+
 app.use(express.urlencoded({ extended: false }))
 
 app.use(morgan('tiny'))

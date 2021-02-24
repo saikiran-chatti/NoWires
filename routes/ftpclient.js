@@ -1,6 +1,9 @@
 const ftp = require('basic-ftp');
 const fs = require('fs');
 const Lists = require('../ftp/list')
+const homeDir = require('os').homedir();
+const desktopDir = `${homeDir}/Desktop`;
+const { Duplex } = require('stream')
 // const { setFlagsFromString } = require('v8');
 
 class FTPClient {
@@ -53,7 +56,7 @@ class FTPClient {
 
     async downloadFile(name, remotePath) {
         let self = this;
-        const localPath = "C:/Users/ACER/Desktop/No Wires";
+        const localPath = desktopDir + "/No Wires";
         self.client.ftp.verbose = true
 
         try {
@@ -150,6 +153,7 @@ class FTPClient {
             await self.client.uploadFrom('D:/convocation.pdf', path);
             let result = await self.client.list()
             self.client.close();
+
             return result;
         } catch (err) {
             console.log(err);
@@ -157,9 +161,10 @@ class FTPClient {
         self.client.close();
     }
 
-    async uploadDragFile(data, path) {
+    async uploadDragFile(data) {
         let self = this
         self.client.ftp.verbose = true
+
         try {
             await self.client.access({
                 host: self.settings.host,
@@ -168,10 +173,13 @@ class FTPClient {
                 password: self.settings.password,
                 // secure: self.settings.secure
             })
-            path = path + '/convocation.pdf'
-            console.log(path + ' ' + typeof path);;
-            let d = fs.createReadStream(data)
-            await self.client.uploadFrom(data.asAFile(), path);
+
+            let s = new Duplex();
+            await s.push(Buffer.from(data.value, 'ascii'))
+            await s.push(null)
+
+            await self.client.uploadFrom(s, '/' + data.fileName)
+
             let result = await self.client.list()
             self.client.close();
             return result;
