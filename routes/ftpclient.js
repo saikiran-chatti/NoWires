@@ -178,7 +178,7 @@ class FTPClient {
             await s.push(Buffer.from(data.value, 'ascii'))
             await s.push(null)
 
-            await self.client.uploadFrom(s, '/' + data.fileName)
+            await self.client.uploadFrom(s, data.path + '/' + data.fileName)
 
             let result = await self.client.list()
             self.client.close();

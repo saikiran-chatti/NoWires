@@ -107,7 +107,7 @@ const ExplorerMenu = () => {
 
         for (let i = 0; i < files.length; i++) {
             getCodedBuffer(files[i]).then(result => {
-                axios.post('/handleDrop', { value: result, fileName: files[i].name })
+                axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath })
                     .then(res => {
                         setFileList(res.data);
                         alert('Uploaded. Implement an upload progress bar!!')
