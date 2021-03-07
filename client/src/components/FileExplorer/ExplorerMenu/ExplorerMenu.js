@@ -47,7 +47,8 @@ const ExplorerMenu = () => {
 
     const changePath = (name, type) => {
         if (type === 2) {
-            setCurrentDirectoryPath(currentDirectoryPath + '/' + name)
+            setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
+            // setCurrentDirectoryPath(currentDirectoryPath + name) 
         }
         else {
             // Download file function..
@@ -76,10 +77,6 @@ const ExplorerMenu = () => {
         else {
             alert('nope nope')
         }
-    }
-
-    const uploadFile = () => {
-
     }
 
     const getCodedBuffer = file => {
@@ -148,12 +145,12 @@ const ExplorerMenu = () => {
                 </div>
                 <p className="text-1 valign-text-middle poppins-medium-black-14px">
                     {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
-                <span class="goBack">
+                <span className="goBack">
                     <img alt="goBack" onClick={() => goBack()}
-                        class="goBackImg" src="/images/icons/goBack.svg"></img>
+                        className="goBackImg" src="/images/icons/goBack.svg"></img>
                 </span>
                 {/* 
-                <span class="upload">
+                <span className="upload">
                     <input type="file" name="u" />
                 </span> */}
                 {/* Modal */}

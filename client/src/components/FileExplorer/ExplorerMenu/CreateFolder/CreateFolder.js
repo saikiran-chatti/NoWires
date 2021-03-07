@@ -15,18 +15,18 @@ const CreateFolder = props => {
     }
 
     return (
-        <div class="popup">
-            <div class="header">
-                <span class="popup-heading">Create Folder</span>
+        <div className="popup">
+            <div className="header">
+                <span className="popup-heading">Create Folder</span>
                 <span id="path">{props.path}</span>
             </div>
-            <div class="bottom">
-                <input class="popup-input"
+            <div className="bottom">
+                <input className="popup-input"
                     value={value} type="text"
                     placeholder="Enter folder name"
                     onChange={handleChange}>
                 </input>
-                <button class="create" onClick={create}>Create</button>
+                <button className="create" onClick={create}>Create</button>
             </div>
         </div>
     )

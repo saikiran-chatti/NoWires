@@ -27,7 +27,7 @@ const FileComponent = (props) => {
         setFileProp(prevState => {
             return { ...prevState, extension: ext.toLowerCase() }
         })
-    }, [])
+    }, [props.lastMod, props.type, props.size, props.name]) // },[]
 
     const formatDate = (date) => {
         let d = new Date(date);

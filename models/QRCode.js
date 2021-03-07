@@ -4,10 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const QRCodeSchema = new Schema({
     uniq_id: String,
-    date: {
-        type: String,
-        default: Date.now()
-    }
+    data: String
 })
 
 //model

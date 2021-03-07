@@ -25,7 +25,7 @@ const FilesMenu = () => {
                             <div className="files-menu-auto-flex2">
                                 <div className="files-menu-overlap-group">
                                     <img
-                                        alt="files-picture"
+                                        alt="files"
                                         className="files-icon-picture"
                                         src="/images/icons/icon-picture.svg"
                                     />
