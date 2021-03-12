@@ -31,6 +31,59 @@ class FTPClient {
         return res;
     }
 
+    // Rename file
+    async renameFile(oldname, newname, path) {
+        let self = this;
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+
+            await self.client.rename(path + '/' + oldname, path + '/' + newname);
+
+            let result = await self.client.list()
+            self.client.close();
+
+            return result;
+        }
+        catch (err) {
+            console.log(err)
+        }
+        self.client.close();
+    }
+
+    // Delete File
+    async deleteFile(path) {
+        let self = this;
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+
+            await self.client.remove(path);
+
+            let result = await self.client.list()
+            self.client.close();
+
+            return result;
+        }
+        catch (err) {
+            console.log(err)
+        }
+        self.client.close();
+    }
 
     // Download
     async downloadDirectory(localPath, remotePath) {
@@ -111,6 +164,7 @@ class FTPClient {
         self.client.close();
     }
 
+    // create Folder
     async createFolder(name, path) {
         let self = this
         self.client.ftp.verbose = true

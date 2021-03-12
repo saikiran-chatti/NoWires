@@ -7,13 +7,14 @@ const app = express()
 const bodyParser = require('body-parser');
 
 const hostname = '127.0.0.1'
-const port = 8000
+const port = process.env.PORT || 8000
 
 // Mongo db
 // secure the mongodbURI
 
 const mongodbURI = 'mongodb+srv://JayanthSaikiran:PQ4jcne23XSZUCBZ@nowires.8ksyg.mongodb.net/NoWires?retryWrites=true&w=majority'
-mongoose.connect('mongodb://localhost/nowires', {
+const localDb = 'mongodb://localhost/nowires'
+mongoose.connect(process.env.MONGODB_URI || localDb, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -33,6 +34,9 @@ app.use(morgan('tiny'))
 app.use('/', routes)
 app.use('/', ftpRoutes)
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+}
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
