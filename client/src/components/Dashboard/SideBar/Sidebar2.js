@@ -1,8 +1,18 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import './Sidebar2.css'
+import { useHistory } from "react-router-dom";
 
-const Sidebar2 = () => {
+
+const Sidebar2 = (props,context) => {
+
+    let history = useHistory();
+
+    const changeRoute = (path) => {
+        history.push(path);
+    }
+
+
     return (
         <div className="sidebar">
             <div className="logo">
@@ -24,7 +34,7 @@ const Sidebar2 = () => {
                     />
                 </div>
                 <div className="sidebar-menu">
-                    <div className="menu-1">
+                    <div className="menu-1" onClick={() => changeRoute("/")}>
                         {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="dashboard"
@@ -38,7 +48,7 @@ const Sidebar2 = () => {
                         </div>
                         {/* </Link> */}
                     </div>
-                    <div className="menu-2">
+                    <div className="menu-2" onClick={() => changeRoute("/")}>
                         {/* <Link to="/explorer" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="wallet"
@@ -50,7 +60,7 @@ const Sidebar2 = () => {
                         <div className="wallet-1 valign-text-middle poppins-normal-black-12-7px">Files</div>
                         {/* </Link> */}
                     </div>
-                    <div className="menu-3">
+                    <div className="menu-3" onClick={() => changeRoute("/")}>
                         {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="message"
@@ -64,7 +74,7 @@ const Sidebar2 = () => {
                         </div>
                         {/* </Link> */}
                     </div>
-                    <div className="menu-4">
+                    <div className="menu-4" onClick={() => changeRoute("/")}>
                         {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="trade"

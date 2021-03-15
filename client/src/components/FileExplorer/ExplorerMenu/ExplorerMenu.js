@@ -5,6 +5,11 @@ import axios from 'axios'
 import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
+import { Menu, Item, useContextMenu } from "react-contexify";
+
+import "react-contexify/dist/ReactContexify.css";
+
+const MENU_ID = "menu-id";
 
 const ExplorerMenu = () => {
 
@@ -120,6 +125,91 @@ const ExplorerMenu = () => {
         setModalState(false);
     }
 
+    const { show } = useContextMenu({
+        id: MENU_ID,
+    });
+
+    const handleItemClick = ({ event, props, triggerEvent, data }) => {
+        console.log(event, props, triggerEvent, data);
+
+        let fileName = props.id.slice(0, -1);
+        let fileType = props.id.charAt(fileName.length);
+
+        switch (event.currentTarget.id) {
+            case "rename":
+                // logic to remove the row
+                console.log(props.id + " " + fileName + " " + "rename"); // contain to item.id passed by `show`
+                break;
+
+            case "delete":
+                console.log(props.id + " delete " + fileType);
+
+
+                let deletePath = currentDirectoryPath + '/' + fileName
+                console.log(deletePath);
+
+                if (fileType === "2") {
+                    // Delete a directory
+                    console.log('deleting a folder');
+                    axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName })
+                        .then(res => {
+                            setFileList(res.data);
+                        })
+                        .catch(() => {
+                            console.log('error while deleting file');
+                        });
+                }
+                else {
+                    // Delete a file
+                    console.log('deleting a file');
+                    axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName })
+                        .then(res => {
+                            setFileList(res.data);
+                        })
+                        .catch(() => {
+                            console.log('error while deleting file');
+                        });
+                }
+                break;
+
+            case "download":
+                console.log(props.id + " download");
+                // downloading a file.. 
+
+                if (fileType === 2) {
+                    console.log('downloading a folder');
+                    axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
+                        .then(res => {
+                            alert(res.data + ' Implement a download progress bar');
+                        })
+                        .catch(() => {
+                            console.log('error while going back');
+                        });
+                    break;
+                }
+                else {
+                    // downloading a file
+                    axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName })
+                        .then(res => {
+                            alert(res.data + ' Implement a download progress bar');
+                        })
+                        .catch(() => {
+                            console.log('error while going back');
+                        });
+                }
+
+            default:
+                break;
+        }
+    }
+
+    const displayMenu = (e) => {
+        // put whatever custom logic you need
+        // you can even decide to not display the Menu
+        console.log('reaching displayMenu (e)');
+        show(e, { props: { id: e.currentTarget.id } });
+    }
+
     return (
         <div className="explorer-main-menu">
             <div className="explorer-title">
@@ -189,17 +279,31 @@ const ExplorerMenu = () => {
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">
                     {fileList.length ? fileList.map((item, index) => {
-                        return <FileComponent key={index}
-                            onClick={() => changePath(item.name, item.type)}
-                            name={item.name}
-                            type={item.type}
-                            size={item.size}
-                            lastMod={item.modifiedAt} />
+                        return (
+                            <FileComponent key={index}
+                                id={item.name + item.type}
+                                onContextMenu={(e) => displayMenu(e)}
+                                onClick={() => changePath(item.name, item.type)}
+                                name={item.name}
+                                type={item.type}
+                                size={item.size}
+                                lastMod={item.modifiedAt} />
+                        )
                     }) : null}
-                    {/* Add lottie animation if no files are present */}
+                    <Menu id={MENU_ID}>
+                        <Item id="rename" onClick={handleItemClick}>
+                            Rename
+                        </Item>
+                        <Item id="delete" onClick={handleItemClick}>
+                            Delete
+                        </Item>
+                        <Item id="download" onClick={handleItemClick}>
+                            Download
+                        </Item>
+                    </Menu>
                 </div>
+                {/* Add lottie animation if no files are present */}
             </DragAndDrop>
-
         </div>
 
     )

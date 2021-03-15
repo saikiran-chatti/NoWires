@@ -98,6 +98,7 @@
 }
 
 .sidebar .menu-1 {
+  cursor: pointer;
   align-items: center;
   display: flex;
   height: 26px;
@@ -106,6 +107,7 @@
 }
 
 .sidebar .menu-2 {
+  cursor: pointer;
   align-items: center;
   display: flex;
   margin-top: 30px;
@@ -113,6 +115,7 @@
 }
 
 .sidebar .menu-3 {
+  cursor: pointer;
   align-items: flex-start;
   display: flex;
   height: 26px;
@@ -123,6 +126,7 @@
 }
 
 .sidebar .menu-4 {
+  cursor: pointer;
   align-items: flex-start;
   display: flex;
   height: 26px;

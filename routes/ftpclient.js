@@ -59,7 +59,7 @@ class FTPClient {
     }
 
     // Delete File
-    async deleteFile(path) {
+    async deleteFile(path, fileName) {
         let self = this;
         self.client.ftp.verbose = true
 
@@ -72,8 +72,38 @@ class FTPClient {
                 // secure: self.settings.secure
             })
 
-            await self.client.remove(path);
+            const deletePath = path + '/' + fileName;
+            await self.client.remove(deletePath);
 
+            await self.client.cd(path)
+            let result = await self.client.list()
+            self.client.close();
+
+            return result;
+        }
+        catch (err) {
+            console.log(err)
+        }
+        self.client.close();
+    }
+
+    async deleteFolder(path, fileName) {
+        let self = this;
+        self.client.ftp.verbose = true
+
+        try {
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+
+            const deleteFolderPath = path + '/' + fileName;
+            await self.client.removeDir(deleteFolderPath);
+
+            await self.client.cd(path)
             let result = await self.client.list()
             self.client.close();
 
@@ -86,9 +116,12 @@ class FTPClient {
     }
 
     // Download
-    async downloadDirectory(localPath, remotePath) {
+    async downloadDirectory(path, name) {
         let self = this;
         self.client.ftp.verbose = true
+        const localPath = desktopDir + "/No Wires";
+
+        console.log("remote path: " + path);
 
         try {
             await self.client.access({
@@ -98,11 +131,24 @@ class FTPClient {
                 password: self.settings.password,
                 // secure: self.settings.secure
             })
-            await self.client.downloadToDir(localPath, remotePath)
-            console.log('Downloaded successfully');
+
+            fs.mkdir(localPath, err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log("New directory successfully created.")
+                }
+            })
+
+            const downloadPath = path + '/' + name;
+            await self.client.cd(downloadPath)
+
+            await self.client.downloadToDir(localPath)
+            return 'Downloaded successfully.'
         }
         catch (err) {
             console.log(err)
+            return err;
         }
         self.client.close();
     }

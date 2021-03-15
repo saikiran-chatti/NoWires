@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import './FileComponent.css'
 import { IconComponent } from './IconComponent/IconComponent';
 
+
 const FileComponent = (props) => {
 
     const [fileProp, setFileProp] = useState({})
@@ -44,13 +45,19 @@ const FileComponent = (props) => {
         return parseFloat((a / Math.pow(1000, d)).toFixed(c)) + " " + ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
     }
 
+
     return (
-        <div className="file-data" onClick={props.onClick}>
+        <div className="file-data"
+            onClick={props.onClick}
+            name={props.name}
+            id={props.name + fileProp.type}
+            onContextMenu={props.onContextMenu}>
             <IconComponent type={fileProp.type} extension={fileProp.extension} />
             <div className="client-documents poppins-medium-black-14px">{props.name}</div>
             <div className="date poppins-medium-black-14px">{fileProp.lastMod}</div>
             <div className="address poppins-medium-black-14px">{fileProp.size}</div>
         </div>
+
     )
 }
 
