@@ -32,14 +32,14 @@ const Home = () => {
             interval = setInterval(() => {
                 axios.post('/deleteDoc', { uniq_id: qrCodeData })
                     .then(res => {
-                        if (res.data.deletedCount !== 0) {
+                        if (res.data.data.secure === false) {
                             // check = true;
                             let userData = {
-                                host: res.data.host,
-                                port: res.data.port,
-                                username: res.data.username,
+                                host: res.data.data.host,
+                                port: res.data.data.port,
+                                username: res.data.data.username,
                                 password: res.data.password,
-                                secure: res.data.secure
+                                secure: res.data.data.secure
                             }
                             dispatch({ type: actionTypes.STORE_USER_DATA, value: userData })
                             history.push('/explorer')
@@ -49,7 +49,7 @@ const Home = () => {
                     .catch(() => {
                         console.log('Error while deleting doc');
                     })
-            }, 3000); // check every 3 seconds. Let's make it 2 😁😁 in testing. Hope it doesn't fuck up.
+            }, 3000); // check every 3 seconds. Let's make it 2 😁😁 in testing.
 
             // if (check) {
             //     setLoopState(false)

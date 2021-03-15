@@ -14,7 +14,7 @@ const port = process.env.PORT || 8000
 
 const mongodbURI = 'mongodb+srv://JayanthSaikiran:PQ4jcne23XSZUCBZ@nowires.8ksyg.mongodb.net/NoWires?retryWrites=true&w=majority'
 const localDb = 'mongodb://localhost/nowires'
-mongoose.connect(process.env.MONGODB_URI || localDb, {
+mongoose.connect(mongodbURI , {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
