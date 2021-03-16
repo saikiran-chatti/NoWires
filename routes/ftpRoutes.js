@@ -49,11 +49,12 @@ router.post('/handleDrop', (req, res) => {
     })
 })
 
-router.get('/downloadDirectory', (req, res) => {
+router.post('/downloadDirectory', (req, res) => {
     const client = new ftp('192.168.0.2', 2121, 'ftp', 'ftp')
     let path = req.body.path;
     let name = req.body.name;
-    console.log('remotePath router method: ' + remotePath);
+
+    // console.log('remotePath router method: ' + remotePath);
     client.downloadDirectory(path,name).then(result => {
         res.send(result)
     }).catch(e => {
@@ -89,7 +90,7 @@ router.post('/deleteFile', (req, res) => {
     const path = req.body.path;
     const name = req.body.fileName;
 
-    client.deleteFile(path,name).then(result => {
+    client.deleteFile(path, name).then(result => {
         res.send(result)
     }).catch(e => {
         res.status(400).send("Error while Deleting");
@@ -101,7 +102,7 @@ router.post('/deleteDir', (req, res) => {
     const path = req.body.path;
     const name = req.body.fileName;
 
-    client.deleteFolder(path,name).then(result => {
+    client.deleteFolder(path, name).then(result => {
         res.send(result)
     }).catch(e => {
         res.status(400).send("Error while Deleting");

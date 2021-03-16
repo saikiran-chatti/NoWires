@@ -4,7 +4,7 @@ const app = express()
 
 // app.use(express.json())
 
-const client = new ftp('192.168.0.4', 2232, 'anonymous', 'guest')
+const client = new ftp('192.168.0.2', 2121, 'ftp', 'ftp')
 
 // client.parentList().then( (result) => {
 //     console.log('Task done');    

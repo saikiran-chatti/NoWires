@@ -173,10 +173,10 @@ const ExplorerMenu = () => {
                 break;
 
             case "download":
-                console.log(props.id + " download");
+                console.log(fileType + " download");
                 // downloading a file.. 
 
-                if (fileType === 2) {
+                if (fileType === "2") {
                     console.log('downloading a folder');
                    
                     axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
@@ -189,6 +189,7 @@ const ExplorerMenu = () => {
                 }
                 else {
                     // downloading a file
+                    console.log('downloading a File');
                     axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
