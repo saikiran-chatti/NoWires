@@ -54,6 +54,7 @@ class FTPClient {
         }
         catch (err) {
             console.log(err)
+            self.client.close();
         }
         self.client.close();
     }
@@ -83,6 +84,7 @@ class FTPClient {
         }
         catch (err) {
             console.log(err)
+            self.client.close();
         }
         self.client.close();
     }
@@ -111,6 +113,7 @@ class FTPClient {
         }
         catch (err) {
             console.log(err)
+            self.client.close();
         }
         self.client.close();
     }
@@ -144,13 +147,17 @@ class FTPClient {
             await self.client.cd(downloadPath)
 
             await self.client.downloadToDir(localPath)
+
+            self.client.close();
             return 'Downloaded successfully.'
         }
         catch (err) {
             console.log(err)
+            self.client.close();
             return err;
         }
         self.client.close();
+
     }
 
     async downloadFile(name, remotePath) {
@@ -175,10 +182,12 @@ class FTPClient {
                 }
             })
             await self.client.downloadTo(localPath + '/' + name, remotePath + '/' + name)
+            self.client.close();
             return 'Downloaded successfully.'
         }
         catch (err) {
             console.log(err)
+            self.client.close();
         }
         self.client.close();
     }
@@ -205,6 +214,7 @@ class FTPClient {
             return result;
 
         } catch (err) {
+            self.client.close();
             console.log(err);
         }
         self.client.close();
@@ -232,6 +242,7 @@ class FTPClient {
             return result;
 
         } catch (err) {
+            self.client.close();
             console.log(err);
         }
         self.client.close();
@@ -256,6 +267,7 @@ class FTPClient {
 
             return result;
         } catch (err) {
+            self.client.close();
             console.log(err);
         }
         self.client.close();
@@ -285,6 +297,7 @@ class FTPClient {
             return result;
         } catch (err) {
             console.log(err);
+            self.client.close();
         }
         self.client.close();
     }

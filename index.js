@@ -5,7 +5,7 @@ const ftpRoutes = require('./routes/ftpRoutes.js')
 const mongoose = require('mongoose');
 const app = express()
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 const hostname = '127.0.0.1'
 const port = process.env.PORT || 8000
 

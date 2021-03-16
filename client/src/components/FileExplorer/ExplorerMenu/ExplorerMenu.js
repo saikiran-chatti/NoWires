@@ -178,6 +178,7 @@ const ExplorerMenu = () => {
 
                 if (fileType === 2) {
                     console.log('downloading a folder');
+                   
                     axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
@@ -185,7 +186,6 @@ const ExplorerMenu = () => {
                         .catch(() => {
                             console.log('error while going back');
                         });
-                    break;
                 }
                 else {
                     // downloading a file
@@ -197,7 +197,7 @@ const ExplorerMenu = () => {
                             console.log('error while going back');
                         });
                 }
-
+                break;
             default:
                 break;
         }
