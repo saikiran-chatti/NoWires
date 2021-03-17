@@ -4,7 +4,7 @@ import './Sidebar2.css'
 import { useHistory } from "react-router-dom";
 
 
-const Sidebar2 = (props,context) => {
+const Sidebar2 = () => {
 
     let history = useHistory();
 

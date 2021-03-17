@@ -3,10 +3,17 @@ import './Header.css'
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { TweenMax } from 'gsap'
+import { useHistory } from "react-router-dom";
 // import { Link } from 'react-router-dom'
 
 
 const Header = () => {
+
+    let history = useHistory();
+
+    const changeRoute = (path) => {
+        history.push(path);
+    }
 
     useEffect(() => {
         TweenMax.from('.navLogo', { autoAlpha: 0, duration: 1, opacity: 0, y: 10, delay: 2 });
@@ -41,7 +48,7 @@ const Header = () => {
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}
-                        <li className="navItem"><a href="/skills" className="navLink">Blog</a></li>
+                        <li className="navItem" onClick={changeRoute("/explorer")}><a href="/skills" className="navLink">Explorer</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/contact'> */}
