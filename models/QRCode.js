@@ -5,7 +5,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const QRCodeSchema = new Schema({
     uniq_id: String,
-    data: JSON
+    host: String,
+    port: String,
+    username: String,
+    password: String,
+    secure: Boolean
 })
 
 //model

@@ -6,7 +6,6 @@ import { TweenMax } from 'gsap'
 import { useHistory } from "react-router-dom";
 // import { Link } from 'react-router-dom'
 
-
 const Header = () => {
 
     let history = useHistory();
@@ -19,7 +18,6 @@ const Header = () => {
         TweenMax.from('.navLogo', { autoAlpha: 0, duration: 1, opacity: 0, y: 10, delay: 2 });
         TweenMax.from('.navToggle', { autoAlpha: 0, duration: 1, opacity: 0, y: 10, delay: 2 })
         TweenMax.from('.navItem', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30, stagger: 0.2, })
-
     }, [])
 
     return (
@@ -44,15 +42,15 @@ const Header = () => {
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
-                        <li className="navItem"><a href="/about" className="navLink">About</a></li>
+                        <li className="navItem" ><a onClick={() => changeRoute("explorer")} className="navLink">About</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}
-                        <li className="navItem" onClick={changeRoute("/explorer")}><a href="/skills" className="navLink">Explorer</a></li>
+                        <li className="navItem" ><a onClick={() => changeRoute("/explorer")} className="navLink">Explorer</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/contact'> */}
-                        <li className="navItem"><a href="/contact" className="navLink">Contact</a></li>
+                        <li className="navItem"><a onClick={() => changeRoute("/contact")} className="navLink">Contact</a></li>
                         {/* </Link> */}
 
                     </ul>

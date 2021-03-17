@@ -22,6 +22,7 @@ router.get('/generateQRImage', (req, res) => {
 });
 
 router.post('/createQRDoc', (req, res) => {
+    
     console.log('Body', req.body);
     const data = req.body;
     const dataInstance = new QRCodeModel(data)
