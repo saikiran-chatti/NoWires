@@ -45,6 +45,9 @@ class FTPClient {
                 // secure: self.settings.secure
             })
 
+            console.log("oldPath: "+path+'/'+oldname);
+            console.log("newPath: "+path+'/'+newname);
+            
             await self.client.rename(path + '/' + oldname, path + '/' + newname);
 
             let result = await self.client.list()

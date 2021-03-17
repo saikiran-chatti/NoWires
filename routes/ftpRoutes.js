@@ -76,9 +76,9 @@ router.post('/downloadFile', (req, res) => {
 
 router.post('/renameFile', (req, res) => {
     const client = new ftp('192.168.0.2', 2121, 'ftp', 'ftp')
-    const oldname = req.body.oldname;
+    const oldname = req.body.oldName;
     const path = req.body.path;
-    const newname = req.body.newname;
+    const newname = req.body.newName;
 
     client.renameFile(oldname, newname, path).then(result => {
         res.send(result)

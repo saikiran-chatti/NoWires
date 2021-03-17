@@ -5,17 +5,27 @@ import axios from 'axios'
 import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
-import { Menu, Item, useContextMenu } from "react-contexify";
+// import { Menu, Item, useContextMenu } from "react-contexify";
+import {
+    MenuItem,
+    ControlledMenu
+} from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css'
 
-import "react-contexify/dist/ReactContexify.css";
-
-const MENU_ID = "menu-id";
+// const MENU_ID = "menu-id";
 
 const ExplorerMenu = () => {
 
     const [fileList, setFileList] = useState([]);
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
     const [modalState, setModalState] = useState(false);
+    const [renameModalState, setRenameModalState] = useState(false);
+
+    // used for menu's.
+    // const [menuProp, setMenuProp] = useState(null);
+    const [isOpen, setOpen] = useState(false);
+    const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
+    const [itemData, setItemData] = useState("File/Folder");
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
@@ -48,6 +58,20 @@ const ExplorerMenu = () => {
             .catch(() => {
                 console.log('error while fetching files list');
             });
+    }
+
+    const renameItem = newName => {
+        let oldName = itemData.slice(0,-1);
+        let ext = oldName.split('.').pop();
+        newName = newName + '.'+ ext;
+
+        axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName })
+            .then(res => {
+                setFileList(res.data);
+            })
+            .catch(() => {
+                console.log('error while renaming file');
+            })
     }
 
     const changePath = (name, type) => {
@@ -125,24 +149,105 @@ const ExplorerMenu = () => {
         setModalState(false);
     }
 
-    const { show } = useContextMenu({
-        id: MENU_ID,
-    });
+    const closeRenameModal = () => {
+        setRenameModalState(false);
+    }
 
-    const handleItemClick = ({ event, props, triggerEvent, data }) => {
-        console.log(event, props, triggerEvent, data);
+    // const { show } = useContextMenu({
+    //     id: MENU_ID,
+    // });
 
-        let fileName = props.id.slice(0, -1);
-        let fileType = props.id.charAt(fileName.length);
+    // const handleItemClick = ({ event, props, triggerEvent, data }) => {
+    //     console.log(event, props, triggerEvent, data);
 
-        switch (event.currentTarget.id) {
+    //     let fileName = props.id.slice(0, -1);
+    //     let fileType = props.id.charAt(fileName.length);
+
+    //     switch (event.currentTarget.id) {
+    //         case "rename":
+    //             // logic to remove the row
+    //             console.log(props.id + " " + fileName + " " + "rename"); // contain to item.id passed by `show`
+    //             break;
+
+    //         case "delete":
+    //             console.log(props.id + " delete " + fileType);
+
+
+    //             let deletePath = currentDirectoryPath + '/' + fileName
+    //             console.log(deletePath);
+
+    //             if (fileType === "2") {
+    //                 // Delete a directory
+    //                 console.log('deleting a folder');
+    //                 axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName })
+    //                     .then(res => {
+    //                         setFileList(res.data);
+    //                     })
+    //                     .catch(() => {
+    //                         console.log('error while deleting file');
+    //                     });
+    //             }
+    //             else {
+    //                 // Delete a file
+    //                 console.log('deleting a file');
+    //                 axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName })
+    //                     .then(res => {
+    //                         setFileList(res.data);
+    //                     })
+    //                     .catch(() => {
+    //                         console.log('error while deleting file');
+    //                     });
+    //             }
+    //             break;
+
+    //         case "download":
+    //             console.log(fileType + " download");
+    //             // downloading a file.. 
+
+    //             if (fileType === "2") {
+    //                 console.log('downloading a folder');
+
+    //                 axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
+    //                     .then(res => {
+    //                         alert(res.data + ' Implement a download progress bar');
+    //                     })
+    //                     .catch(() => {
+    //                         console.log('error while going back');
+    //                     });
+    //             }
+    //             else {
+    //                 // downloading a file
+    //                 console.log('downloading a File');
+    //                 axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName })
+    //                     .then(res => {
+    //                         alert(res.data + ' Implement a download progress bar');
+    //                     })
+    //                     .catch(() => {
+    //                         console.log('error while going back');
+    //                     });
+    //             }
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
+
+
+    const handleItemClick = e => {
+
+
+        let fileName = itemData.slice(0, -1);
+        let fileType = itemData.charAt(fileName.length);
+
+        switch (e.value) {
             case "rename":
                 // logic to remove the row
-                console.log(props.id + " " + fileName + " " + "rename"); // contain to item.id passed by `show`
+                console.log(itemData + " " + fileName + " " + "rename"); // contain to item.id passed by `show`
+                setRenameModalState(true);
                 break;
 
             case "delete":
-                console.log(props.id + " delete " + fileType);
+                console.log(itemData + " delete " + fileType);
 
 
                 let deletePath = currentDirectoryPath + '/' + fileName
@@ -178,7 +283,7 @@ const ExplorerMenu = () => {
 
                 if (fileType === "2") {
                     console.log('downloading a folder');
-                   
+
                     axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
@@ -204,12 +309,21 @@ const ExplorerMenu = () => {
         }
     }
 
-    const displayMenu = (e) => {
-        // put whatever custom logic you need
-        // you can even decide to not display the Menu
-        console.log('reaching displayMenu (e)');
-        show(e, { props: { id: e.currentTarget.id } });
-    }
+
+
+    // const displayMenu = (e) => {
+    //     // put whatever custom logic you need
+    //     // you can even decide to not display the Menu
+    //     console.log('reaching displayMenu (e)');
+    //     show(e, { props: { id: e.currentTarget.id } });
+    // }
+
+    const displayMenu = (e, data) => {
+        e.preventDefault();
+        setAnchorPoint({ x: e.clientX, y: e.clientY });
+        setOpen(true);
+        setItemData(data);
+    };
 
     return (
         <div className="explorer-main-menu">
@@ -240,7 +354,7 @@ const ExplorerMenu = () => {
                     <img alt="goBack" onClick={() => goBack()}
                         className="goBackImg" src="/images/icons/goBack.svg"></img>
                 </span>
-                {/* 
+                {/*
                 <span className="upload">
                     <input type="file" name="u" />
                 </span> */}
@@ -250,6 +364,9 @@ const ExplorerMenu = () => {
                     modalClosed={closeModal}
                     color="#fff">
                     <CreateFolder
+                        placeholder="Enter folder name"
+                        title="Create Folder"
+                        action="Create"
                         create={(folderName) => createFolder(folderName)}
                         closeHandler={closeModal}
                         path={currentDirectoryPath} />
@@ -277,13 +394,27 @@ const ExplorerMenu = () => {
                 <div className="size valign-text-middle poppins-light-black-14px">Size</div>
             </div>
 
+            {/* popup for rename */}
+            <Modal
+                show={renameModalState}
+                modalClosed={closeRenameModal}
+                color="#fff">
+                <CreateFolder
+                    placeholder="Enter new name"
+                    title={"Rename " + itemData.slice(0, -1)}
+                    create={(newName) => renameItem(newName)}
+                    closeHandler={closeRenameModal}
+                    action="Rename"
+                    path={currentDirectoryPath +'/'+ itemData.slice(0, -1)} />
+            </Modal>
+
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">
                     {fileList.length ? fileList.map((item, index) => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}
-                                onContextMenu={(e) => displayMenu(e)}
+                                onContextMenu={(e) => displayMenu(e, item.name + item.type)}
                                 onClick={() => changePath(item.name, item.type)}
                                 name={item.name}
                                 type={item.type}
@@ -291,7 +422,8 @@ const ExplorerMenu = () => {
                                 lastMod={item.modifiedAt} />
                         )
                     }) : null}
-                    <Menu id={MENU_ID}>
+
+                    {/* <Menu id={MENU_ID}>
                         <Item id="rename" onClick={handleItemClick}>
                             Rename
                         </Item>
@@ -301,7 +433,21 @@ const ExplorerMenu = () => {
                         <Item id="download" onClick={handleItemClick}>
                             Download
                         </Item>
-                    </Menu>
+                    </Menu> */}
+
+                    <ControlledMenu anchorPoint={anchorPoint} isOpen={isOpen}
+                        onClose={() => setOpen(false)}>
+                        <MenuItem value="rename" onClick={handleItemClick}>
+                            Rename
+                        </MenuItem>
+                        <MenuItem value="delete" onClick={handleItemClick}>
+                            Delete
+                        </MenuItem>
+                        <MenuItem value="download" onClick={handleItemClick}>
+                            Download
+                        </MenuItem>
+                    </ControlledMenu>
+
                 </div>
                 {/* Add lottie animation if no files are present */}
             </DragAndDrop>

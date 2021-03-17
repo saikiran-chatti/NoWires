@@ -34,7 +34,6 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "qrcode": "^1.4.4",
-    "react-contexify": "^5.0.0",
     "stream": "0.0.2",
     "uuid": "^8.3.2"
   }
