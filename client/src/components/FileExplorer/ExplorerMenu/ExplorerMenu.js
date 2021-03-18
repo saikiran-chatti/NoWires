@@ -33,6 +33,7 @@ const ExplorerMenu = () => {
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
+            console.log(connectionDetails);
             axios.get('/rootDirectory',{connectionDetails:connectionDetails})
                 .then((res) => {
                     setFileList(res.data);
@@ -50,7 +51,7 @@ const ExplorerMenu = () => {
                     console.log('error while fetching files list');
                 });
         }
-    }, [currentDirectoryPath])
+    }, [currentDirectoryPath,connectionDetails])
 
     //CreateFolder
     const createFolder = folderName => {
