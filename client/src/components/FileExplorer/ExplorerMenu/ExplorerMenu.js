@@ -5,6 +5,7 @@ import axios from 'axios'
 import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
+import { useSelector,useDispatch } from 'react-redux'
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
     MenuItem,
@@ -15,6 +16,9 @@ import '@szhsin/react-menu/dist/index.css'
 // const MENU_ID = "menu-id";
 
 const ExplorerMenu = () => {
+
+    // fetching the ftp details
+    const connectionDetails = useSelector(state => state != null ? state.connectionDetails : null);
 
     const [fileList, setFileList] = useState([]);
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
@@ -29,7 +33,7 @@ const ExplorerMenu = () => {
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
-            axios.get('/rootDirectory')
+            axios.get('/rootDirectory',{connectionDetails:connectionDetails})
                 .then((res) => {
                     setFileList(res.data);
                 })
@@ -38,7 +42,7 @@ const ExplorerMenu = () => {
                 });
         }
         else {
-            axios.post('/changePath', { path: currentDirectoryPath })
+            axios.post('/changePath', { path: currentDirectoryPath ,connectionDetails:connectionDetails})
                 .then(res => {
                     setFileList(res.data);
                 })
@@ -51,7 +55,7 @@ const ExplorerMenu = () => {
     //CreateFolder
     const createFolder = folderName => {
 
-        axios.post('/createFolder', { name: folderName, path: currentDirectoryPath })
+        axios.post('/createFolder', { name: folderName, path: currentDirectoryPath,connectionDetails:connectionDetails })
             .then(res => {
                 setFileList(res.data);
             })
@@ -65,7 +69,7 @@ const ExplorerMenu = () => {
         let ext = oldName.split('.').pop();
         newName = newName + '.'+ ext;
 
-        axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName })
+        axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName,connectionDetails:connectionDetails })
             .then(res => {
                 setFileList(res.data);
             })
@@ -81,7 +85,7 @@ const ExplorerMenu = () => {
         }
         else {
             // Download file function..
-            axios.post('/downloadFile', { path: currentDirectoryPath, name: name })
+            axios.post('/downloadFile', { path: currentDirectoryPath, name: name,connectionDetails:connectionDetails })
                 .then(res => {
                     alert(res.data + ' Implement a download progress bar');
                 })
@@ -94,7 +98,7 @@ const ExplorerMenu = () => {
     const goBack = () => {
         const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
         if (p !== '') {
-            axios.post('/changePath', { path: p })
+            axios.post('/changePath', { path: p,connectionDetails:connectionDetails })
                 .then(res => {
                     setFileList(res.data);
                 })
@@ -133,7 +137,7 @@ const ExplorerMenu = () => {
 
         for (let i = 0; i < files.length; i++) {
             getCodedBuffer(files[i]).then(result => {
-                axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath })
+                axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath,connectionDetails:connectionDetails })
                     .then(res => {
                         setFileList(res.data);
                         alert('Uploaded. Implement an upload progress bar!!')
@@ -256,7 +260,7 @@ const ExplorerMenu = () => {
                 if (fileType === "2") {
                     // Delete a directory
                     console.log('deleting a folder');
-                    axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName })
+                    axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName,connectionDetails:connectionDetails })
                         .then(res => {
                             setFileList(res.data);
                         })
@@ -267,7 +271,7 @@ const ExplorerMenu = () => {
                 else {
                     // Delete a file
                     console.log('deleting a file');
-                    axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName })
+                    axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName,connectionDetails:connectionDetails })
                         .then(res => {
                             setFileList(res.data);
                         })
@@ -284,7 +288,7 @@ const ExplorerMenu = () => {
                 if (fileType === "2") {
                     console.log('downloading a folder');
 
-                    axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName })
+                    axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName,connectionDetails:connectionDetails })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
                         })
@@ -295,7 +299,7 @@ const ExplorerMenu = () => {
                 else {
                     // downloading a file
                     console.log('downloading a File');
-                    axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName })
+                    axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName,connectionDetails:connectionDetails })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
                         })

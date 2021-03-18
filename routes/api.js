@@ -22,7 +22,7 @@ router.get('/generateQRImage', (req, res) => {
 });
 
 router.post('/createQRDoc', (req, res) => {
-    
+
     console.log('Body', req.body);
     const data = req.body;
     const dataInstance = new QRCodeModel(data)
@@ -48,11 +48,13 @@ router.post('/deleteDoc', (req, res) => {
         else {
             console.log(docs[0]);
             QRCodeModel.deleteOne({ _id: docs[0]._id }, (error, mongooseDeleteResult) => {
+
                 if (mongooseDeleteResult.ok === 1) {
                     console.log('Deleted Successfully');
                     res.send(docs[0]);
                 }
                 else {
+                    console.log('reached catch block');
                     res.send({ "message": "Error while deleting document" });
                 }
             })
