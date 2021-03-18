@@ -38,8 +38,8 @@ const ExplorerMenu = () => {
                 .then((res) => {
                     setFileList(res.data);
                 })
-                .catch(() => {
-                    console.log('error while fetching files list');
+                .catch((e) => {
+                    console.log('error while fetching files list '+e);
                 });
         }
         else {
@@ -47,8 +47,8 @@ const ExplorerMenu = () => {
                 .then(res => {
                     setFileList(res.data);
                 })
-                .catch(() => {
-                    console.log('error while fetching files list');
+                .catch((e) => {
+                    console.log('error while fetching files list '+e);
                 });
         }
     }, [currentDirectoryPath,connectionDetails])
@@ -60,8 +60,8 @@ const ExplorerMenu = () => {
             .then(res => {
                 setFileList(res.data);
             })
-            .catch(() => {
-                console.log('error while fetching files list');
+            .catch((e) => {
+                console.log('error while fetching files list '+e);
             });
     }
 
@@ -74,8 +74,8 @@ const ExplorerMenu = () => {
             .then(res => {
                 setFileList(res.data);
             })
-            .catch(() => {
-                console.log('error while renaming file');
+            .catch((e) => {
+                console.log('error while renaming file '+e);
             })
     }
 
@@ -90,8 +90,8 @@ const ExplorerMenu = () => {
                 .then(res => {
                     alert(res.data + ' Implement a download progress bar');
                 })
-                .catch(() => {
-                    console.log('error while going back');
+                .catch((e) => {
+                    console.log('error while going back '+e);
                 });
         }
     }
@@ -103,8 +103,8 @@ const ExplorerMenu = () => {
                 .then(res => {
                     setFileList(res.data);
                 })
-                .catch(() => {
-                    console.log('error while going back');
+                .catch((e) => {
+                    console.log('error while going back '+e );
                 });
             setCurrentDirectoryPath(currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')))
         }
@@ -144,7 +144,7 @@ const ExplorerMenu = () => {
                         alert('Uploaded. Implement an upload progress bar!!')
                     })
                     .catch(err => {
-                        alert('error occured while uploading')
+                        alert('error occured while uploading '+err)
                     });
             })
         }
