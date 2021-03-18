@@ -34,7 +34,7 @@ const ExplorerMenu = () => {
     useEffect(() => {
         if (currentDirectoryPath === '/') {
             console.log(connectionDetails);
-            axios.get('/rootDirectory',{connectionDetails:connectionDetails})
+            axios.post('/rootDirectory',{connectionDetails:connectionDetails})
                 .then((res) => {
                     setFileList(res.data);
                 })
