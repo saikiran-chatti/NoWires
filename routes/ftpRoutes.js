@@ -4,14 +4,27 @@ const { response } = require('express');
 
 const router = express.Router();
 
+router.get('/test', (req, res) => {
+    res.send("success")
+})
+
+router.get("/root",(req,res)=> {
+    const rootclient = new ftp("192.168.0.2", 2121, "ftp", "ftp");
+
+    rootclient.rootFolder().then((result) => {
+        res.send(result);
+    });
+
+})
+
 router.post('/rootDirectory', (req, res) => {
     const host = req.body.connectionDetails.host;
     const port = req.body.connectionDetails.port;
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
-    
-    console.log('root directory host: '+host);
-    const rootclient = new ftp(host, 2121, username, password,false)
+
+    console.log('root directory host: ' + host);
+    const rootclient = new ftp(host, 2121, username, password, false)
 
     rootclient.rootFolder().then((result) => {
         res.send(result);
@@ -25,7 +38,7 @@ router.post('/changePath', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password,false)
+    const client = new ftp(host, 2121, username, password, false)
     console.log('remote path: ', req.body);
     const remotePath = req.body.path;
     client.changePath(remotePath).then(result => {
@@ -39,7 +52,7 @@ router.post('/createFolder', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password,false)
+    const client = new ftp(host, 2121, username, password, false)
     const name = req.body.name;
     const path = req.body.path;
     client.createFolder(name, path).then(result => {
@@ -53,7 +66,7 @@ router.post('/uploadFile', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password,false)
+    const client = new ftp(host, 2121, username, password, false)
     const file = req.body.file;
     const path = req.body.path;
 
@@ -68,7 +81,7 @@ router.post('/handleDrop', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password,false)
+    const client = new ftp(host, 2121, username, password, false)
 
     client.uploadDragFile(req.body).then(result => {
         res.send(result)
@@ -81,12 +94,12 @@ router.post('/downloadDirectory', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password,false)
+    const client = new ftp(host, 2121, username, password, false)
     let path = req.body.path;
     let name = req.body.name;
 
     // console.log('remotePath router method: ' + remotePath);
-    client.downloadDirectory(path,name).then(result => {
+    client.downloadDirectory(path, name).then(result => {
         res.send(result)
     }).catch(e => {
         res.status(400).send("error while downloading");
@@ -98,8 +111,8 @@ router.post('/downloadFile', (req, res) => {
     const port = req.body.connectionDetails.port;
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
-    
-    const client = new ftp(host, 2121, username, password,false)
+
+    const client = new ftp(host, 2121, username, password, false)
     const name = req.body.name;
     const path = req.body.path;
 
@@ -115,8 +128,8 @@ router.post('/renameFile', (req, res) => {
     const port = req.body.connectionDetails.port;
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
-    
-    const client = new ftp(host, 2121, username, password,false)
+
+    const client = new ftp(host, 2121, username, password, false)
     const oldname = req.body.oldName;
     const path = req.body.path;
     const newname = req.body.newName;
@@ -131,8 +144,8 @@ router.post('/deleteFile', (req, res) => {
     const port = req.body.connectionDetails.port;
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
-    
-    const client = new ftp(host, 2121, username, password,false)
+
+    const client = new ftp(host, 2121, username, password, false)
     const path = req.body.path;
     const name = req.body.fileName;
 
@@ -148,8 +161,8 @@ router.post('/deleteDir', (req, res) => {
     const port = req.body.connectionDetails.port;
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
-    
-    const client = new ftp(host, 2121, username, password,false)
+
+    const client = new ftp(host, 2121, username, password, false)
     const path = req.body.path;
     const name = req.body.fileName;
 

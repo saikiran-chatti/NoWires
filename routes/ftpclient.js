@@ -7,7 +7,7 @@ const { Duplex } = require('stream')
 // const { setFlagsFromString } = require('v8');
 
 class FTPClient {
-    constructor(host, port, username, password, secure) {
+    constructor(host, port, username, password, secure=false) {
         this.client = new ftp.Client();
         this.path = '/'
         this.settings = {
