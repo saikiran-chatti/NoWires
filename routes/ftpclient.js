@@ -7,7 +7,7 @@ const { Duplex } = require('stream')
 // const { setFlagsFromString } = require('v8');
 
 class FTPClient {
-    constructor(host, port, username, password, secure=false) {
+    constructor(host, port, username, password, secure = false) {
         this.client = new ftp.Client();
         this.path = '/'
         this.settings = {
@@ -45,9 +45,9 @@ class FTPClient {
                 // secure: self.settings.secure
             })
 
-            console.log("oldPath: "+path+'/'+oldname);
-            console.log("newPath: "+path+'/'+newname);
-            
+            console.log("oldPath: " + path + '/' + oldname);
+            console.log("newPath: " + path + '/' + newname);
+
             await self.client.rename(path + '/' + oldname, path + '/' + newname);
 
             let result = await self.client.list()
@@ -146,7 +146,7 @@ class FTPClient {
                 }
             })
             await self.client.downloadToDir(localPath, remotePath)
-            return('Downloaded successfully.');
+            return ('Downloaded successfully.');
         }
         catch (err) {
             console.log(err)
@@ -213,6 +213,15 @@ class FTPClient {
                     console.log("New directory successfully created.")
                 }
             })
+
+            // track progress.
+            self.client.trackProgress(info => {
+                console.log("File", info.name)
+                console.log("Type", info.type)
+                console.log("Transferred", info.bytes)
+                console.log("Transferred Overall", info.bytesOverall)
+            })
+
             await self.client.downloadTo(localPath + '/' + name, remotePath + '/' + name)
             self.client.close();
             return 'Downloaded successfully.'

@@ -51,7 +51,7 @@ const ExplorerMenu = () => {
                     console.log('error while fetching files list '+e);
                 });
         }
-    }, [currentDirectoryPath,connectionDetails])
+    }, [currentDirectoryPath])
 
     //CreateFolder
     const createFolder = folderName => {

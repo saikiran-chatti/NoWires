@@ -8,6 +8,7 @@ router.get('/test', (req, res) => {
     res.send("success")
 })
 
+// dummmy call
 router.get("/root",(req,res)=> {
     const rootclient = new ftp("192.168.0.2", 2121, "ftp", "ftp");
 
@@ -172,5 +173,17 @@ router.post('/deleteDir', (req, res) => {
         res.status(400).send("Error while Deleting");
     })
 })
+
+// router.post('/trackProgress',(req,res) => {
+//     const host = req.body.connectionDetails.host;
+//     const port = req.body.connectionDetails.port;
+//     const username = req.body.connectionDetails.username;
+//     const password = req.body.connectionDetails.password;
+
+//     const client = new ftp(host, 2121, username, password, false)
+//     const path = req.body.path;
+//     const name = req.body.fileName;
+
+// })
 
 module.exports = router;
