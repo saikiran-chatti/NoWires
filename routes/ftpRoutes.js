@@ -11,11 +11,10 @@ router.get('/test', (req, res) => {
 // dummmy call
 router.get("/root",(req,res)=> {
     const rootclient = new ftp("192.168.0.4", 2121, "ftp", "ftp");
-
+    console.log('reached root method');
     rootclient.rootFolder().then((result) => {
         res.send(result);
     });
-
 })
 
 router.post('/rootDirectory', (req, res) => {

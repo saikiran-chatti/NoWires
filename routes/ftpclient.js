@@ -28,6 +28,7 @@ class FTPClient {
         catch (err) {
             console.log(err);
         }
+        self.client.close();
         return res;
     }
 
