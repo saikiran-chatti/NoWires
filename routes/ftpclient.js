@@ -22,13 +22,28 @@ class FTPClient {
     // List operations
     async rootFolder() {
         let res = null
+        let self = this;
+        self.client.ftp.verbose = true
+
         try {
-            res = await Lists.parentList(this.client, this.settings);
+            await self.client.access({
+                host: self.settings.host,
+                port: self.settings.port,
+                user: self.settings.user,
+                password: self.settings.password,
+                // secure: self.settings.secure
+            })
+
+            res = await self.client.list()
+            self.client.close();
+
+            return res;
         }
         catch (err) {
-            console.log(err);
+            console.log(err)
+            self.client.close();
         }
-        self.client.close();
+   
         return res;
     }
 
