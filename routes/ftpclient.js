@@ -231,15 +231,17 @@ class FTPClient {
             })
 
             // track progress.
-            self.client.trackProgress(info => {
-                console.log("File", info.name)
-                console.log("Type", info.type)
-                console.log("Transferred", info.bytes)
-                console.log("Transferred Overall", info.bytesOverall)
-            })
+            // self.client.trackProgress(info => {
+            //     console.log("File", info.name)
+            //     console.log("Type", info.type)
+            //     console.log("Transferred", info.bytes)
+            //     console.log("Transferred Overall", info.bytesOverall)
+            // })
 
             await self.client.downloadTo(localPath + '/' + name, remotePath + '/' + name)
-            self.client.close();
+
+            // self.client.trackProgress();
+            // self.client.close();
             return 'Downloaded successfully.'
         }
         catch (err) {

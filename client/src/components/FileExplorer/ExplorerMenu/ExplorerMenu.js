@@ -5,7 +5,10 @@ import axios from 'axios'
 import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import useFileDownloader from './Downloader/useDownloader'
+import { Progress } from 'semantic-ui-react'
+
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
     MenuItem,
@@ -31,24 +34,30 @@ const ExplorerMenu = () => {
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
     const [itemData, setItemData] = useState("File/Folder");
 
+    // File transfer 
+    const [transferPercent, setTransferPercent] = useState(0);
+    const [files, setFiles] = useState(() => []);
+    // const [downloadFile, downloaderComponentUI] = useFileDownloader();
+    const [downloaderComponentUI, setDownloaderComponentUI] = useState(null);
+
     useEffect(() => {
         if (currentDirectoryPath === '/') {
             console.log(connectionDetails);
-            axios.post('/rootDirectory',{connectionDetails:connectionDetails})
+            axios.post('/rootDirectory', { connectionDetails: connectionDetails })
                 .then((res) => {
                     setFileList(res.data);
                 })
                 .catch((e) => {
-                    console.log('error while fetching files list '+e);
+                    console.log('error while fetching files list ' + e);
                 });
         }
         else {
-            axios.post('/changePath', { path: currentDirectoryPath ,connectionDetails:connectionDetails})
+            axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
                 .then(res => {
                     setFileList(res.data);
                 })
                 .catch((e) => {
-                    console.log('error while fetching files list '+e);
+                    console.log('error while fetching files list ' + e);
                 });
         }
     }, [currentDirectoryPath])
@@ -56,26 +65,26 @@ const ExplorerMenu = () => {
     //CreateFolder
     const createFolder = folderName => {
 
-        axios.post('/createFolder', { name: folderName, path: currentDirectoryPath,connectionDetails:connectionDetails })
+        axios.post('/createFolder', { name: folderName, path: currentDirectoryPath, connectionDetails: connectionDetails })
             .then(res => {
                 setFileList(res.data);
             })
             .catch((e) => {
-                console.log('error while fetching files list '+e);
+                console.log('error while fetching files list ' + e);
             });
     }
 
     const renameItem = newName => {
-        let oldName = itemData.slice(0,-1);
+        let oldName = itemData.slice(0, -1);
         let ext = oldName.split('.').pop();
-        newName = newName + '.'+ ext;
+        newName = newName + '.' + ext;
 
-        axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName,connectionDetails:connectionDetails })
+        axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName, connectionDetails: connectionDetails })
             .then(res => {
                 setFileList(res.data);
             })
             .catch((e) => {
-                console.log('error while renaming file '+e);
+                console.log('error while renaming file ' + e);
             })
     }
 
@@ -85,26 +94,54 @@ const ExplorerMenu = () => {
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
         }
         else {
+
+            // file name without extension = filename.split('.').slice(0, -1).join('.')
+
+            // const file = {
+            //     name: name,
+            //     // name: "photo-1",
+            //     thumb:
+            //         "https://images.unsplash.com/photo-1604263439201-171fb8c0fddc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=427&q=80 427w",
+            //     file:
+            //         "https://images.unsplash.com/photo-1604263439201-171fb8c0fddc?rnd=" +
+            //         Math.random(),
+
+            //     filename: name,
+            //     // filename: "photo-1.jpg",
+            //     currentDirectoryPath: currentDirectoryPath,
+            //     connectionDetails: connectionDetails
+            // };
+
+            // downloadFile(file)
+
             // Download file function..
-            axios.post('/downloadFile', { path: currentDirectoryPath, name: name,connectionDetails:connectionDetails })
+            setDownloaderComponentUI(
+                <div className="progressBar">
+                    <Progress percent={100} active color="black">
+                    </Progress>
+                </div>)
+
+            axios.post('/downloadFile', { path: currentDirectoryPath, name: name, connectionDetails: connectionDetails })
                 .then(res => {
+                    setDownloaderComponentUI(null)
                     alert(res.data + ' Implement a download progress bar');
                 })
                 .catch((e) => {
-                    console.log('error while going back '+e);
+                    console.log('error while going back ' + e);
                 });
+            // }
         }
     }
 
     const goBack = () => {
         const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
         if (p !== '') {
-            axios.post('/changePath', { path: p,connectionDetails:connectionDetails })
+            axios.post('/changePath', { path: p, connectionDetails: connectionDetails })
                 .then(res => {
                     setFileList(res.data);
                 })
                 .catch((e) => {
-                    console.log('error while going back '+e );
+                    console.log('error while going back ' + e);
                 });
             setCurrentDirectoryPath(currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')))
         }
@@ -138,13 +175,13 @@ const ExplorerMenu = () => {
 
         for (let i = 0; i < files.length; i++) {
             getCodedBuffer(files[i]).then(result => {
-                axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath,connectionDetails:connectionDetails })
+                axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath, connectionDetails: connectionDetails })
                     .then(res => {
                         setFileList(res.data);
                         alert('Uploaded. Implement an upload progress bar!!')
                     })
                     .catch(err => {
-                        alert('error occured while uploading '+err)
+                        alert('error occured while uploading ' + err)
                     });
             })
         }
@@ -261,7 +298,7 @@ const ExplorerMenu = () => {
                 if (fileType === "2") {
                     // Delete a directory
                     console.log('deleting a folder');
-                    axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName,connectionDetails:connectionDetails })
+                    axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
                         })
@@ -272,7 +309,7 @@ const ExplorerMenu = () => {
                 else {
                     // Delete a file
                     console.log('deleting a file');
-                    axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName,connectionDetails:connectionDetails })
+                    axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
                         })
@@ -289,7 +326,7 @@ const ExplorerMenu = () => {
                 if (fileType === "2") {
                     console.log('downloading a folder');
 
-                    axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName,connectionDetails:connectionDetails })
+                    axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
                         })
@@ -300,7 +337,7 @@ const ExplorerMenu = () => {
                 else {
                     // downloading a file
                     console.log('downloading a File');
-                    axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName,connectionDetails:connectionDetails })
+                    axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             alert(res.data + ' Implement a download progress bar');
                         })
@@ -410,7 +447,7 @@ const ExplorerMenu = () => {
                     create={(newName) => renameItem(newName)}
                     closeHandler={closeRenameModal}
                     action="Rename"
-                    path={currentDirectoryPath +'/'+ itemData.slice(0, -1)} />
+                    path={currentDirectoryPath + '/' + itemData.slice(0, -1)} />
             </Modal>
 
             <DragAndDrop handleDrop={handleDrop}>
@@ -456,6 +493,7 @@ const ExplorerMenu = () => {
                 </div>
                 {/* Add lottie animation if no files are present */}
             </DragAndDrop>
+            {downloaderComponentUI}
         </div>
 
     )
