@@ -42,7 +42,7 @@ const Header = () => {
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
-                        <li className="navItem" ><a onClick={() => changeRoute("explorer")} className="navLink">About</a></li>
+                        <li className="navItem" ><a onClick={() => changeRoute("about")} className="navLink">About</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}

@@ -96,6 +96,7 @@ const Home = () => {
                         <p className="homeDescription">Transfer files without hassle <br /> of the week.</p>
                         <button className="homeButton" href="/home">Get Started</button>
                     </div>
+                    
                 </div>
             </section>
         </div>

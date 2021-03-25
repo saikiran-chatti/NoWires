@@ -7,7 +7,6 @@ import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
 import { useSelector, useDispatch } from 'react-redux'
 import useFileDownloader from './Downloader/useDownloader'
-import { Progress } from 'semantic-ui-react'
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
@@ -38,7 +37,7 @@ const ExplorerMenu = () => {
     const [transferPercent, setTransferPercent] = useState(0);
     const [files, setFiles] = useState(() => []);
     // const [downloadFile, downloaderComponentUI] = useFileDownloader();
-    const [downloaderComponentUI, setDownloaderComponentUI] = useState(null);
+    const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
@@ -115,15 +114,16 @@ const ExplorerMenu = () => {
             // downloadFile(file)
 
             // Download file function..
+
             setDownloaderComponentUI(
-                <div className="progressBar">
-                    <Progress percent={100} active color="black">
-                    </Progress>
-                </div>)
+                true);
+
+            console.log("Before download " + downloaderComponentUI);
 
             axios.post('/downloadFile', { path: currentDirectoryPath, name: name, connectionDetails: connectionDetails })
                 .then(res => {
-                    setDownloaderComponentUI(null)
+                    console.log("After download: " + downloaderComponentUI);
+                    setDownloaderComponentUI(false)
                     alert(res.data + ' Implement a download progress bar');
                 })
                 .catch((e) => {
