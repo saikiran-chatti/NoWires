@@ -1,4 +1,5 @@
 import React from 'react';
+import Snackbar from '../FileExplorer/ExplorerMenu/Snackbar/Snackbar';
 import './About.css'
 const About = () => {
 
@@ -11,19 +12,15 @@ const About = () => {
         //         <span style={{width: "100%"}}></span>
         //     </div>
         // </div>
-
-        <div class="Progressui Progressblack Progressactive progress" data-percent="90">
-            <div class="Progressbar" style={{ width: "90%" }}></div>
-            <div class="label">Active</div>
-        </div>
-
         // <div class="ui container" style={{ margin: "20px" }}>
         //     <div class="bar" style={{ width: "90%" }}>
         //         ::after
         //     </div>
         // </div>
+        <div className="aboutSnackbar">
+            <Snackbar />
+        </div>
 
-        
     )
 }
 

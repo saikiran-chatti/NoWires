@@ -15,6 +15,7 @@ import {
     ControlledMenu
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css'
+import Snackbar from './Snackbar/Snackbar';
 
 // const MENU_ID = "menu-id";
 
@@ -34,13 +35,14 @@ const ExplorerMenu = () => {
     // const [menuProp, setMenuProp] = useState(null);
     const [isOpen, setOpen] = useState(false);
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
-    const [itemData, setItemData] = useState("File/Folder");
+    const [itemDataa, setItemDataa] = useState({ fileName: "fileName", fileType: 1, fileSize: "230 Mb" })
 
     // File transfer 
     const [transferPercent, setTransferPercent] = useState(0);
     const [files, setFiles] = useState(() => []);
     // const [downloadFile, downloaderComponentUI] = useFileDownloader();
     const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
+    const [snackbarStatus, setSnackbarStatus] = useState(false)
 
     useEffect(() => {
         if (currentDirectoryPath === '/') {
@@ -77,8 +79,10 @@ const ExplorerMenu = () => {
     }
 
     const renameItem = newName => {
-        let oldName = itemData.slice(0, -1);
+        // let oldName = itemData.slice(0, -1);
+        let oldName = itemDataa.fileName;
         let ext = oldName.split('.').pop();
+
         newName = newName + '.' + ext;
 
         axios.post('/renameFile', { oldName: oldName, path: currentDirectoryPath, newName: newName, connectionDetails: connectionDetails })
@@ -119,8 +123,7 @@ const ExplorerMenu = () => {
 
             // Download file function..
             setTransferModalState(true);
-            setDownloaderComponentUI(
-                true);
+            setDownloaderComponentUI(true);
 
             console.log("Before download " + downloaderComponentUI);
 
@@ -129,7 +132,8 @@ const ExplorerMenu = () => {
                     console.log("After download: " + downloaderComponentUI);
                     setDownloaderComponentUI(false)
                     setTransferModalState(false);
-                    alert(res.data + ' Implement a download progress bar');
+                    setSnackbarStatus(true);
+                    // alert(res.data + ' Implement a download progress bar');
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
@@ -196,6 +200,9 @@ const ExplorerMenu = () => {
         setModalState(false);
     }
 
+    const closeSnackbar = () => {
+        setSnackbarStatus(false);
+    }
     const closeRenameModal = () => {
         setRenameModalState(false);
     }
@@ -287,18 +294,19 @@ const ExplorerMenu = () => {
     const handleItemClick = e => {
 
 
-        let fileName = itemData.slice(0, -1);
-        let fileType = itemData.charAt(fileName.length);
+        let fileName = itemDataa.fileName;
+        let fileType = itemDataa.fileType;
+        let fileSize = itemDataa.fileSize;
 
         switch (e.value) {
             case "rename":
                 // logic to remove the row
-                console.log(itemData + " " + fileName + " " + "rename"); // contain to item.id passed by `show`
+                console.log(fileName + " " + "rename"); // contain to item.id passed by `show`
                 setRenameModalState(true);
                 break;
 
             case "delete":
-                console.log(itemData + " delete " + fileType);
+                console.log(" delete " + fileType);
 
 
                 let deletePath = currentDirectoryPath + '/' + fileName
@@ -331,13 +339,21 @@ const ExplorerMenu = () => {
             case "download":
                 console.log(fileType + " download");
                 // downloading a file.. 
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName });
 
-                if (fileType === "2") {
+                if (fileType === 2) {
                     console.log('downloading a folder');
+
+                    setTransferModalState(true);
+                    setDownloaderComponentUI(
+                        true);
 
                     axios.post('/downloadDirectory', { path: currentDirectoryPath, name: fileName, connectionDetails: connectionDetails })
                         .then(res => {
-                            alert(res.data + ' Implement a download progress bar');
+                            setDownloaderComponentUI(false)
+                            setTransferModalState(false);
+                            setSnackbarStatus(true);
+                            // alert(res.data + ' Implement a download progress bar');
                         })
                         .catch(() => {
                             console.log('error while going back');
@@ -345,13 +361,22 @@ const ExplorerMenu = () => {
                 }
                 else {
                     // downloading a file
-                    console.log('downloading a File');
+                    setTransferModalState(true);
+                    setDownloaderComponentUI(
+                        true);
+
+                    console.log("Before download " + downloaderComponentUI);
+
                     axios.post('/downloadFile', { path: currentDirectoryPath, name: fileName, connectionDetails: connectionDetails })
                         .then(res => {
-                            alert(res.data + ' Implement a download progress bar');
+                            console.log("After download: " + downloaderComponentUI);
+                            setDownloaderComponentUI(false)
+                            setTransferModalState(false);
+                            setSnackbarStatus(true);
+                            // alert(res.data + ' Implement a download progress bar');
                         })
-                        .catch(() => {
-                            console.log('error while going back');
+                        .catch((e) => {
+                            console.log('error while going back ' + e);
                         });
                 }
                 break;
@@ -369,11 +394,11 @@ const ExplorerMenu = () => {
     //     show(e, { props: { id: e.currentTarget.id } });
     // }
 
-    const displayMenu = (e, data) => {
+    const displayMenu = (e, fileName, fileType, fileSize) => {
         e.preventDefault();
         setAnchorPoint({ x: e.clientX, y: e.clientY });
         setOpen(true);
-        setItemData(data);
+        setItemDataa({ fileName: fileName, fileType: fileType, fileSize: fileSize });
     };
 
     return (
@@ -423,7 +448,9 @@ const ExplorerMenu = () => {
                         path={currentDirectoryPath} />
                 </Modal>
 
-
+                <div className="explorer-snackbar">
+                    <Snackbar handleSnackbarClose={closeSnackbar} show={snackbarStatus} />
+                </div>
 
                 <div className="frame-1">
                     <div className="overlap-group">
@@ -454,11 +481,11 @@ const ExplorerMenu = () => {
                 color="#fff">
                 <CreateFolder
                     placeholder="Enter new name"
-                    title={"Rename " + itemData.slice(0, -1)}
+                    title={"Rename " + itemDataa.fileName}
                     create={(newName) => renameItem(newName)}
                     closeHandler={closeRenameModal}
                     action="Rename"
-                    path={currentDirectoryPath + '/' + itemData.slice(0, -1)} />
+                    path={currentDirectoryPath + '/' + itemDataa.fileName} />
             </Modal>
 
             {/* popup for transfer progress */}
@@ -482,7 +509,7 @@ const ExplorerMenu = () => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}
-                                onContextMenu={(e) => displayMenu(e, item.name + item.type)}
+                                onContextMenu={(e) => displayMenu(e, item.name, item.type, item.size)}
                                 onClick={() => changePath(item.name, item.type, item.size)}
                                 name={item.name}
                                 type={item.type}

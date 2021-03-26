@@ -322,7 +322,11 @@
     background: #555;
 }
 
-
-.progressBar {
-    
+.explorer-snackbar {
+    z-index: 99999999;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    margin-bottom: 50px;
+    margin-right: 45px;
 }
