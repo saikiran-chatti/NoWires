@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:700,300,500");
+.transfer {
+    font-family: "Poppins", Helvetica, Arial, serif;
+    width: 578px;
+    height: 376px;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 30px 60px;
+    z-index: 9999999;
+}
+
+.transfer-header {
+    background: #000;
+    height: 68px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 18px;
+}
+
+.transfer-header p {
+    margin-left: 35px;
+    color: white;
+    line-height: 68px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.transfer-address {
+    letter-spacing: 0px;
+    margin-left: 7px;
+    min-height: 27px;
+    width: 100px;
+}
+
+.file {
+    letter-spacing: 0px;
+    min-height: 27px;
+    width: 52px;
+}
+
+.file-details {
+    margin-top: 33px;
+    margin-left: 35px;
+    font-size: 18px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 131px;
+    overflow: hidden;
+    width: 309px;
+}
+
+.file-name {
+    align-items: flex-start;
+    display: flex;
+    height: 27px;
+    min-width: 167px;
+}
+
+.marshmello {
+    letter-spacing: 0px;
+    margin-left: 5px;
+    min-height: 27px;
+    max-width: 200px;
+    max-height: 27px;
+    overflow: hidden;
+    text-overflow: '...';
+}
+
+.file-path {
+    align-items: flex-start;
+    display: flex;
+    height: 27px;
+    margin-top: 25px;
+    min-width: 313px;
+}
+
+.path-1 {
+    letter-spacing: 0px;
+    min-height: 27px;
+    width: 52px;
+}
+
+.pathvalue {
+    letter-spacing: 0px;
+    margin-left: 7px;
+    min-height: 27px;
+    width: 252px;
+    max-height: 27px;
+    overflow: hidden;
+    text-overflow: '...';
+}
+
+/* .poppins-regular-normal-black-18px {
+    color: black;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+  } */
+
+.transfer-file-size {
+    align-items: flex-start;
+    display: flex;
+    height: 27px;
+    margin-top: 25px;
+    min-width: 129px;
+}
+
+.transfer-size-1 {
+    letter-spacing: 0px;
+    min-height: 27px;
+    width: 52px;
+}
+
+.poppins-medium-black-18px {
+    color: black;
+    font-family: "Poppins", Helvetica, Arial, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* Progress UI */
+
+.Progressui {
+    margin-top: 41px;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.Progressui.Progressblack.progress .Progressbar {
+    background-color: #1b1c1d;
+  }
+  
+  .Progressui.Progressactive.Progressprogress .Progressbar {
+    position: relative;
+    min-width: 2em;
+  }
+  
+  .Progressui.progress .Progressbar {
+    height: 1.75em;
+  }
+  
+  .Progressui.progress .Progressbar {
+    display: block;
+    line-height: 1;
+    position: relative;
+    width: 0%;
+    min-width: 2em;
+    background: #888;
+    border-radius: .28571429rem;
+    -webkit-transition: width .1s ease, background-color .1s ease;
+    transition: width .1s ease, background-color .1s ease;
+  }
+  
+  /* *, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+  } */
+  
+  .Progressui.Progressactive.progress .Progressbar::after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: .28571429rem;
+    -webkit-animation: progress-active 2s ease infinite;
+    animation: progress-active 2s ease infinite;
+  }
+  
+  @-webkit-keyframes progress-active {
+    0% {
+      opacity: 0.3;
+      width: 0;
+    }
+    100% {
+      opacity: 0;
+      width: 100%;
+    }
+  }
+  
+  @keyframes progress-active {
+    0% {
+      opacity: 0.3;
+      width: 0;
+    }
+    100% {
+      opacity: 0;
+      width: 100%;
+    }
+  }
+  
+  /* *, :after, :before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+  } */

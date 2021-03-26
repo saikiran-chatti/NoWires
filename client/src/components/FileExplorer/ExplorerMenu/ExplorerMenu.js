@@ -7,6 +7,7 @@ import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
 import { useSelector, useDispatch } from 'react-redux'
 import useFileDownloader from './Downloader/useDownloader'
+import DownloadPopup from './DownloadPopup/DownloadPopup'
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
@@ -26,6 +27,8 @@ const ExplorerMenu = () => {
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
     const [modalState, setModalState] = useState(false);
     const [renameModalState, setRenameModalState] = useState(false);
+    const [transferModalState, setTransferModalState] = useState(false);
+    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 M`b" });
 
     // used for menu's.
     // const [menuProp, setMenuProp] = useState(null);
@@ -87,7 +90,8 @@ const ExplorerMenu = () => {
             })
     }
 
-    const changePath = (name, type) => {
+    const changePath = (name, type, size) => {
+        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name });
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
@@ -114,7 +118,7 @@ const ExplorerMenu = () => {
             // downloadFile(file)
 
             // Download file function..
-
+            setTransferModalState(true);
             setDownloaderComponentUI(
                 true);
 
@@ -124,6 +128,7 @@ const ExplorerMenu = () => {
                 .then(res => {
                     console.log("After download: " + downloaderComponentUI);
                     setDownloaderComponentUI(false)
+                    setTransferModalState(false);
                     alert(res.data + ' Implement a download progress bar');
                 })
                 .catch((e) => {
@@ -193,6 +198,10 @@ const ExplorerMenu = () => {
 
     const closeRenameModal = () => {
         setRenameModalState(false);
+    }
+
+    const closeTransferModal = () => {
+        setTransferModalState(false);
     }
 
     // const { show } = useContextMenu({
@@ -414,6 +423,8 @@ const ExplorerMenu = () => {
                         path={currentDirectoryPath} />
                 </Modal>
 
+
+
                 <div className="frame-1">
                     <div className="overlap-group">
                         <div className="rectangle-1 bizarre-border-1px"></div>
@@ -450,6 +461,21 @@ const ExplorerMenu = () => {
                     path={currentDirectoryPath + '/' + itemData.slice(0, -1)} />
             </Modal>
 
+            {/* popup for transfer progress */}
+            <Modal
+                show={transferModalState}
+                // modalClosed={closeTransferModal}
+                color="#fff">
+                <DownloadPopup
+                    placeholder="Download"
+                    name={transferItemDetails.fileName.split('.').slice(0, -1).join('.')}
+                    // create={(newName) => renameItem(newName)}
+                    type={transferItemDetails.fileType}
+                    closeHandler={closeTransferModal}
+                    size={transferItemDetails.fileSize}
+                    path={currentDirectoryPath + '/' + transferItemDetails.fileName.split('.').slice(0, -1).join('.')} />
+            </Modal>
+
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">
                     {fileList.length ? fileList.map((item, index) => {
@@ -457,7 +483,7 @@ const ExplorerMenu = () => {
                             <FileComponent key={index}
                                 id={item.name + item.type}
                                 onContextMenu={(e) => displayMenu(e, item.name + item.type)}
-                                onClick={() => changePath(item.name, item.type)}
+                                onClick={() => changePath(item.name, item.type, item.size)}
                                 name={item.name}
                                 type={item.type}
                                 size={item.size}
@@ -493,7 +519,6 @@ const ExplorerMenu = () => {
                 </div>
                 {/* Add lottie animation if no files are present */}
             </DragAndDrop>
-            {downloaderComponentUI}
         </div>
 
     )
