@@ -6,7 +6,6 @@ import './ExplorerMenu.css'
 import DragAndDrop from '../../DragAndDrop/DragAndDrop';
 import CreateFolder from './CreateFolder/CreateFolder'
 import { useSelector, useDispatch } from 'react-redux'
-import useFileDownloader from './Downloader/useDownloader'
 import DownloadPopup from './DownloadPopup/DownloadPopup'
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
@@ -29,7 +28,7 @@ const ExplorerMenu = () => {
     const [modalState, setModalState] = useState(false);
     const [renameModalState, setRenameModalState] = useState(false);
     const [transferModalState, setTransferModalState] = useState(false);
-    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 M`b" });
+    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "download" });
 
     // used for menu's.
     // const [menuProp, setMenuProp] = useState(null);
@@ -95,7 +94,7 @@ const ExplorerMenu = () => {
     }
 
     const changePath = (name, type, size) => {
-        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name });
+        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "download" });
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
@@ -181,13 +180,32 @@ const ExplorerMenu = () => {
 
     const handleDrop = files => {
         // Implement upload function
+        setTransferModalState(true);
 
         for (let i = 0; i < files.length; i++) {
+
+            let fileType = "Folder";
+            let fileSize = files[i].size
+
+            if (files[i].isFile) {
+                fileType = 1;
+                fileSize = files[i].size;
+                console.log("file size: " + files[i].size);
+            }
+
+            setTransferItemDetails({
+                fileName: files[i].name,
+                fileType: fileType,
+                fileSize: fileSize,
+                transferType: "upload"
+            })
+
             getCodedBuffer(files[i]).then(result => {
                 axios.post('/handleDrop', { value: result, fileName: files[i].name, path: currentDirectoryPath, connectionDetails: connectionDetails })
                     .then(res => {
+                        setTransferModalState(false);
                         setFileList(res.data);
-                        alert('Uploaded. Implement an upload progress bar!!')
+                        setSnackbarStatus(true);
                     })
                     .catch(err => {
                         alert('error occured while uploading ' + err)
@@ -293,7 +311,6 @@ const ExplorerMenu = () => {
 
     const handleItemClick = e => {
 
-
         let fileName = itemDataa.fileName;
         let fileType = itemDataa.fileType;
         let fileSize = itemDataa.fileSize;
@@ -339,7 +356,7 @@ const ExplorerMenu = () => {
             case "download":
                 console.log(fileType + " download");
                 // downloading a file.. 
-                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName });
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "download" });
 
                 if (fileType === 2) {
                     console.log('downloading a folder');
@@ -449,7 +466,10 @@ const ExplorerMenu = () => {
                 </Modal>
 
                 <div className="explorer-snackbar">
-                    <Snackbar handleSnackbarClose={closeSnackbar} show={snackbarStatus} />
+                    <Snackbar
+                        text={transferItemDetails.transferType === "download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
+                        handleSnackbarClose={closeSnackbar}
+                        show={snackbarStatus} />
                 </div>
 
                 <div className="frame-1">
@@ -468,6 +488,7 @@ const ExplorerMenu = () => {
                     </div>
                 </div>
             </div>
+
             <div className="explorer-header">
                 <div className="place valign-text-middle poppins-light-black-14px">Name</div>
                 <div className="explorer-last-modified valign-text-middle poppins-light-black-14px">Last Modified</div>
@@ -494,14 +515,30 @@ const ExplorerMenu = () => {
                 // modalClosed={closeTransferModal}
                 color="#fff">
                 <DownloadPopup
-                    placeholder="Download"
-                    name={transferItemDetails.fileName.split('.').slice(0, -1).join('.')}
+                    placeholder={transferItemDetails.transferType}
+                    name={transferItemDetails.fileName}
                     // create={(newName) => renameItem(newName)}
                     type={transferItemDetails.fileType}
                     closeHandler={closeTransferModal}
                     size={transferItemDetails.fileSize}
                     path={currentDirectoryPath + '/' + transferItemDetails.fileName.split('.').slice(0, -1).join('.')} />
             </Modal>
+
+            {/* popup for upload progress */}
+            {/* <Modal
+                show={transferModalState}
+                // modalClosed={closeTransferModal}
+                color="#fff">
+                <DownloadPopup
+                    placeholder="Upload"
+                    // name={transferItemDetails.fileName.split('.').slice(0, -1).join('.')}
+                    name={transferItemDetails.fileName}
+                    // create={(newName) => renameItem(newName)}
+                    type={transferItemDetails.fileType}
+                    closeHandler={closeTransferModal}
+                    size={transferItemDetails.fileSize}
+                    path={currentDirectoryPath + '/' + transferItemDetails.fileName.split('.').slice(0, -1).join('.')} />
+            </Modal> */}
 
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">

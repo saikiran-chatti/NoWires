@@ -19,6 +19,19 @@ class FTPClient {
         };
     }
 
+    // use this to filter data according to size/lastmod etc...
+    // async getSortOrder(prop) {
+    //     return function (a, b) {
+    //         if (a[prop] > b[prop]) {
+    //             return 1;
+    //         } else if (a[prop] < b[prop]) {
+    //             return -1;
+    //         }
+    //         return 0;
+    //     }
+    // }
+
+
     // List operations
     async rootFolder() {
         let res = null
@@ -34,7 +47,8 @@ class FTPClient {
                 // secure: self.settings.secure
             })
 
-            res = await self.client.list()
+            res = await self.client.list();
+            // res.sort(this.getSortOrder("name"));
             self.client.close();
 
             return res;
@@ -43,7 +57,7 @@ class FTPClient {
             console.log(err)
             self.client.close();
         }
-   
+
         return res;
     }
 

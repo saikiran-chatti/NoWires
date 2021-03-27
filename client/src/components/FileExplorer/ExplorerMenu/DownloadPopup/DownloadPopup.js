@@ -15,7 +15,7 @@ const DownloadPopup = (props) => {
     return (
         <div className="transfer">
             <div className="transfer-header">
-                <p className="transfer-header-title">Download</p>
+                <p className="transfer-header-title">{props.placeholder}</p>
             </div>
             <div className="transfer-body poppins-medium-black-18px">
                 <div className="file-details">
