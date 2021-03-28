@@ -24,6 +24,11 @@
     overflow: hidden;
 }
 
+.phonesection {
+    background-color: var(--first-color);
+    overflow: hidden;
+}
+
 .homeContainer {
     height: calc(100vh - var(--header-height));
     grid-template-rows: repeat(2, max-content);

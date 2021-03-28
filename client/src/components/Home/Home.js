@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import * as actionTypes from '../../store/ftp/ftpTypes'
 import Header from '../Header/Header'
 import './Home.css'
+import Phone from '../Phone/Phone'
 
 const Home = () => {
 
@@ -96,8 +97,11 @@ const Home = () => {
                         <p className="homeDescription">Transfer files without hassle <br /> of the week.</p>
                         <button className="homeButton" href="/home">Get Started</button>
                     </div>
-                    
+
                 </div>
+            </section>
+            <section className="phonesection" id="phonesection">
+                <Phone />
             </section>
         </div>
     )

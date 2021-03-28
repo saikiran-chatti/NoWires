@@ -15,6 +15,7 @@ import {
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css'
 import Snackbar from './Snackbar/Snackbar';
+import NoFiles from '../../NoFiles/NoFiles';
 
 // const MENU_ID = "menu-id";
 
@@ -542,7 +543,7 @@ const ExplorerMenu = () => {
 
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">
-                    {fileList.length ? fileList.map((item, index) => {
+                    {fileList.length > 0 ? fileList.map((item, index) => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}
@@ -553,7 +554,10 @@ const ExplorerMenu = () => {
                                 size={item.size}
                                 lastMod={item.modifiedAt} />
                         )
-                    }) : null}
+                    }) : <div className="noFilesImage" >
+                        <NoFiles />
+                        <p>No Files</p>
+                    </div>}
 
                     {/* <Menu id={MENU_ID}>
                         <Item id="rename" onClick={handleItemClick}>
