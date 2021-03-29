@@ -16,6 +16,7 @@ import {
 import '@szhsin/react-menu/dist/index.css'
 import Snackbar from './Snackbar/Snackbar';
 import NoFiles from '../../NoFiles/NoFiles';
+import SearchBar from './SearchBar/SearchBar';
 
 // const MENU_ID = "menu-id";
 
@@ -44,6 +45,10 @@ const ExplorerMenu = () => {
     const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
     const [snackbarStatus, setSnackbarStatus] = useState(false)
 
+    // Search 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+
     useEffect(() => {
         if (currentDirectoryPath === '/') {
             console.log(connectionDetails);
@@ -59,12 +64,29 @@ const ExplorerMenu = () => {
             axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
                 .then(res => {
                     setFileList(res.data);
+                    setSearchTerm("");
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
                 });
         }
     }, [currentDirectoryPath])
+
+    useEffect(() => {
+        let results = [];
+        if (fileList.length > 0) {
+            fileList.map(jsFrameworksSearch => {
+                if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
+                    results.push(jsFrameworksSearch)
+            })
+        }
+
+        // fileList.map((jsFrameworksSearch) => {
+        //     if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
+        //         results.push(jsFrameworksSearch)
+        // });
+        setSearchResults(results);
+    }, [searchTerm, fileList])
 
     //CreateFolder
     const createFolder = folderName => {
@@ -222,6 +244,7 @@ const ExplorerMenu = () => {
     const closeSnackbar = () => {
         setSnackbarStatus(false);
     }
+
     const closeRenameModal = () => {
         setRenameModalState(false);
     }
@@ -308,7 +331,6 @@ const ExplorerMenu = () => {
     //             break;
     //     }
     // }
-
 
     const handleItemClick = e => {
 
@@ -403,7 +425,18 @@ const ExplorerMenu = () => {
         }
     }
 
-
+    const updateSearchResult = async (input) => {
+        // setSearchTerm(event.target.value)
+        let results = [];
+        if (fileList.length > 0) {
+            fileList.map(jsFrameworksSearch => {
+                if (jsFrameworksSearch.name.toLowerCase().includes(input.trim()))
+                    results.push(jsFrameworksSearch)
+            })
+        }
+        setSearchTerm(input)
+        setSearchResults(results);
+    }
 
     // const displayMenu = (e) => {
     //     // put whatever custom logic you need
@@ -424,11 +457,12 @@ const ExplorerMenu = () => {
             <div className="explorer-title">
                 <h1 className="dashboard-copy poppins-bold-black-27-3px">File Explorer</h1>
                 <div className="overlap-group2">
-                    <img
+                    {/* <img
                         alt="magnifier"
                         className="oval-9"
                         src="/images/icons/Magnifier.svg"
-                    />
+                    />*/}
+                    <SearchBar input={searchTerm} onChange={updateSearchResult} />
                     {/* <img
                         className="path-6"
                         src="/images/icons/Magnifier.svg"
@@ -543,7 +577,7 @@ const ExplorerMenu = () => {
 
             <DragAndDrop handleDrop={handleDrop}>
                 <div className="explorer-data">
-                    {fileList.length > 0 ? fileList.map((item, index) => {
+                    {searchResults.length > 0 ? searchResults.map((item, index) => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}
@@ -585,7 +619,6 @@ const ExplorerMenu = () => {
                     </ControlledMenu>
 
                 </div>
-                {/* Add lottie animation if no files are present */}
             </DragAndDrop>
         </div>
 
