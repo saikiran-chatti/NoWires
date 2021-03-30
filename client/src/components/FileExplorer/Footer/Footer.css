@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:600");
+
+.footer {
+    font-family: 'Poppins';
+    background: #171717;
+    color: white;
+    height: 289px;
+    min-height: 289px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 75px;
+    justify-content: space-around;
+}
+
+.social-media-icons {
+    width: 200px;
+    min-width: 200px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

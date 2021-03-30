@@ -7,6 +7,7 @@ import * as actionTypes from '../../store/ftp/ftpTypes'
 import Header from '../Header/Header'
 import './Home.css'
 import Phone from '../Phone/Phone'
+import Footer from '../FileExplorer/Footer/Footer'
 
 const Home = () => {
 
@@ -103,6 +104,7 @@ const Home = () => {
             <section className="phonesection" id="phonesection">
                 <Phone />
             </section>
+            <Footer />
         </div>
     )
 }

@@ -16,7 +16,6 @@ const Phone = () => {
                 </div>
                 <div className="phone-flex-row">
                     <div className="phone-start"><div className="phone-label phone-valign-text-middle poppins-semi-bold-white-18px">PlayStore</div></div>
-                    <div className="phone-t-c phone-valign-text-middle poppins-semi-bold-black-18px">T &amp;C</div>
                 </div>
             </div>
         </div>
