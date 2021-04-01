@@ -48,7 +48,7 @@
 .sidebar .auto-flex {
   align-items: flex-start;
   display: flex;
-  height: 203px;
+  /* height: 203px; */
   margin-left: -15px;
   margin-top: 177px;
   min-width: 207px;

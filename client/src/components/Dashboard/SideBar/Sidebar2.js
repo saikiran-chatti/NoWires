@@ -3,7 +3,6 @@ import React from 'react';
 import './Sidebar2.css'
 import { useHistory } from "react-router-dom";
 
-
 const Sidebar2 = () => {
 
     let history = useHistory();
@@ -11,7 +10,6 @@ const Sidebar2 = () => {
     const changeRoute = (path) => {
         history.push(path);
     }
-
 
     return (
         <div className="sidebar">
@@ -34,7 +32,7 @@ const Sidebar2 = () => {
                     />
                 </div>
                 <div className="sidebar-menu">
-                    <div className="menu-1" onClick={() => changeRoute("/")}>
+                    <div className="menu-1" onClick={() => changeRoute("/dashboard")}>
                         {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="dashboard"
@@ -48,7 +46,7 @@ const Sidebar2 = () => {
                         </div>
                         {/* </Link> */}
                     </div>
-                    <div className="menu-2" onClick={() => changeRoute("/")}>
+                    <div className="menu-2" onClick={() => changeRoute("/explorer")}>
                         {/* <Link to="/explorer" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="wallet"

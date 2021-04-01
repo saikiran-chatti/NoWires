@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:500,700,400");
+* {
+    box-sizing: border-box;
+}
+
+.dashboard-copy {
+    letter-spacing: 0.6px;
+    margin-left: -0.32px;
+    min-height: 33px;
+    opacity: 0.9;
+    width: 169px;
+}
+
+.dashboard-recently-used-title {
+    align-items: center;
+    display: flex;
+    height: 27px;
+    min-width: 816px;
+}
+
+.dashboard-screen {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.4px 0;
+    position: absolute;
+    left: 330px;
+    top: 50px;
+}
+
+.dashboard-storage-details {
+    align-items: flex-start;
+    display: flex;
+    height: 201px;
+    margin-top: 28px;
+    min-width: 399px;
+}
+
+.internal-storage {
+    letter-spacing: 0.6px;
+    margin-left: 32px;
+    margin-top: 9px;
+    min-height: 21px;
+}
+
+.macos-folder-icon {
+    height: 40px;
+    width: 50px;
+}
+
+.dashboard-overlap-group {
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 8px 24px rgba(175, 189, 196, 0.25);
+    display: flex;
+    height: 167px;
+    min-width: 289px;
+    padding: 39px 36px;
+}
+
+.poppins-bold-black-27-3px {
+    color: black;
+    font-family: "Poppins-Bold", Helvetica;
+    font-size: 27.3px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.poppins-light-black-14px {
+    color: black;
+    font-family: "Poppins-Light", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.poppins-medium-black-14px {
+    color: black;
+    font-family: "Poppins-Medium", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.poppins-medium-black-18px {
+    color: black;
+    font-family: "Poppins-Medium", Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.poppins-regular-normal-black-14px {
+    color: black;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.recently-used {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-top: 39px;
+    width: 851px;
+}
+
+.recently-used-1 {
+    letter-spacing: 0.6px;
+    min-height: 27px;
+    width: 163px;
+}
+
+.recently-used-header {
+    align-items: flex-start;
+    align-self: flex-end;
+    display: flex;
+    height: 38px;
+    margin-top: 23px;
+    padding: 8px 16px;
+    width: 807px;
+}
+
+.recently-used-last-m {
+    height: 21px;
+    letter-spacing: 0.6px;
+    margin-left: 277px;
+    min-height: 21px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.recently-used-name {
+    height: 21px;
+    letter-spacing: 0.6px;
+    min-height: 21px;
+    width: 66px;
+}
+
+.recently-used-size {
+    height: 21px;
+    letter-spacing: 0.6px;
+    margin-left: 267px;
+    min-height: 21px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.view-all {
+    letter-spacing: 0.6px;
+    margin-left: 560px;
+    margin-top: 1px;
+    min-height: 20px;
+    width: 91px;
+}
+
+.valign-text-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.downloadsPath {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: center;
+}

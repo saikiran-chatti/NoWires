@@ -14,17 +14,34 @@ const SearchBar = ({ input: keyword, onChange: setKeyword }) => {
         // autocomplete="off"
         //     onChange={(e) => setKeyword(e.target.value)}
         // />
+        // <div>
+
+        //     <input id="searchBar-search-box"
+        //         autocomplete="off"
+        //         type="text"
+        //         class="searchBar-search-box"
+        //         name="q" />
+        //     <label for="searchBar-search-box">
+        //         <span class="searchBar-search-icon">
+        //             <img src="https://img.icons8.com/android/14/000000/search.png" />
+        //         </span>
+        //     </label>
+        // </div>
+
         <div>
-            <label for="searchBar-search-box">
-                <span class="searchBar-search-icon">
+            <input id="search-box"
+                type="text"
+                class="search-box"
+                name="q"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                autocomplete="off" />
+            <label for="search-box">
+                <span class="search-icon">
                     <img src="https://img.icons8.com/android/14/000000/search.png" />
                 </span>
+
             </label>
-            <input id="searchBar-search-box"
-                autocomplete="off"
-                type="text"
-                class="searchBar-search-box"
-                name="q" />
         </div>
     );
 }
