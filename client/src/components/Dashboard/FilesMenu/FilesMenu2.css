@@ -22,18 +22,29 @@
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: 0.4px 0;
+    /* height: 100%; */
+    padding-top: 0.4px 0;
     position: absolute;
     left: 330px;
     top: 50px;
+}
+
+.recently-used-data {
+    align-items: flex-start;
+    display: flex;
+    height: 38px;
+    /* margin-right: 26px; */
+    margin-top: 23px;
+    margin-left: 35px;
+    padding: 8px 0px;
+    width: 854px;
 }
 
 .dashboard-storage-details {
     align-items: flex-start;
     display: flex;
     height: 201px;
-    margin-top: 28px;
+    margin-top: 30px;
     min-width: 399px;
 }
 
@@ -98,6 +109,14 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
+}
+
+.recently-used-explorer-data {
+    width: 854px;
+    height: 320px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom: 20px;
 }
 
 .recently-used {

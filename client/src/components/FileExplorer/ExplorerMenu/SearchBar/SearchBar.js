@@ -28,19 +28,12 @@ const SearchBar = ({ input: keyword, onChange: setKeyword }) => {
         //     </label>
         // </div>
 
-        <div>
-            <input id="search-box"
-                type="text"
-                class="search-box"
-                name="q"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                autocomplete="off" />
-            <label for="search-box">
-                <span class="search-icon">
+        <div className="searchBar">
+            <input id="searchBar-search-box" type="text" class="searchBar-search-box" name="q" autocomplete="off" />
+            <label for="searchBar-search-box">
+                <span class="searchBar-search-icon">
                     <img src="https://img.icons8.com/android/14/000000/search.png" />
                 </span>
-
             </label>
         </div>
     );

@@ -319,7 +319,7 @@ const FilesMenu2 = () => {
                     </div>
                     <div className="view-all poppins-regular-normal-black-14px">View all</div>
                 </div>
-                <div className="explorer-header">
+                <div className="recently-used-data">
                     <div className="recently-used-name valign-text-middle poppins-light-black-14px">Name</div>
                     <div className="recently-used-last-m valign-text-middle poppins-light-black-14px">Last Modified</div>
                     <div className="size valign-text-middle poppins-light-black-14px">Size</div>
@@ -363,7 +363,7 @@ const FilesMenu2 = () => {
                 </div>
 
                 <DragAndDrop handleDrop={handleDrop}>
-                    <div className="explorer-data">
+                    <div className="recently-used-explorer-data">
                         {fileList.length > 0 ? fileList.map((item, index) => {
                             return (
                                 <FileComponent key={index}
