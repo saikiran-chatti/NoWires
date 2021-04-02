@@ -9,6 +9,7 @@ import Snackbar from '../../FileExplorer/ExplorerMenu/Snackbar/Snackbar'
 import Modal from '../../Modal/Modal'
 import DownloadPopup from '../../FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
 import CreateFolder from '../../FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
+import { useHistory } from "react-router-dom";
 
 import {
     MenuItem,
@@ -43,6 +44,12 @@ const FilesMenu2 = () => {
                 console.log('error while fetching files list ' + e);
             });
     }, [currentDirectoryPath])
+
+    let history = useHistory();
+
+    const changeRoute = (path) => {
+        history.push(path);
+    }
 
     const changePath = (name, type, size) => {
         setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "download" });
@@ -317,7 +324,8 @@ const FilesMenu2 = () => {
                                 className="goBackImg" src="/images/icons/goBack.svg"></img>
                         </span> */}
                     </div>
-                    <div className="view-all poppins-regular-normal-black-14px">View all</div>
+                    <div className="view-all poppins-regular-normal-black-14px"
+                        onClick={() => changeRoute("/explorer")}>View all</div>
                 </div>
                 <div className="recently-used-data">
                     <div className="recently-used-name valign-text-middle poppins-light-black-14px">Name</div>
