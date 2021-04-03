@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:500,700,400");
+
 * {
     box-sizing: border-box;
 }
@@ -61,19 +62,24 @@
 }
 
 .dashboard-overlap-group {
-    align-items: flex-start;
+    flex-direction: column;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0px 8px 24px rgba(175, 189, 196, 0.25);
     display: flex;
     height: 167px;
     min-width: 289px;
-    padding: 39px 36px;
+    padding: 39px 36px 10px 36px;
+}
+
+.dashboard-overlap-group-header {
+    display: flex;
+    direction: row;
 }
 
 .poppins-bold-black-27-3px {
     color: black;
-    font-family: "Poppins-Bold", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 27.3px;
     font-style: normal;
     font-weight: 700;
@@ -81,10 +87,17 @@
 
 .poppins-light-black-14px {
     color: black;
-    font-family: "Poppins-Light", Helvetica;
+    font-family: "Poppins", Helvetica;
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
+}
+
+.poppins-regular-black-12px {
+    color: black;
+    font-family: "Poppins", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .poppins-medium-black-14px {
@@ -188,4 +201,59 @@
     flex-direction: row;
     align-content: flex-start;
     align-items: center;
+}
+
+.noFilesImageDashboard {
+    text-align: center;
+    width: 854px;
+    height: 280px;
+}
+
+/* .storage-progress-count {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
+
+progress {
+    width: 40%;
+    display: block;
+    /* default: inline-block */
+    margin-top: 27px;
+    background: #EFF2F3;
+    border-radius: 14px;
+}
+
+progress::-moz-progress-bar {
+    border-radius: 12px;
+    background: black;
+}
+
+/* webkit */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    progress {
+        height: 10px;
+        width: 100%;
+        /* width: 200px; */
+    }
+}
+
+progress::-webkit-progress-bar {
+    background: transparent;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 12px;
+    background: #171717;
+}
+
+.storage-progress-count {
+    margin-top: 5px;
+    /* width: 200px; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

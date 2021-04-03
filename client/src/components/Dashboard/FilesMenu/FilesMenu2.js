@@ -10,6 +10,7 @@ import Modal from '../../Modal/Modal'
 import DownloadPopup from '../../FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
 import CreateFolder from '../../FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
 import { useHistory } from "react-router-dom";
+import SearchBar from '../../FileExplorer/ExplorerMenu/SearchBar/SearchBar'
 
 import {
     MenuItem,
@@ -35,6 +36,9 @@ const FilesMenu2 = () => {
     const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
     const [snackbarStatus, setSnackbarStatus] = useState(false);
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+
     useEffect(() => {
         axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
             .then(res => {
@@ -44,6 +48,18 @@ const FilesMenu2 = () => {
                 console.log('error while fetching files list ' + e);
             });
     }, [currentDirectoryPath])
+
+    useEffect(() => {
+        let results = [];
+        if (fileList.length > 0) {
+            fileList.map(jsFrameworksSearch => {
+                if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
+                    results.push(jsFrameworksSearch)
+            })
+        }
+
+        setSearchResults(results);
+    }, [searchTerm, fileList])
 
     let history = useHistory();
 
@@ -300,13 +316,35 @@ const FilesMenu2 = () => {
         setItemDataa({ fileName: fileName, fileType: fileType, fileSize: fileSize });
     };
 
+    const updateSearchResult = async (input) => {
+        // setSearchTerm(event.target.value)
+        let results = [];
+        if (fileList.length > 0) {
+            fileList.map(jsFrameworksSearch => {
+                if (jsFrameworksSearch.name.toLowerCase().includes(input.trim()))
+                    results.push(jsFrameworksSearch)
+            })
+        }
+        setSearchTerm(input)
+        setSearchResults(results);
+    }
+
     return (
         <div className="dashboard-screen">
             <h1 className="dashboard-copy poppins-bold-black-27-3px">Dashboard</h1>
             <div className="dashboard-storage-details">
                 <div className="dashboard-overlap-group">
-                    <img className="macos-folder-icon" src="/images/macos-folder-icon.png" />
-                    <div className="internal-storage poppins-medium-black-14px">Internal Storage</div>
+                    <div className="dashboard-overlap-group-header">
+                        <img className="macos-folder-icon" src="/images/macos-folder-icon.png" />
+                        <div className="internal-storage poppins-medium-black-14px">Internal Storage</div>
+                    </div>
+                    <div className="storage-progress">
+                        <progress max="100" value="40"></progress>
+                        <div className="storage-progress-count poppins-regular-black-12px">
+                            <p>40 GB</p>
+                            <p>128 GB</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="recently-used">
@@ -323,6 +361,7 @@ const FilesMenu2 = () => {
                             <img alt="goBack" onClick={() => goBack()}
                                 className="goBackImg" src="/images/icons/goBack.svg"></img>
                         </span> */}
+                        <SearchBar input={searchTerm} onChange={updateSearchResult} />
                     </div>
                     <div className="view-all poppins-regular-normal-black-14px"
                         onClick={() => changeRoute("/explorer")}>View all</div>
@@ -372,7 +411,7 @@ const FilesMenu2 = () => {
 
                 <DragAndDrop handleDrop={handleDrop}>
                     <div className="recently-used-explorer-data">
-                        {fileList.length > 0 ? fileList.map((item, index) => {
+                        {searchResults.length > 0 ? searchResults.map((item, index) => {
                             return (
                                 <FileComponent key={index}
                                     id={item.name + item.type}
@@ -383,8 +422,8 @@ const FilesMenu2 = () => {
                                     size={item.size}
                                     lastMod={item.modifiedAt} />
                             )
-                        }) : <div className="noFilesImage" >
-                            <NoFiles />
+                        }) : <div className="noFilesImageDashboard" >
+                            <NoFiles height="280" width="355" />
                             <p>No Files</p>
                         </div>}
 
@@ -417,7 +456,6 @@ const FilesMenu2 = () => {
                 </DragAndDrop>
             </div>
         </div >
-
     )
 }
 

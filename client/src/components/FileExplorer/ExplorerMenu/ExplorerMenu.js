@@ -348,7 +348,6 @@ const ExplorerMenu = () => {
             case "delete":
                 console.log(" delete " + fileType);
 
-
                 let deletePath = currentDirectoryPath + '/' + fileName
                 console.log(deletePath);
 

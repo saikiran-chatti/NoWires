@@ -41,7 +41,10 @@ const Home = () => {
                                 port: res.data.port,
                                 username: res.data.username,
                                 password: res.data.password,
-                                secure: res.data.secure
+                                secure: res.data.secure,
+                                megAvailable: res.data.megAvailable,
+                                usedSpace : res.data.usedSpace,
+                                totalSize : res.data.totalSize
                             }
                             console.log(userData);
                             dispatch({ type: actionTypes.STORE_USER_DATA, value: userData })
