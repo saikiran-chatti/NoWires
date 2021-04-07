@@ -53,6 +53,7 @@
 }
 
 .qrcode {
+    border-radius: 10px;
     position: absolute;
     top: 0;
     left: 0;

@@ -23,7 +23,7 @@
 .searchBar-search-box:hover {
   color: white;
   background: #c8c8c8;
-  box-shadow: 0 0 0 5px #3d4752;
+  box-shadow: 0 0 0 2px #3d4752;
 }
 
 .searchBar-search-box:hover+label .searchBar-search-icon {

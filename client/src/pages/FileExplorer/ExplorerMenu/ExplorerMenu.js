@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useRef } from 'react';
 import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent';
 import Modal from '../../../components/Modal/Modal'
 import axios from 'axios'
@@ -49,12 +49,16 @@ const ExplorerMenu = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
+    // ref for scroll
+    const ref = useRef();
+
     useEffect(() => {
         if (currentDirectoryPath === '/') {
             console.log(connectionDetails);
             axios.post('/rootDirectory', { connectionDetails: connectionDetails })
                 .then((res) => {
                     setFileList(res.data);
+                    // refreshScrollBar();
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
@@ -65,6 +69,7 @@ const ExplorerMenu = () => {
                 .then(res => {
                     setFileList(res.data);
                     setSearchTerm("");
+                    refreshScrollBar();
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
@@ -87,6 +92,10 @@ const ExplorerMenu = () => {
         // });
         setSearchResults(results);
     }, [searchTerm, fileList])
+
+    const refreshScrollBar = () => {
+        ref.current.scrollTo(0, 0)
+    }
 
     //CreateFolder
     const createFolder = folderName => {
@@ -121,6 +130,7 @@ const ExplorerMenu = () => {
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
+
         }
         else {
 
@@ -423,7 +433,7 @@ const ExplorerMenu = () => {
                 break;
         }
     }
-    
+
     const updateSearchResult = async (input) => {
         // setSearchTerm(event.target.value)
         let results = [];
@@ -507,11 +517,11 @@ const ExplorerMenu = () => {
                 </div>
 
                 <div className="frame-1">
-                    <div className="overlap-group">
+                    <div className="overlap-group" onClick={() => setModalState(true)}>
                         <div className="rectangle-1 bizarre-border-1px"></div>
                         <div className="rectangle-1 bizarre-border-1px"></div>
                         <div className="create-folder valign-text-middle poppins-light-black-14px"
-                            onClick={() => setModalState(true)} >
+                        >
                             Create Folder
                         </div>
                         <img
@@ -575,13 +585,17 @@ const ExplorerMenu = () => {
             </Modal> */}
 
             <DragAndDrop handleDrop={handleDrop}>
-                <div className="explorer-data">
+                <div
+                    ref={ref}
+                    className="explorer-data"
+                    id="explorer-data-files">
                     {searchResults.length > 0 ? searchResults.map((item, index) => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}
                                 onContextMenu={(e) => displayMenu(e, item.name, item.type, item.size)}
                                 onClick={() => changePath(item.name, item.type, item.size)}
+                                onDoubleClick={() => changePath(item.name, item.type, item.size)}
                                 name={item.name}
                                 type={item.type}
                                 size={item.size}

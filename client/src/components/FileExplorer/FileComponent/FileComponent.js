@@ -1,11 +1,16 @@
 import { React, useEffect, useState } from 'react';
-import './FileComponent.css'
+import './FileComponent.css';
 import { IconComponent } from './IconComponent/IconComponent';
-
+// import useClickPreventionOnDoubleClick from '../../../helpers/preventDoubleClick/useClickPreventionOnDoubleClick';
+import useSingleAndDoubleClicks from '../../../helpers/useSingleClick/useSingleAndDoubleClicks'
 
 const FileComponent = (props) => {
 
     const [fileProp, setFileProp] = useState({})
+    const { handleClick, handleDoubleClick } = useSingleAndDoubleClicks({
+        onClick: props.onClick,
+        onDoubleClick: props.onDoubleClick
+    });
 
     useEffect(() => {
         console.log(props.name + props.type);
@@ -48,7 +53,8 @@ const FileComponent = (props) => {
 
     return (
         <div className="file-data"
-            onClick={props.onClick}
+            onClick={handleClick}
+            onDoubleClick={handleDoubleClick}
             name={props.name}
             id={props.name + fileProp.type}
             onContextMenu={props.onContextMenu}>
