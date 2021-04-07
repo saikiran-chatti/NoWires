@@ -10,9 +10,9 @@ const QRCodeSchema = new Schema({
     username: String,
     password: String,
     secure: Boolean,
-    megAvailable: String,
-    totalSize: String,
-    usedSpace: String
+    megAvailable: Number,
+    totalSize: Number,
+    usedSpace: Number
 })
 
 //model

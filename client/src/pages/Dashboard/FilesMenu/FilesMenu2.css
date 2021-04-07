@@ -14,9 +14,10 @@
 
 .dashboard-recently-used-title {
     align-items: center;
+    justify-content: space-between;
     display: flex;
     height: 27px;
-    min-width: 816px;
+    min-width: 716px;
 }
 
 .dashboard-screen {
@@ -184,7 +185,6 @@
 .view-all {
     cursor: pointer;
     letter-spacing: 0.6px;
-    margin-left: 560px;
     margin-top: 1px;
     min-height: 20px;
     width: 91px;
@@ -199,8 +199,9 @@
 .downloadsPath {
     display: flex;
     flex-direction: row;
-    align-content: flex-start;
     align-items: center;
+    justify-content: space-around;
+    min-width: 450px;
 }
 
 .noFilesImageDashboard {

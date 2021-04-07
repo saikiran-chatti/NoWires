@@ -1,7 +1,6 @@
 import React from 'react'
 import FilesMenu2 from './FilesMenu/FilesMenu2'
-import Sidebar2 from './SideBar/Sidebar2'
-import FilesMenu from './FilesMenu/FilesMenu'
+import Sidebar2 from '../../components/SideBar/Sidebar2'
 
 const Dashboard = () => {
     return (

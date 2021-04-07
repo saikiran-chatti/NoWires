@@ -1,16 +1,16 @@
 import { React, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import './FilesMenu2.css'
-import DragAndDrop from '../../DragAndDrop/DragAndDrop'
-import FileComponent from '../../FileExplorer/FileComponent/FileComponent'
-import NoFiles from '../../NoFiles/NoFiles'
+import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop'
+import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent'
+import NoFiles from '../../../Errors/NoFiles/NoFiles'
 import axios from 'axios'
-import Snackbar from '../../FileExplorer/ExplorerMenu/Snackbar/Snackbar'
-import Modal from '../../Modal/Modal'
-import DownloadPopup from '../../FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
-import CreateFolder from '../../FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
+import Snackbar from '../../../components/Snackbar/Snackbar'
+import Modal from '../../../components/Modal/Modal'
+import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
+import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
 import { useHistory } from "react-router-dom";
-import SearchBar from '../../FileExplorer/ExplorerMenu/SearchBar/SearchBar'
+import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar'
 
 import {
     MenuItem,
@@ -38,6 +38,8 @@ const FilesMenu2 = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+
+    let storagePercent = (connectionDetails.usedSpace / connectionDetails.totalSize) * 100;
 
     useEffect(() => {
         axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
@@ -339,10 +341,11 @@ const FilesMenu2 = () => {
                         <div className="internal-storage poppins-medium-black-14px">Internal Storage</div>
                     </div>
                     <div className="storage-progress">
-                        <progress max="100" value="40"></progress>
+                        <progress max="100" value={storagePercent}></progress>
                         <div className="storage-progress-count poppins-regular-black-12px">
-                            <p>40 GB</p>
-                            <p>128 GB</p>
+                            {console.log(connectionDetails)}
+                            <p>{connectionDetails.usedSpace + " GB"}</p>
+                            <p>{connectionDetails.totalSize  + " GB"}</p>
                         </div>
                     </div>
                 </div>

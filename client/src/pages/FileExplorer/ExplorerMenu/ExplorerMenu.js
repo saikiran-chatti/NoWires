@@ -1,12 +1,12 @@
 import { React, useEffect, useState } from 'react';
-import FileComponent from '../FileComponent/FileComponent';
-import Modal from '../../Modal/Modal'
+import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent';
+import Modal from '../../../components/Modal/Modal'
 import axios from 'axios'
 import './ExplorerMenu.css'
-import DragAndDrop from '../../DragAndDrop/DragAndDrop';
-import CreateFolder from './CreateFolder/CreateFolder'
+import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop';
+import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
 import { useSelector, useDispatch } from 'react-redux'
-import DownloadPopup from './DownloadPopup/DownloadPopup'
+import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
@@ -14,9 +14,9 @@ import {
     ControlledMenu
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css'
-import Snackbar from './Snackbar/Snackbar';
-import NoFiles from '../../NoFiles/NoFiles';
-import SearchBar from './SearchBar/SearchBar';
+import Snackbar from '../../../components/Snackbar/Snackbar';
+import NoFiles from '../../../Errors/NoFiles/NoFiles';
+import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar';
 
 // const MENU_ID = "menu-id";
 
@@ -30,7 +30,7 @@ const ExplorerMenu = () => {
     const [modalState, setModalState] = useState(false);
     const [renameModalState, setRenameModalState] = useState(false);
     const [transferModalState, setTransferModalState] = useState(false);
-    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "download" });
+    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "Download" });
 
     // used for menu's.
     // const [menuProp, setMenuProp] = useState(null);
@@ -117,7 +117,7 @@ const ExplorerMenu = () => {
     }
 
     const changePath = (name, type, size) => {
-        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "download" });
+        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "Download" });
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
@@ -375,7 +375,7 @@ const ExplorerMenu = () => {
                 }
                 break;
 
-            case "download":
+            case "Download":
                 console.log(fileType + " download");
                 // downloading a file.. 
                 setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "download" });
@@ -423,7 +423,7 @@ const ExplorerMenu = () => {
                 break;
         }
     }
-
+    
     const updateSearchResult = async (input) => {
         // setSearchTerm(event.target.value)
         let results = [];
@@ -501,7 +501,7 @@ const ExplorerMenu = () => {
 
                 <div className="explorer-snackbar">
                     <Snackbar
-                        text={transferItemDetails.transferType === "download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
+                        text={transferItemDetails.transferType === "Download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
                         handleSnackbarClose={closeSnackbar}
                         show={snackbarStatus} />
                 </div>
@@ -612,7 +612,7 @@ const ExplorerMenu = () => {
                         <MenuItem value="delete" onClick={handleItemClick}>
                             Delete
                         </MenuItem>
-                        <MenuItem value="download" onClick={handleItemClick}>
+                        <MenuItem value="Download" onClick={handleItemClick}>
                             Download
                         </MenuItem>
                     </ControlledMenu>

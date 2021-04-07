@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import * as actionTypes from '../../store/ftp/ftpTypes'
-import Header from '../Header/Header'
+import Header from '../../components/Header/Header'
 import './Home.css'
-import Phone from '../Phone/Phone'
-import Footer from '../FileExplorer/Footer/Footer'
+import Phone from '../../components/PhoneSection/Phone'
+import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
 
@@ -18,10 +18,16 @@ const Home = () => {
     const [loopState, setLoopState] = useState(true)
 
     useEffect(() => {
+        // TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
+        // TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
+        // TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
+        // TweenMax.from('.homeImg', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.3, y: 30 })
+       
         TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
         TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
         TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
         TweenMax.from('.homeImg', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.3, y: 30 })
+
         QRCodeComponent();
     }, [])
 

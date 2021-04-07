@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from '../Dashboard/SideBar/Sidebar2'
+import SideBar from '../../components/SideBar/Sidebar2'
 import ExplorerMenu from './ExplorerMenu/ExplorerMenu';
 
 const FileExplorer = () => {

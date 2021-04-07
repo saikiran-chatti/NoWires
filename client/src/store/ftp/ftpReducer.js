@@ -6,7 +6,10 @@ const initialState = {
         port: null,
         username: null,
         password: null,
-        secure: null
+        secure: null,
+        totalSize: null,
+        usedSpace: null,
+        totalSize: null
     }
 }
 
@@ -20,7 +23,10 @@ const ftpReducer = (state = initialState, action) => {
                 port: action.value.port,
                 username: action.value.username,
                 password: action.value.password,
-                secure: action.value.secure
+                secure: action.value.secure,
+                totalSize: action.value.totalSize,
+                usedSpace: action.value.usedSpace,
+                totalSize: action.value.totalSize
             }
         }
 

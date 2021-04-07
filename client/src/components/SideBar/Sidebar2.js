@@ -20,7 +20,8 @@ const Sidebar2 = () => {
                         className="logo-1"
                         src="/images/icons/Logo.svg"
                     />
-                    <div className="no-wires poppins-semi-bold-black-16-4px">No Wires</div>
+                    <div className="no-wires cursor-pointer poppins-semi-bold-black-16-4px"
+                        onClick={() => changeRoute("/")}>No Wires</div>
                 </div>
             </div>
             <div className="auto-flex">
