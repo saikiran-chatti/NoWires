@@ -22,7 +22,7 @@ const Home = () => {
         // TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
         // TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
         // TweenMax.from('.homeImg', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.3, y: 30 })
-       
+
         TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
         TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
         TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
@@ -32,7 +32,6 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-
         let interval = null;
         console.log('triggering');
         if (loopState) {
@@ -49,8 +48,8 @@ const Home = () => {
                                 password: res.data.password,
                                 secure: res.data.secure,
                                 megAvailable: res.data.megAvailable,
-                                usedSpace : res.data.usedSpace,
-                                totalSize : res.data.totalSize
+                                usedSpace: res.data.usedSpace,
+                                totalSize: res.data.totalSize
                             }
                             console.log(userData);
                             dispatch({ type: actionTypes.STORE_USER_DATA, value: userData })

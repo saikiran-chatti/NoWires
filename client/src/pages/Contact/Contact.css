@@ -1,0 +1,257 @@
+.about {
+    z-index: 9999999;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: white;
+    height: 85vh;
+    width: 95%;
+    -webkit-animation: scale-in-ver-center 0.55s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: scale-in-ver-center 0.55s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
+.closeabout {
+    z-index: 9999999;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #212121;
+    color: white;
+    height: 85vh;
+    width: 95%;
+    -webkit-animation: scale-out-vertical 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: scale-out-vertical 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+#email {
+    margin-top: 15px;
+    -webkit-animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+#contact_us {
+    -webkit-animation: contact_us 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: contact_us 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes scale-in-ver-center {
+    0% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in-ver-center {
+    0% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes contact-us {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.AboutClose {
+    width: 13px;
+    height: 13px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin-top: 50px;
+    margin-right: 50px;
+    transform: rotate(45deg) scale(2);
+}
+
+.AboutClose .AboutClosetop, .AboutClose .AboutClosebot {
+    display: block;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.AboutClose .AboutClosetop {
+    height: 100%;
+    width: 2px;
+    margin-left: -1px;
+    transform: skewY(45deg);
+    top: 0;
+}
+
+.AboutClose .AboutClosebot {
+    width: 100%;
+    height: 2px;
+    margin-top: -1px;
+    transform: skewX(-45deg);
+    left: 0;
+}
+
+@-webkit-keyframes top-out {
+    from {
+        top: 0%;
+        height: 100%;
+    }
+    to {
+        top: 200%;
+        height: 0%;
+    }
+}
+
+@keyframes top-out {
+    from {
+        top: 0%;
+        height: 100%;
+    }
+    to {
+        top: 200%;
+        height: 0%;
+    }
+}
+
+@-webkit-keyframes top-in {
+    from {
+        top: -100%;
+        height: 0%;
+    }
+    to {
+        top: 0%;
+        height: 100%;
+    }
+}
+
+@keyframes top-in {
+    from {
+        top: -100%;
+        height: 0%;
+    }
+    to {
+        top: 0%;
+        height: 100%;
+    }
+}
+
+@-webkit-keyframes bot-out {
+    from {
+        left: 0%;
+        width: 100%;
+    }
+    to {
+        left: 200%;
+        width: 0%;
+    }
+}
+
+@keyframes bot-out {
+    from {
+        left: 0%;
+        width: 100%;
+    }
+    to {
+        left: 200%;
+        width: 0%;
+    }
+}
+
+@-webkit-keyframes bot-in {
+    from {
+        left: -100%;
+        width: 0%;
+    }
+    to {
+        left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes bot-in {
+    from {
+        left: -100%;
+        width: 0%;
+    }
+    to {
+        left: 0%;
+        width: 100%;
+    }
+}
+
+.AboutClose:hover {
+    cursor: pointer;
+}
+
+.AboutClose:hover .AboutClosetop {
+    -webkit-animation: top-out 0.25s forwards, top-in 0.25s forwards 0.25s;
+    animation: top-out 0.25s forwards, top-in 0.25s forwards 0.25s;
+}
+
+.AboutClose:hover .AboutClosebot {
+    -webkit-animation: bot-out 0.25s forwards 0.1s, bot-in 0.25s forwards 0.35s;
+    animation: bot-out 0.25s forwards 0.1s, bot-in 0.25s forwards 0.35s;
+}
+
+/* close contact */
+
+@-webkit-keyframes scale-out-vertical {
+    0% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-out-vertical {
+    0% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleY(0);
+        transform: scaleY(0);
+        opacity: 1;
+    }
+}

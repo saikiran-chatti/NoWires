@@ -1,5 +1,5 @@
 import React from 'react';
-import './SearchBar.css'
+import './SearchBar.css';
 import { BiSearch } from "react-icons/bi";
 
 const SearchBar = ({ input: keyword, onChange: setKeyword }) => {

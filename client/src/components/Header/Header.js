@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { TweenMax } from 'gsap'
 import { useHistory } from "react-router-dom";
+import Contact from '../../pages/Contact/Contact';
 // import { Link } from 'react-router-dom'
 
 const Header = () => {
 
     let history = useHistory();
+    const [contactPageStatus, setContactPageStatus] = useState(false);
 
     const changeRoute = (path) => {
         history.push(path);
@@ -19,6 +21,11 @@ const Header = () => {
         TweenMax.from('.navToggle', { autoAlpha: 0, duration: 1, opacity: 0, y: 10, delay: 2 })
         TweenMax.from('.navItem', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30, stagger: 0.2, })
     }, [])
+
+    const revealContactPage = () => {
+        console.log('reached')
+        setContactPageStatus(true)
+    }
 
     return (
         <header className="l-header">
@@ -42,7 +49,7 @@ const Header = () => {
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
-                        <li className="navItem"><a onClick={() => changeRoute("about")} className="navLink">About</a></li>
+                        <li className="navItem"><a onClick={() => changeRoute("/about")} className="navLink">About</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}
@@ -50,12 +57,16 @@ const Header = () => {
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/contact'> */}
-                        <li className="navItem"><a onClick={() => changeRoute("/contact")} className="navLink">Contact</a></li>
+                        <li className="navItem"><a onClick={() => revealContactPage()} className="navLink">Contact</a></li>
                         {/* </Link> */}
 
                     </ul>
                 </div>
             </nav>
+            {contactPageStatus && <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}><Contact closeHandler={() => setContactPageStatus(false)} /></div>}
         </header>
     );
 }

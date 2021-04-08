@@ -59,32 +59,24 @@ const Sidebar2 = () => {
                         <div className="wallet-1 valign-text-middle poppins-normal-black-12-7px">Files</div>
                         {/* </Link> */}
                     </div>
-                    <div className="menu-3" onClick={() => changeRoute("/")}>
-                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
+                    {/* <div className="menu-3" onClick={() => changeRoute("/")}>
                         <img
                             alt="message"
                             className="message"
                             src="/images/icons/Message.svg"
                         />
-                        {/* </Link> */}
-                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <div className="messages poppins-normal-mine-shaft-12-7px">
                             <span className="span1">Message</span><span className="span2">s</span>
                         </div>
-                        {/* </Link> */}
                     </div>
                     <div className="menu-4" onClick={() => changeRoute("/")}>
-                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <img
                             alt="trade"
                             className="trade"
                             src="/images/icons/Trade.svg"
                         />
-                        {/* </Link> */}
-                        {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
                         <div className="trade-1 poppins-normal-mine-shaft-12-7px-2">Settings</div>
-                        {/* </Link> */}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

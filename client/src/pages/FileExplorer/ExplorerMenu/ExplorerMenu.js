@@ -1,19 +1,19 @@
 import { React, useEffect, useState, useRef } from 'react';
 import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent';
-import Modal from '../../../components/Modal/Modal'
-import axios from 'axios'
-import './ExplorerMenu.css'
+import Modal from '../../../components/Modal/Modal';
+import axios from 'axios';
+import './ExplorerMenu.css';
 import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop';
-import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
-import { useSelector, useDispatch } from 'react-redux'
-import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
+import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder';
+import { useSelector, useDispatch } from 'react-redux';
+import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup';
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
     MenuItem,
     ControlledMenu
 } from '@szhsin/react-menu';
-import '@szhsin/react-menu/dist/index.css'
+import '@szhsin/react-menu/dist/index.css';
 import Snackbar from '../../../components/Snackbar/Snackbar';
 import NoFiles from '../../../Errors/NoFiles/NoFiles';
 import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar';

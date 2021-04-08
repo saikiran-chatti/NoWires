@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Dashboard from './pages/Dashboard/Dashboard'
 import FileExplorer from './pages/FileExplorer/FileExplorer'
 import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
 
 function App() {
 
