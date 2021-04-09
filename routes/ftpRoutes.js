@@ -9,14 +9,14 @@ router.get('/test', (req, res) => {
 })
 
 // dummmy call
-router.get("/root",(req,res)=> {
+router.get("/root", (req, res) => {
     const rootclient = new ftp("192.168.0.4", 2121, "ftp", "ftp");
     console.log('reached root method');
 
     rootclient.rootFolder().then((result) => {
         res.send(result);
     });
-    
+
 })
 
 router.post('/rootDirectory', (req, res) => {
@@ -30,6 +30,8 @@ router.post('/rootDirectory', (req, res) => {
 
     rootclient.rootFolder().then((result) => {
         res.send(result);
+    }).catch(err => {
+        res.status(400).send(err)
     });
 
 })
@@ -45,6 +47,8 @@ router.post('/changePath', (req, res) => {
     const remotePath = req.body.path;
     client.changePath(remotePath).then(result => {
         res.send(result);
+    }).catch(err => {
+        res.status(400).send(err)
     });
 })
 
@@ -59,6 +63,8 @@ router.post('/createFolder', (req, res) => {
     const path = req.body.path;
     client.createFolder(name, path).then(result => {
         res.send(result);
+    }).catch(err => {
+        res.status(400).send(err)
     });
 })
 
@@ -74,7 +80,9 @@ router.post('/uploadFile', (req, res) => {
 
     client.uploadFile(file, path).then(result => {
         res.send(result)
-    })
+    }).catch(err => {
+        res.status(400).send(err)
+    });
 })
 
 router.post('/handleDrop', (req, res) => {
@@ -87,7 +95,9 @@ router.post('/handleDrop', (req, res) => {
 
     client.uploadDragFile(req.body).then(result => {
         res.send(result)
-    })
+    }).catch(err => {
+        res.status(400).send(err)
+    });
 })
 
 router.post('/downloadDirectory', (req, res) => {
@@ -104,8 +114,8 @@ router.post('/downloadDirectory', (req, res) => {
     client.downloadDirectory(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("error while downloading");
-    })
+        res.status(400).send("error while downloading " + e);
+    });
 })
 
 router.post('/downloadFile', (req, res) => {
@@ -138,7 +148,9 @@ router.post('/renameFile', (req, res) => {
 
     client.renameFile(oldname, newname, path).then(result => {
         res.send(result)
-    })
+    }).catch(err => {
+        res.status(400).send(err)
+    });
 })
 
 router.post('/deleteFile', (req, res) => {
@@ -154,7 +166,7 @@ router.post('/deleteFile', (req, res) => {
     client.deleteFile(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("Error while Deleting");
+        res.status(400).send("Error while Deleting " + e);
     })
 })
 
@@ -171,7 +183,7 @@ router.post('/deleteDir', (req, res) => {
     client.deleteFolder(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("Error while Deleting");
+        res.status(400).send("Error while Deleting " + e);
     })
 })
 

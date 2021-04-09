@@ -56,9 +56,9 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
+            throw new Error("Error: " + err)
         }
 
-        return res;
     }
 
     // Rename file
@@ -88,8 +88,8 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     // Delete File
@@ -118,8 +118,8 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     async deleteFolder(path, fileName) {
@@ -147,8 +147,8 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     // Download
@@ -179,9 +179,9 @@ class FTPClient {
             return ('Downloaded successfully.');
         }
         catch (err) {
-            console.log(err)
+            console.log(err);
+            throw new Error("Error: " + err)
         }
-        self.client.close();
         // let self = this;
         // self.client.ftp.verbose = true
         // const localPath = desktopDir + "/No Wires";
@@ -261,9 +261,8 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
-            return err;
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     //Folder operations
@@ -290,8 +289,8 @@ class FTPClient {
         } catch (err) {
             self.client.close();
             console.log(err);
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     // create Folder
@@ -318,8 +317,8 @@ class FTPClient {
         } catch (err) {
             self.client.close();
             console.log(err);
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     async uploadFile(data, path) {
@@ -343,8 +342,8 @@ class FTPClient {
         } catch (err) {
             self.client.close();
             console.log(err);
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
     async uploadDragFile(data) {
@@ -372,8 +371,8 @@ class FTPClient {
         } catch (err) {
             console.log(err);
             self.client.close();
+            throw new Error("Error: " + err)
         }
-        self.client.close();
     }
 
 

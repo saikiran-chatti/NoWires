@@ -17,6 +17,7 @@ import '@szhsin/react-menu/dist/index.css';
 import Snackbar from '../../../components/Snackbar/Snackbar';
 import NoFiles from '../../../Errors/NoFiles/NoFiles';
 import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar';
+import NoConnection from '../../../Errors/NoConnection/NoConnection';
 
 // const MENU_ID = "menu-id";
 
@@ -31,6 +32,8 @@ const ExplorerMenu = () => {
     const [renameModalState, setRenameModalState] = useState(false);
     const [transferModalState, setTransferModalState] = useState(false);
     const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "Download" });
+
+    const [errorSVG, setErrorSVG] = useState(null);
 
     // used for menu's.
     // const [menuProp, setMenuProp] = useState(null);
@@ -62,6 +65,9 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
+                    setErrorSVG(<div className="noFilesImage" >
+                        <NoConnection svgHeight={500} svgWidth={336} />
+                    </div>)
                 });
         }
         else {
@@ -73,6 +79,9 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
+                    setErrorSVG(<div className="noFilesImage" >
+                        <NoConnection svgHeight={500} svgWidth={336} />
+                    </div>)
                 });
         }
     }, [currentDirectoryPath])
@@ -84,6 +93,12 @@ const ExplorerMenu = () => {
                 if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
                     results.push(jsFrameworksSearch)
             })
+        }
+        else if (connectionDetails.host != null) {
+            setErrorSVG(<div className="noFilesImage" >
+                <NoFiles />
+                <p>No Files</p>
+            </div>)
         }
 
         // fileList.map((jsFrameworksSearch) => {
@@ -106,6 +121,9 @@ const ExplorerMenu = () => {
             })
             .catch((e) => {
                 console.log('error while fetching files list ' + e);
+                setErrorSVG(<div className="noFilesImage" >
+                    <NoConnection svgHeight={500} svgWidth={336} />
+                </div>)
             });
     }
 
@@ -122,6 +140,9 @@ const ExplorerMenu = () => {
             })
             .catch((e) => {
                 console.log('error while renaming file ' + e);
+                setErrorSVG(<div className="noFilesImage" >
+                    <NoConnection svgHeight={500} svgWidth={336} />
+                </div>)
             })
     }
 
@@ -169,6 +190,9 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
+                    setErrorSVG(<div className="noFilesImage" >
+                        <NoConnection svgHeight={500} svgWidth={336} />
+                    </div>)
                 });
             // }
         }
@@ -183,6 +207,9 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
+                    setErrorSVG(<div className="noFilesImage" >
+                        <NoConnection svgHeight={500} svgWidth={336} />
+                    </div>)
                 });
             setCurrentDirectoryPath(currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')))
         }
@@ -601,10 +628,7 @@ const ExplorerMenu = () => {
                                 size={item.size}
                                 lastMod={item.modifiedAt} />
                         )
-                    }) : <div className="noFilesImage" >
-                        <NoFiles />
-                        <p>No Files</p>
-                    </div>}
+                    }) : errorSVG}
 
                     {/* <Menu id={MENU_ID}>
                         <Item id="rename" onClick={handleItemClick}>

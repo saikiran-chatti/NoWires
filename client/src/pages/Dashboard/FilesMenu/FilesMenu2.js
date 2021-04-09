@@ -11,6 +11,7 @@ import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/Downloa
 import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
 import { useHistory } from "react-router-dom";
 import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar'
+import NoConnection from '../../../Errors/NoConnection/NoConnection'
 
 import {
     MenuItem,
@@ -27,17 +28,23 @@ const FilesMenu2 = () => {
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
     const [itemDataa, setItemDataa] = useState({ fileName: "fileName", fileType: 1, fileSize: "230 Mb" })
 
+    // current directory and transfer states
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/Download');
     const [transferModalState, setTransferModalState] = useState(false);
     const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "download" });
 
+    // rename states
     const [renameModalState, setRenameModalState] = useState(false);
 
     const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
     const [snackbarStatus, setSnackbarStatus] = useState(false);
 
+    // Search states
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+
+    // Error SVG
+    const [errorSVG, setErrorSVG] = useState(null);
 
     let storagePercent = (connectionDetails.usedSpace / connectionDetails.totalSize) * 100;
 
@@ -48,6 +55,9 @@ const FilesMenu2 = () => {
             })
             .catch((e) => {
                 console.log('error while fetching files list ' + e);
+                setErrorSVG(<div className="noFilesImage" >
+                    <NoConnection svgHeight={500} svgWidth={336} />
+                </div>)
             });
     }, [currentDirectoryPath])
 
@@ -58,6 +68,12 @@ const FilesMenu2 = () => {
                 if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
                     results.push(jsFrameworksSearch)
             })
+        }
+        else if (connectionDetails.host != null) {
+            setErrorSVG(<div className="noFilesImage" >
+                <NoFiles />
+                <p>No Files</p>
+            </div>)
         }
 
         setSearchResults(results);
@@ -112,6 +128,9 @@ const FilesMenu2 = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
+                    setErrorSVG(<div className="noFilesImage" >
+                        <NoConnection svgHeight={500} svgWidth={336} />
+                    </div>)
                 });
             // }
         }
@@ -168,6 +187,9 @@ const FilesMenu2 = () => {
                     })
                     .catch(err => {
                         alert('error occured while uploading ' + err)
+                        setErrorSVG(<div className="noFilesImage" >
+                            <NoConnection svgHeight={500} svgWidth={336} />
+                        </div>)
                     });
             })
         }
@@ -202,6 +224,9 @@ const FilesMenu2 = () => {
                         })
                         .catch(() => {
                             console.log('error while deleting file');
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                         });
                 }
                 else {
@@ -213,6 +238,9 @@ const FilesMenu2 = () => {
                         })
                         .catch(() => {
                             console.log('error while deleting file');
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                         });
                 }
                 break;
@@ -345,7 +373,7 @@ const FilesMenu2 = () => {
                         <div className="storage-progress-count poppins-regular-black-12px">
                             {console.log(connectionDetails)}
                             <p>{connectionDetails.usedSpace + " GB"}</p>
-                            <p>{connectionDetails.totalSize  + " GB"}</p>
+                            <p>{connectionDetails.totalSize + " GB"}</p>
                         </div>
                     </div>
                 </div>
@@ -425,10 +453,7 @@ const FilesMenu2 = () => {
                                     size={item.size}
                                     lastMod={item.modifiedAt} />
                             )
-                        }) : <div className="noFilesImageDashboard" >
-                            <NoFiles height="280" width="355" />
-                            <p>No Files</p>
-                        </div>}
+                        }) : errorSVG}
 
                         {/* <Menu id={MENU_ID}>
                         <Item id="rename" onClick={handleItemClick}>
