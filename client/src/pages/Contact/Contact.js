@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import './Contact.css'
+import { AiFillLinkedin } from "react-icons/ai"
+import { FaTwitter } from "react-icons/fa";
+import { ImInstagram } from "react-icons/im";
 
 const Contact = (props) => {
 
@@ -21,6 +24,13 @@ const Contact = (props) => {
 
             <p id="contact_us">Contact us</p>
             <h1 id="email">Jayanth Saikiran</h1>
+
+            <p id="Social Media" />
+            <div class="social-media-icons">
+                <FaTwitter color="#fff" cursor="pointer" onClick={() => window.open("https://twitter.com/jayanthsaikiran", "_blank")} />
+                <ImInstagram color="fff" cursor="pointer" onClick={() => window.open("https://instagram.com/jayanthsaikiran", "_blank")} />
+                <AiFillLinkedin color="fff" cursor="pointer" onClick={() => window.open("https://www.linkedin.com/in/jayanthsaikiran/", "_blank")} />
+            </div>
         </div>
     )
 }

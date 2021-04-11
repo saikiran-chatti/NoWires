@@ -32,6 +32,7 @@ router.post('/createQRDoc', (req, res) => {
                 msg: 'Internal server error'
             })
         else {
+            //async 
             res.json({
                 msg: 'Data saved successfully'
             })

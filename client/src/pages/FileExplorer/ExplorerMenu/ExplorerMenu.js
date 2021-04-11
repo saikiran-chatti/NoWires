@@ -25,6 +25,7 @@ const ExplorerMenu = () => {
 
     // fetching the ftp details
     const connectionDetails = useSelector(state => state != null ? state.connectionDetails : null);
+    const [connectionLiveStatus, setConnectionLiveStatus] = useState(true);
 
     const [fileList, setFileList] = useState([]);
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/');
@@ -65,6 +66,7 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
+                    setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
                         <NoConnection svgHeight={500} svgWidth={336} />
                     </div>)
@@ -79,6 +81,7 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
+                    setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
                         <NoConnection svgHeight={500} svgWidth={336} />
                     </div>)
@@ -121,6 +124,7 @@ const ExplorerMenu = () => {
             })
             .catch((e) => {
                 console.log('error while fetching files list ' + e);
+                setConnectionLiveStatus(false)
                 setErrorSVG(<div className="noFilesImage" >
                     <NoConnection svgHeight={500} svgWidth={336} />
                 </div>)
@@ -140,6 +144,7 @@ const ExplorerMenu = () => {
             })
             .catch((e) => {
                 console.log('error while renaming file ' + e);
+                setConnectionLiveStatus(false)
                 setErrorSVG(<div className="noFilesImage" >
                     <NoConnection svgHeight={500} svgWidth={336} />
                 </div>)
@@ -189,6 +194,7 @@ const ExplorerMenu = () => {
                     // alert(res.data + ' Implement a download progress bar');
                 })
                 .catch((e) => {
+                    setConnectionLiveStatus(false)
                     console.log('error while going back ' + e);
                     setErrorSVG(<div className="noFilesImage" >
                         <NoConnection svgHeight={500} svgWidth={336} />
@@ -207,6 +213,7 @@ const ExplorerMenu = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
+                    setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
                         <NoConnection svgHeight={500} svgWidth={336} />
                     </div>)
@@ -257,7 +264,7 @@ const ExplorerMenu = () => {
                 fileName: files[i].name,
                 fileType: fileType,
                 fileSize: fileSize,
-                transferType: "upload"
+                transferType: "Upload"
             })
 
             getCodedBuffer(files[i]).then(result => {
@@ -269,6 +276,10 @@ const ExplorerMenu = () => {
                     })
                     .catch(err => {
                         alert('error occured while uploading ' + err)
+                        setConnectionLiveStatus(false)
+                        setErrorSVG(<div className="noFilesImage" >
+                            <NoConnection svgHeight={500} svgWidth={336} />
+                        </div>)
                     });
             })
         }
@@ -388,26 +399,40 @@ const ExplorerMenu = () => {
                 let deletePath = currentDirectoryPath + '/' + fileName
                 console.log(deletePath);
 
-                if (fileType === "2") {
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "Delete" });
+
+                if (fileType === 2) {
                     // Delete a directory
                     console.log('deleting a folder');
+
                     axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
+                            setSnackbarStatus(true);
                         })
                         .catch(() => {
+                            setConnectionLiveStatus(false)
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                             console.log('error while deleting file');
                         });
                 }
                 else {
+
                     // Delete a file
                     console.log('deleting a file');
                     axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
+                            setSnackbarStatus(true);
                         })
                         .catch(() => {
                             console.log('error while deleting file');
+                            setConnectionLiveStatus(false)
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                         });
                 }
                 break;
@@ -415,7 +440,7 @@ const ExplorerMenu = () => {
             case "Download":
                 console.log(fileType + " download");
                 // downloading a file.. 
-                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "download" });
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "Download" });
 
                 if (fileType === 2) {
                     console.log('downloading a folder');
@@ -432,7 +457,11 @@ const ExplorerMenu = () => {
                             // alert(res.data + ' Implement a download progress bar');
                         })
                         .catch(() => {
-                            console.log('error while going back');
+                            console.log('error while downloading');
+                            setConnectionLiveStatus(false)
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                         });
                 }
                 else {
@@ -453,6 +482,10 @@ const ExplorerMenu = () => {
                         })
                         .catch((e) => {
                             console.log('error while going back ' + e);
+                            setConnectionLiveStatus(false)
+                            setErrorSVG(<div className="noFilesImage" >
+                                <NoConnection svgHeight={500} svgWidth={336} />
+                            </div>)
                         });
                 }
                 break;
@@ -507,40 +540,18 @@ const ExplorerMenu = () => {
             </div>
             <div className="directory-path">
 
-                <div className="overlap-group-1">
-                    <div className="rectangle-9"></div>
-                    <div className="rectangle-10"></div>
-                    <div className="rectangle-5-copy"></div>
-                </div>
-                <p className="text-1 valign-text-middle poppins-medium-black-14px">
-                    {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
-                <span className="goBack">
-                    <img alt="goBack" onClick={() => goBack()}
-                        className="goBackImg" src="/images/icons/goBack.svg"></img>
-                </span>
-                {/*
-                <span className="upload">
-                    <input type="file" name="u" />
-                </span> */}
-                {/* Modal */}
-                <Modal
-                    show={modalState}
-                    modalClosed={closeModal}
-                    color="#fff">
-                    <CreateFolder
-                        placeholder="Enter folder name"
-                        title="Create Folder"
-                        action="Create"
-                        create={(folderName) => createFolder(folderName)}
-                        closeHandler={closeModal}
-                        path={currentDirectoryPath} />
-                </Modal>
-
-                <div className="explorer-snackbar">
-                    <Snackbar
-                        text={transferItemDetails.transferType === "Download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
-                        handleSnackbarClose={closeSnackbar}
-                        show={snackbarStatus} />
+                <div className="directory-path-section-1">
+                    <div className="overlap-group-1">
+                        <div className="rectangle-9"></div>
+                        <div className="rectangle-10"></div>
+                        <div className="rectangle-5-copy"></div>
+                    </div>
+                    <p className="explorer-path valign-text-middle poppins-medium-black-14px">
+                        {currentDirectoryPath === '/' ? 'Internal Storage >' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}</p>
+                    <span className="goBack">
+                        <img alt="goBack" onClick={() => goBack()}
+                            className="goBackImg" src="/images/icons/goBack.svg"></img>
+                    </span>
                 </div>
 
                 <div className="frame-1">
@@ -558,6 +569,33 @@ const ExplorerMenu = () => {
                         />
                     </div>
                 </div>
+            </div>
+
+            {/*
+                <span className="upload">
+                    <input type="file" name="u" />
+                </span> */}
+            {/* Modal */}
+            <Modal
+                show={modalState}
+                modalClosed={closeModal}
+                color="#fff">
+                <CreateFolder
+                    placeholder="Enter folder name"
+                    title="Create Folder"
+                    action="Create"
+                    create={(folderName) => createFolder(folderName)}
+                    closeHandler={closeModal}
+                    path={currentDirectoryPath} />
+            </Modal>
+
+            <div className="explorer-snackbar">
+
+                <Snackbar
+                    // text={transferItemDetails.transferType === "Download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
+                    transferType={transferItemDetails.transferType}
+                    handleSnackbarClose={closeSnackbar}
+                    show={snackbarStatus} />
             </div>
 
             <div className="explorer-header">
@@ -616,7 +654,7 @@ const ExplorerMenu = () => {
                     ref={ref}
                     className="explorer-data"
                     id="explorer-data-files">
-                    {searchResults.length > 0 ? searchResults.map((item, index) => {
+                    {searchResults.length > 0 && connectionLiveStatus ? searchResults.map((item, index) => {
                         return (
                             <FileComponent key={index}
                                 id={item.name + item.type}

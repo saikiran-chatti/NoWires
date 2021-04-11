@@ -107,6 +107,7 @@ class FTPClient {
             })
 
             const deletePath = path + '/' + fileName;
+            console.log('delete path: ' + deletePath)
             await self.client.remove(deletePath);
 
             await self.client.cd(path)
@@ -135,7 +136,7 @@ class FTPClient {
                 // secure: self.settings.secure
             })
 
-            const deleteFolderPath = path + '/' + fileName;
+            const deleteFolderPath = path + '/' + fileName + '/';
             await self.client.removeDir(deleteFolderPath);
 
             await self.client.cd(path)

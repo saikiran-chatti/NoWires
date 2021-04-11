@@ -55,8 +55,8 @@ const FilesMenu2 = () => {
             })
             .catch((e) => {
                 console.log('error while fetching files list ' + e);
-                setErrorSVG(<div className="noFilesImage" >
-                    <NoConnection svgHeight={500} svgWidth={336} />
+                setErrorSVG(<div className="noFilesImageDashboard" >
+                    <NoConnection svgHeight={290} svgWidth={336} />
                 </div>)
             });
     }, [currentDirectoryPath])
@@ -70,7 +70,7 @@ const FilesMenu2 = () => {
             })
         }
         else if (connectionDetails.host != null) {
-            setErrorSVG(<div className="noFilesImage" >
+            setErrorSVG(<div className="noFilesImageDashboard" >
                 <NoFiles />
                 <p>No Files</p>
             </div>)
@@ -128,8 +128,8 @@ const FilesMenu2 = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
-                    setErrorSVG(<div className="noFilesImage" >
-                        <NoConnection svgHeight={500} svgWidth={336} />
+                    setErrorSVG(<div className="noFilesImageDashboard" >
+                        <NoConnection svgHeight={290} svgWidth={336} />
                     </div>)
                 });
             // }
@@ -187,8 +187,8 @@ const FilesMenu2 = () => {
                     })
                     .catch(err => {
                         alert('error occured while uploading ' + err)
-                        setErrorSVG(<div className="noFilesImage" >
-                            <NoConnection svgHeight={500} svgWidth={336} />
+                        setErrorSVG(<div className="noFilesImageDashboard" >
+                            <NoConnection svgHeight={290} svgWidth={336} />
                         </div>)
                     });
             })
@@ -214,8 +214,9 @@ const FilesMenu2 = () => {
 
                 let deletePath = currentDirectoryPath + '/' + fileName
                 console.log(deletePath);
+                console.log(fileType)
 
-                if (fileType === "2") {
+                if (fileType === 2) {
                     // Delete a directory
                     console.log('deleting a folder');
                     axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
@@ -224,8 +225,8 @@ const FilesMenu2 = () => {
                         })
                         .catch(() => {
                             console.log('error while deleting file');
-                            setErrorSVG(<div className="noFilesImage" >
-                                <NoConnection svgHeight={500} svgWidth={336} />
+                            setErrorSVG(<div className="noFilesImageDashboard" >
+                                <NoConnection svgHeight={290} svgWidth={336} />
                             </div>)
                         });
                 }
@@ -238,8 +239,8 @@ const FilesMenu2 = () => {
                         })
                         .catch(() => {
                             console.log('error while deleting file');
-                            setErrorSVG(<div className="noFilesImage" >
-                                <NoConnection svgHeight={500} svgWidth={336} />
+                            setErrorSVG(<div className="noFilesImageDashboard" >
+                                <NoConnection svgHeight={290} svgWidth={336} />
                             </div>)
                         });
                 }
@@ -363,7 +364,7 @@ const FilesMenu2 = () => {
         <div className="dashboard-screen">
             <h1 className="dashboard-copy poppins-bold-black-27-3px">Dashboard</h1>
             <div className="dashboard-storage-details">
-                <div className="dashboard-overlap-group">
+                <div className="dashboard-overlap-group" onClick={() => changeRoute("/explorer")}>
                     <div className="dashboard-overlap-group-header">
                         <img className="macos-folder-icon" src="/images/macos-folder-icon.png" />
                         <div className="internal-storage poppins-medium-black-14px">Internal Storage</div>

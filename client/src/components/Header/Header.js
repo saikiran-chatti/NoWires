@@ -31,7 +31,7 @@ const Header = () => {
         <header className="l-header">
             <nav className="nav bd-grid-header">
                 <div>
-                    <a href="/home" className="navLogo">No Wires</a>
+                    <a href="/" className="navLogo">No Wires</a>
                 </div>
 
                 <div className="navToggle" id="nav-toggle" >
@@ -48,12 +48,12 @@ const Header = () => {
                         <li className="navItem navLink">Home</li>
                         {/* </Link> */}
 
-                        {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
-                        <li className="navItem"><a onClick={() => changeRoute("/about")} className="navLink">About</a></li>
-                        {/* </Link> */}
-
                         {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}
                         <li className="navItem" ><a onClick={() => changeRoute("/explorer")} className="navLink">Explorer</a></li>
+                        {/* </Link> */}
+
+                        {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
+                        <li className="navItem"><a onClick={() => changeRoute("/about")} className="navLink">About</a></li>
                         {/* </Link> */}
 
                         {/* <Link style={{ textDecoration: "none" }} to='/contact'> */}

@@ -72,19 +72,26 @@
 } */
 
 .directory-path {
+    justify-content: space-between;
     align-items: center;
     display: flex;
     margin-left: 35px;
     margin-top: 42px;
     min-width: 800px;
+    max-width: 824px;
 }
 
 .frame-1 {
     cursor: pointer;
     align-items: flex-start;
     display: flex;
-    margin-left: 406px;
     min-width: 163px;
+    margin-right: 25px;
+}
+
+.directory-path-section-1 {
+    display: flex;
+    flex-direction: row;
 }
 
 .explorer-header {
@@ -286,12 +293,19 @@
 }
 
 .text-1 {
-    height: 20px;
     letter-spacing: 0.6px;
     margin-left: 13px;
-    min-height: 20px;
-    min-width: 162px;
-    max-width: 700px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.explorer-path {
+    letter-spacing: 0.6px;
+    margin-left: 13px;
+    max-width: 350px;
+    white-space: nowrap;
+    overflow: auto;
 }
 
 .explorer-title {
@@ -317,7 +331,7 @@
 /* Scrollbar */
 
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
