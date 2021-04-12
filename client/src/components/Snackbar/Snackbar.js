@@ -3,11 +3,18 @@ import { GoVerified } from "react-icons/go";
 import { VscClose } from "react-icons/vsc";
 import './Snackbar.css'
 
+const homeDir = require('os').homedir();
+const desktopDir = `${homeDir}/Desktop`;
+
 const Snackbar = (props) => {
 
     const handleClose = () => {
         props.handleSnackbarClose();
     };
+
+    const openExplorerLink = () => {
+
+    }
 
     return (
         <div>
@@ -17,7 +24,7 @@ const Snackbar = (props) => {
                 </div>
                 <p class="snackbar-text-1 poppins-medium-black-14px">{(() => {
                     switch (props.transferType) {
-                        case "Download": return ("Downloaded Successfully!  Check Desktop/NoWires");
+                        case "Download": return ("Downloaded Successfully! Check Desktop/NoWires");
                         case "Upload": return ("Uploaded Successfully!");
                         case "Delete": return ("Deleted Successfully!");
                         default: return (" ");

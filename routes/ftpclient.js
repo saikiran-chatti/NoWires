@@ -79,6 +79,7 @@ class FTPClient {
             console.log("newPath: " + path + '/' + newname);
 
             await self.client.rename(path + '/' + oldname, path + '/' + newname);
+            await self.client.cd(path)
 
             let result = await self.client.list()
             self.client.close();
@@ -157,7 +158,7 @@ class FTPClient {
         let self = this;
         self.client.ftp.verbose = true
 
-        let localPath = 'C:/Users/ACER/Desktop/No Wires/' + name;
+        let localPath = desktopDir + "/No Wires/" + name;
         // let remotePath = '/memes'
         let remotePath = path + '/' + name;
 
@@ -336,6 +337,8 @@ class FTPClient {
             })
             path = path + '/convocation.pdf'
             await self.client.uploadFrom('D:/convocation.pdf', path);
+            await self.client.cd(path)
+
             let result = await self.client.list()
             self.client.close();
 
@@ -366,6 +369,7 @@ class FTPClient {
 
             await self.client.uploadFrom(s, data.path + '/' + data.fileName)
 
+            await self.client.cd(data.path)
             let result = await self.client.list()
             self.client.close();
             return result;

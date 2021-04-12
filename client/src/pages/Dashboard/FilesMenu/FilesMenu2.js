@@ -21,6 +21,7 @@ import {
 const FilesMenu2 = () => {
 
     const connectionDetails = useSelector(state => state != null ? state.connectionDetails : null);
+    const [connectionLiveStatus, setConnectionLiveStatus] = useState(true);
 
     const [fileList, setFileList] = useState([]);
 
@@ -31,7 +32,7 @@ const FilesMenu2 = () => {
     // current directory and transfer states
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/Download');
     const [transferModalState, setTransferModalState] = useState(false);
-    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "download" });
+    const [transferItemDetails, setTransferItemDetails] = useState({ fileName: "filename", fileType: 1, fileSize: "200 Mb", transferType: "Download" });
 
     // rename states
     const [renameModalState, setRenameModalState] = useState(false);
@@ -54,6 +55,7 @@ const FilesMenu2 = () => {
                 setFileList(res.data);
             })
             .catch((e) => {
+                setConnectionLiveStatus(false)
                 console.log('error while fetching files list ' + e);
                 setErrorSVG(<div className="noFilesImageDashboard" >
                     <NoConnection svgHeight={290} svgWidth={336} />
@@ -86,7 +88,7 @@ const FilesMenu2 = () => {
     }
 
     const changePath = (name, type, size) => {
-        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "download" });
+        setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "Download" });
         if (type === 2) {
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
@@ -128,6 +130,7 @@ const FilesMenu2 = () => {
                 })
                 .catch((e) => {
                     console.log('error while going back ' + e);
+                    setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImageDashboard" >
                         <NoConnection svgHeight={290} svgWidth={336} />
                     </div>)
@@ -175,7 +178,7 @@ const FilesMenu2 = () => {
                 fileName: files[i].name,
                 fileType: fileType,
                 fileSize: fileSize,
-                transferType: "upload"
+                transferType: "Upload"
             })
 
             getCodedBuffer(files[i]).then(result => {
@@ -187,6 +190,7 @@ const FilesMenu2 = () => {
                     })
                     .catch(err => {
                         alert('error occured while uploading ' + err)
+                        setConnectionLiveStatus(false)
                         setErrorSVG(<div className="noFilesImageDashboard" >
                             <NoConnection svgHeight={290} svgWidth={336} />
                         </div>)
@@ -211,6 +215,7 @@ const FilesMenu2 = () => {
             case "delete":
                 console.log(" delete " + fileType);
 
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "Delete" });
 
                 let deletePath = currentDirectoryPath + '/' + fileName
                 console.log(deletePath);
@@ -222,9 +227,12 @@ const FilesMenu2 = () => {
                     axios.post('/deleteDir', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
+                            setSearchTerm("")
+                            setSnackbarStatus(true);
                         })
                         .catch(() => {
                             console.log('error while deleting file');
+                            setConnectionLiveStatus(false);
                             setErrorSVG(<div className="noFilesImageDashboard" >
                                 <NoConnection svgHeight={290} svgWidth={336} />
                             </div>)
@@ -236,9 +244,12 @@ const FilesMenu2 = () => {
                     axios.post('/deleteFile', { path: currentDirectoryPath, fileName: fileName, connectionDetails: connectionDetails })
                         .then(res => {
                             setFileList(res.data);
+                            setSearchTerm("")
+                            setSnackbarStatus(true);
                         })
                         .catch(() => {
                             console.log('error while deleting file');
+                            setConnectionLiveStatus(false);
                             setErrorSVG(<div className="noFilesImageDashboard" >
                                 <NoConnection svgHeight={290} svgWidth={336} />
                             </div>)
@@ -249,7 +260,7 @@ const FilesMenu2 = () => {
             case "download":
                 console.log(fileType + " download");
                 // downloading a file.. 
-                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "download" });
+                setTransferItemDetails({ fileSize: fileSize, fileType: fileType, fileName: fileName, transferType: "Download" });
 
                 if (fileType === 2) {
                     console.log('downloading a folder');
@@ -267,6 +278,10 @@ const FilesMenu2 = () => {
                         })
                         .catch(() => {
                             console.log('error while going back');
+                            setConnectionLiveStatus(false);
+                            setErrorSVG(<div className="noFilesImageDashboard" >
+                                <NoConnection svgHeight={290} svgWidth={336} />
+                            </div>)
                         });
                 }
                 else {
@@ -286,7 +301,10 @@ const FilesMenu2 = () => {
                             // alert(res.data + ' Implement a download progress bar');
                         })
                         .catch((e) => {
-                            console.log('error while going back ' + e);
+                            setConnectionLiveStatus(false);
+                            setErrorSVG(<div className="noFilesImageDashboard" >
+                                <NoConnection svgHeight={290} svgWidth={336} />
+                            </div>)
                         });
                 }
                 break;
@@ -436,14 +454,14 @@ const FilesMenu2 = () => {
                 {/* Snackbar */}
                 <div className="explorer-snackbar">
                     <Snackbar
-                        text={transferItemDetails.transferType === "download" ? "Downloaded Successfully!  Check Desktop/NoWires" : "Uploaded Successfully! "}
+                        transferType={transferItemDetails.transferType}
                         handleSnackbarClose={closeSnackbar}
                         show={snackbarStatus} />
                 </div>
 
                 <DragAndDrop handleDrop={handleDrop}>
                     <div className="recently-used-explorer-data">
-                        {searchResults.length > 0 ? searchResults.map((item, index) => {
+                        {searchResults.length > 0 && connectionLiveStatus ? searchResults.map((item, index) => {
                             return (
                                 <FileComponent key={index}
                                     id={item.name + item.type}

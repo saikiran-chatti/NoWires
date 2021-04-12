@@ -409,6 +409,7 @@ const ExplorerMenu = () => {
                         .then(res => {
                             setFileList(res.data);
                             setSnackbarStatus(true);
+                            setSearchTerm("")   
                         })
                         .catch(() => {
                             setConnectionLiveStatus(false)
@@ -426,6 +427,7 @@ const ExplorerMenu = () => {
                         .then(res => {
                             setFileList(res.data);
                             setSnackbarStatus(true);
+                            setSearchTerm("")
                         })
                         .catch(() => {
                             console.log('error while deleting file');
