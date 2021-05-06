@@ -7,6 +7,7 @@ import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop';
 import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder';
 import { useSelector, useDispatch } from 'react-redux';
 import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup';
+import FileSkeleton from '../../../components/skeleton/FileSkeleton2'
 
 // import { Menu, Item, useContextMenu } from "react-contexify";
 import {
@@ -56,6 +57,9 @@ const ExplorerMenu = () => {
     // ref for scroll
     const ref = useRef();
 
+    //LazyLoading
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         if (currentDirectoryPath === '/') {
             console.log(connectionDetails);
@@ -63,9 +67,11 @@ const ExplorerMenu = () => {
                 .then((res) => {
                     setFileList(res.data);
                     // refreshScrollBar();
+                    setLoading(false);
                 })
                 .catch((e) => {
                     console.log('error while fetching files list ' + e);
+                    setLoading(false);
                     setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
                         <NoConnection svgHeight={500} svgWidth={336} />
@@ -75,11 +81,13 @@ const ExplorerMenu = () => {
         else {
             axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
                 .then(res => {
+                    setLoading(false);
                     setFileList(res.data);
                     setSearchTerm("");
                     refreshScrollBar();
                 })
                 .catch((e) => {
+                    setLoading(false);
                     console.log('error while fetching files list ' + e);
                     setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
@@ -154,6 +162,7 @@ const ExplorerMenu = () => {
     const changePath = (name, type, size) => {
         setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "Download" });
         if (type === 2) {
+            setLoading(true);
             setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
 
@@ -205,13 +214,16 @@ const ExplorerMenu = () => {
     }
 
     const goBack = () => {
+        setLoading(true);
         const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
         if (p !== '') {
             axios.post('/changePath', { path: p, connectionDetails: connectionDetails })
                 .then(res => {
+                    setLoading(false);
                     setFileList(res.data);
                 })
                 .catch((e) => {
+                    setLoading(false);
                     console.log('error while going back ' + e);
                     setConnectionLiveStatus(false)
                     setErrorSVG(<div className="noFilesImage" >
@@ -222,6 +234,7 @@ const ExplorerMenu = () => {
         }
         else {
             alert('nope nope')
+            setLoading(false);
         }
     }
 
@@ -409,7 +422,7 @@ const ExplorerMenu = () => {
                         .then(res => {
                             setFileList(res.data);
                             setSnackbarStatus(true);
-                            setSearchTerm("")   
+                            setSearchTerm("")
                         })
                         .catch(() => {
                             setConnectionLiveStatus(false)
@@ -651,6 +664,9 @@ const ExplorerMenu = () => {
                     path={currentDirectoryPath + '/' + transferItemDetails.fileName.split('.').slice(0, -1).join('.')} />
             </Modal> */}
 
+            <div className="App">
+                {loading && <FileSkeleton />}
+            </div>
             <DragAndDrop handleDrop={handleDrop}>
                 <div
                     ref={ref}
