@@ -1,17 +1,18 @@
-import { React, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux'
-import './FilesMenu2.css'
-import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop'
-import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent'
-import NoFiles from '../../../Errors/NoFiles/NoFiles'
-import axios from 'axios'
-import Snackbar from '../../../components/Snackbar/Snackbar'
-import Modal from '../../../components/Modal/Modal'
-import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup'
-import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder'
+import { React, useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import './FilesMenu2.css';
+import DragAndDrop from '../../../components/DragAndDrop/DragAndDrop';
+import FileComponent from '../../../components/FileExplorer/FileComponent/FileComponent';
+import NoFiles from '../../../Errors/NoFiles/NoFiles';
+import axios from 'axios';
+import Snackbar from '../../../components/Snackbar/Snackbar';
+import Modal from '../../../components/Modal/Modal';
+import DownloadPopup from '../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup';
+import CreateFolder from '../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder';
 import { useHistory } from "react-router-dom";
-import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar'
-import NoConnection from '../../../Errors/NoConnection/NoConnection'
+import SearchBar from '../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar';
+import NoConnection from '../../../Errors/NoConnection/NoConnection';
+import FileSkeleton from '../../../components/skeleton/FileSkeleton2';
 
 import {
     MenuItem,
@@ -27,7 +28,7 @@ const FilesMenu2 = () => {
 
     const [isOpen, setOpen] = useState(false);
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
-    const [itemDataa, setItemDataa] = useState({ fileName: "fileName", fileType: 1, fileSize: "230 Mb" })
+    const [itemDataa, setItemDataa] = useState({ fileName: "fileName", fileType: 1, fileSize: "230 Mb" });
 
     // current directory and transfer states
     const [currentDirectoryPath, setCurrentDirectoryPath] = useState('/Download');
@@ -49,13 +50,23 @@ const FilesMenu2 = () => {
 
     let storagePercent = (connectionDetails.usedSpace / connectionDetails.totalSize) * 100;
 
+    // ref for scroll
+    const ref = useRef();
+
+    // lazy loading
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         axios.post('/changePath', { path: currentDirectoryPath, connectionDetails: connectionDetails })
             .then(res => {
                 setFileList(res.data);
+                setLoading(false);
+                setSearchTerm("");
+                refreshScrollBar();
             })
             .catch((e) => {
-                setConnectionLiveStatus(false)
+                setConnectionLiveStatus(false);
+                setLoading(false);
                 console.log('error while fetching files list ' + e);
                 setErrorSVG(<div className="noFilesImageDashboard" >
                     <NoConnection svgHeight={290} svgWidth={336} />
@@ -68,7 +79,7 @@ const FilesMenu2 = () => {
         if (fileList.length > 0) {
             fileList.map(jsFrameworksSearch => {
                 if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
-                    results.push(jsFrameworksSearch)
+                    results.push(jsFrameworksSearch);
             })
         }
         else if (connectionDetails.host != null) {
@@ -81,6 +92,10 @@ const FilesMenu2 = () => {
         setSearchResults(results);
     }, [searchTerm, fileList])
 
+    const refreshScrollBar = () => {
+        ref.current.scrollTo(0, 0)
+    }
+
     let history = useHistory();
 
     const changeRoute = (path) => {
@@ -90,7 +105,8 @@ const FilesMenu2 = () => {
     const changePath = (name, type, size) => {
         setTransferItemDetails({ fileSize: size, fileType: type, fileName: name, transferType: "Download" });
         if (type === 2) {
-            setCurrentDirectoryPath(currentDirectoryPath + '/' + name) // works for ftp-server app
+            setLoading(true);
+            setCurrentDirectoryPath(currentDirectoryPath + '/' + name); // works for ftp-server app
             // setCurrentDirectoryPath(currentDirectoryPath + name) 
         }
         else {
@@ -342,18 +358,22 @@ const FilesMenu2 = () => {
     }
 
     const goBack = () => {
+        setLoading(true);
         const p = (currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')));
         if (p !== '') {
             axios.post('/changePath', { path: p, connectionDetails: connectionDetails })
                 .then(res => {
+                    setLoading(false);
                     setFileList(res.data);
                 })
                 .catch((e) => {
+                    setLoading(false);
                     console.log('error while going back ' + e);
                 });
             setCurrentDirectoryPath(currentDirectoryPath.slice(0, currentDirectoryPath.lastIndexOf('/')))
         }
         else {
+            setLoading(false);
             alert('nope nope')
         }
     }
@@ -401,7 +421,7 @@ const FilesMenu2 = () => {
                 <div className="dashboard-recently-used-title">
                     <div className="downloadsPath">
                         <div className="recently-used-1 poppins-medium-black-18px">
-                            {currentDirectoryPath === '/Download' ? 'Downloads ' : currentDirectoryPath.slice(2).replaceAll('/', ' > ')}
+                            {currentDirectoryPath === '/Download' ? 'Downloads ' : currentDirectoryPath.slice(1).replaceAll('/', ' > ')}
                         </div>
                         {currentDirectoryPath != '/Download' ? <span className="goBack">
                             <img alt="goBack" onClick={() => goBack()}
@@ -459,8 +479,12 @@ const FilesMenu2 = () => {
                         show={snackbarStatus} />
                 </div>
 
+                <div className="App">
+                    {loading && <FileSkeleton />}
+                </div>
+
                 <DragAndDrop handleDrop={handleDrop}>
-                    <div className="recently-used-explorer-data">
+                    <div className="recently-used-explorer-data" ref={ref}>
                         {searchResults.length > 0 && connectionLiveStatus ? searchResults.map((item, index) => {
                             return (
                                 <FileComponent key={index}

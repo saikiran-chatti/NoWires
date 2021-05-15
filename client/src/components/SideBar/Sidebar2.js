@@ -56,7 +56,7 @@ const Sidebar2 = () => {
                         />
                         {/* </Link> */}
                         {/* <Link to="/explorer" style={{ textDecoration: "none" }}> */}
-                        <div className="wallet-1 valign-text-middle poppins-normal-black-12-7px">Files</div>
+                        <div className="wallet-1 valign-text-middle poppins-normal-black-12-7px">Explorer</div>
                         {/* </Link> */}
                     </div>
                     {/* <div className="menu-3" onClick={() => changeRoute("/")}>
