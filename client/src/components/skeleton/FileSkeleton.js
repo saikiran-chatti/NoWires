@@ -48,6 +48,12 @@ const FileSkeleton = (props) => {
       <rect x="187" y="381" rx="10" ry="10" width="169" height="19" />
       <rect x="401" y="380" rx="10" ry="10" width="85" height="19" />
       <rect x="522" y="381" rx="10" ry="10" width="169" height="19" />
+
+      <rect x="26" y="442" rx="4" ry="4" width="20" height="20" />
+      <rect x="66" y="443" rx="10" ry="10" width="85" height="19" />
+      <rect x="187" y="444" rx="10" ry="10" width="169" height="19" />
+      <rect x="401" y="443" rx="10" ry="10" width="85" height="19" />
+      <rect x="522" y="444" rx="10" ry="10" width="169" height="19" />
       {/*<rect x="730" y="379" rx="10" ry="10" width="85" height="19" />
       <rect x="851" y="378" rx="10" ry="10" width="85" height="19" /> */}
 

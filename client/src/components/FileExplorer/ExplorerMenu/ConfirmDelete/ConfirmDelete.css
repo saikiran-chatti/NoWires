@@ -1,0 +1,110 @@
+:root {
+  --black: #000000;
+  --vulcan: #14181f80;
+  --white: #ffffff;
+
+  --font-size-l: 19px;
+  --font-size-m: 14px;
+}
+
+.cancel {
+  cursor: pointer;
+  align-items: center;
+  background-color: #000;
+  border-radius: 8px;
+  display: flex;
+  height: 42px;
+  justify-content: flex-end;
+  margin-left: 16px;
+  min-width: 136px;
+  mix-blend-mode: normal;
+  padding: 0 14px;
+}
+.cancel-1 {
+  cursor: pointer;
+  align-items: center;
+  background-color: #edf1f7;
+  border-radius: 8px;
+  display: flex;
+  height: 42px;
+  justify-content: flex-end;
+  min-width: 136px;
+  padding: 0 14px;
+}
+.cancel-2 {
+  color: #14181f80;
+  font-family: var(--font-family-poppins-semibold);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  height: 24px;
+  letter-spacing: 0;
+  line-height: 24px;
+  min-height: 24px;
+  min-width: 106px;
+  mix-blend-mode: normal;
+  text-align: center;
+  white-space: nowrap;
+  width: 106px;
+}
+.delete {
+  color: var(--white);
+  font-family: var(--font-family-poppins-semibold);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  height: 24px;
+  letter-spacing: 0;
+  line-height: 24px;
+  min-height: 24px;
+  min-width: 106px;
+  mix-blend-mode: normal;
+  text-align: center;
+  white-space: nowrap;
+  width: 106px;
+}
+.delete-content {
+  color: var(--black);
+  font-family: var(--font-family-poppins-semibold);
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  letter-spacing: 0;
+  min-height: 29px;
+  mix-blend-mode: normal;
+}
+.delete-flex-row {
+  align-items: flex-start;
+  display: flex;
+  margin-top: 31px;
+  min-width: 288px;
+}
+.delete-popup {
+  margin-top: 50px;
+  margin-left: 100px;
+  align-items: flex-start;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px #afbdc440;
+  display: flex;
+  flex-direction: column;
+  min-height: 210px;
+  mix-blend-mode: normal;
+  padding: 27px 22px;
+  width: 334px;
+}
+.delete-desc {
+  color: var(--vulcan);
+  font-family: var(--font-family-public_sans-regular);
+  font-size: var(--font-size-m);
+  height: 40px;
+  letter-spacing: 0;
+  line-height: 20px;
+  margin-top: 13px;
+  min-height: 40px;
+  mix-blend-mode: normal;
+  width: 282px;
+}
+
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
