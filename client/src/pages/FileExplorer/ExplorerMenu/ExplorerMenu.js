@@ -4,7 +4,6 @@ import Modal from "../../../components/Modal/Modal";
 import axios from "axios";
 import "./ExplorerMenu.css";
 import DragAndDrop from "../../../components/DragAndDrop/DragAndDrop";
-import CreateFolder from "../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder";
 import { useSelector, useDispatch } from "react-redux";
 import DownloadPopup from "../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup";
 import FileSkeleton from "../../../components/skeleton/FileSkeleton2";
@@ -17,6 +16,7 @@ import NoFiles from "../../../Errors/NoFiles/NoFiles";
 import SearchBar from "../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar";
 import NoConnection from "../../../Errors/NoConnection/NoConnection";
 import ConfirmDelete from "../../../components/FileExplorer/ExplorerMenu/ConfirmDelete/ConfirmDelete";
+import ModifyContent from "../../../components/FileExplorer/ExplorerMenu/ModifyContent/ModifyContent";
 
 // const MENU_ID = "menu-id";
 
@@ -144,6 +144,13 @@ const ExplorerMenu = () => {
 
   //CreateFolder
   const createFolder = (folderName) => {
+    setTransferItemDetails({
+      fileSize: transferItemDetails.fileSize,
+      fileType: transferItemDetails.fileType,
+      fileName: transferItemDetails.fileName,
+      transferType: "Create Folder",
+    });
+
     axios
       .post("/createFolder", {
         name: folderName,
@@ -152,6 +159,10 @@ const ExplorerMenu = () => {
       })
       .then((res) => {
         setFileList(res.data);
+        setSnackbarStatus(true);
+        setTimeout(() => {
+          setSnackbarStatus(false);
+        }, 2000);
       })
       .catch((e) => {
         console.log("error while fetching files list " + e);
@@ -166,11 +177,20 @@ const ExplorerMenu = () => {
 
   const renameItem = (newName) => {
     // let oldName = itemData.slice(0, -1);
+
+    setTransferItemDetails({
+      fileSize: itemDataa.fileSize,
+      fileType: itemDataa.fileType,
+      fileName: itemDataa.fileName,
+      transferType: "Rename",
+    });
+
     let oldName = itemDataa.fileName;
-    let ext = oldName.split(".").pop();
 
-    newName = newName + "." + ext;
-
+    if (itemDataa.fileType !== 2) {
+      let ext = oldName.split(".").pop();
+      newName = newName + "." + ext;
+    }
     axios
       .post("/renameFile", {
         oldName: oldName,
@@ -180,6 +200,11 @@ const ExplorerMenu = () => {
       })
       .then((res) => {
         setFileList(res.data);
+        setSearchTerm("");
+        setSnackbarStatus(true);
+        setTimeout(() => {
+          setSnackbarStatus(false);
+        }, 2000);
       })
       .catch((e) => {
         console.log("error while renaming file " + e);
@@ -240,6 +265,9 @@ const ExplorerMenu = () => {
           setDownloaderComponentUI(false);
           setTransferModalState(false);
           setSnackbarStatus(true);
+          setTimeout(() => {
+            setSnackbarStatus(false);
+          }, 2000);
           // alert(res.data + ' Implement a download progress bar');
         })
         .catch((e) => {
@@ -340,6 +368,9 @@ const ExplorerMenu = () => {
             setTransferModalState(false);
             setFileList(res.data);
             setSnackbarStatus(true);
+            setTimeout(() => {
+              setSnackbarStatus(false);
+            }, 2000);
           })
           .catch((err) => {
             alert("error occured while uploading " + err);
@@ -484,6 +515,9 @@ const ExplorerMenu = () => {
 
           setFileList(res.data);
           setSnackbarStatus(true);
+          setTimeout(() => {
+            setSnackbarStatus(false);
+          }, 2000);
           setSearchTerm("");
         })
         .catch(() => {
@@ -510,6 +544,9 @@ const ExplorerMenu = () => {
           setTransferModalState(false);
           setFileList(res.data);
           setSnackbarStatus(true);
+          setTimeout(() => {
+            setSnackbarStatus(false);
+          }, 2000);
           setSearchTerm("");
         })
         .catch(() => {
@@ -569,6 +606,9 @@ const ExplorerMenu = () => {
               setDownloaderComponentUI(false);
               setTransferModalState(false);
               setSnackbarStatus(true);
+              setTimeout(() => {
+                setSnackbarStatus(false);
+              }, 2000);
               // alert(res.data + ' Implement a download progress bar');
             })
             .catch(() => {
@@ -598,6 +638,9 @@ const ExplorerMenu = () => {
               setDownloaderComponentUI(false);
               setTransferModalState(false);
               setSnackbarStatus(true);
+              setTimeout(() => {
+                setSnackbarStatus(false);
+              }, 2000);
               // alert(res.data + ' Implement a download progress bar');
             })
             .catch((e) => {
@@ -678,14 +721,16 @@ const ExplorerMenu = () => {
               ? "Internal Storage >"
               : currentDirectoryPath.slice(2).replaceAll("/", " > ")}
           </p>
-          <span className="goBack">
-            <img
-              alt="goBack"
-              onClick={() => goBack()}
-              className="goBackImg"
-              src="/images/icons/goBack.svg"
-            ></img>
-          </span>
+          {currentDirectoryPath !== "/" ? (
+            <span className="goBack">
+              <img
+                alt="goBack"
+                onClick={() => goBack()}
+                className="goBackImg"
+                src="/images/icons/goBack.svg"
+              ></img>
+            </span>
+          ) : null}
         </div>
 
         <div className="frame-1">
@@ -710,7 +755,8 @@ const ExplorerMenu = () => {
                 </span> */}
       {/* Modal */}
       <Modal show={modalState} modalClosed={closeModal} color="#fff">
-        <CreateFolder
+        <ModifyContent
+          desc="Are you sure to create folder ?"
           placeholder="Enter folder name"
           title="Create Folder"
           action="Create"
@@ -747,7 +793,9 @@ const ExplorerMenu = () => {
         modalClosed={closeRenameModal}
         color="#fff"
       >
-        <CreateFolder
+        <ModifyContent
+          desc="Are you sure to rename this content ? This will rename the content
+          permanently."
           placeholder="Enter new name"
           title={"Rename " + itemDataa.fileName}
           create={(newName) => renameItem(newName)}

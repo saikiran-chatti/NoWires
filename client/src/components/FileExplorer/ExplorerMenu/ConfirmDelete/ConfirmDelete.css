@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Public+Sans&display=swap");
 :root {
   --black: #000000;
   --vulcan: #14181f80;
@@ -10,15 +11,15 @@
 .cancel {
   cursor: pointer;
   align-items: center;
-  background-color: #000;
+  background-color: var(--black);
   border-radius: 8px;
   display: flex;
   height: 42px;
   justify-content: flex-end;
-  margin-left: 16px;
-  min-width: 136px;
+  margin-left: 18px;
+  min-width: 163px;
   mix-blend-mode: normal;
-  padding: 0 14px;
+  padding: 0 13.9px;
 }
 .cancel-1 {
   cursor: pointer;
@@ -28,42 +29,42 @@
   display: flex;
   height: 42px;
   justify-content: flex-end;
-  min-width: 136px;
-  padding: 0 14px;
+  min-width: 163px;
+  padding: 0 13.9px;
 }
 .cancel-2 {
-  color: #14181f80;
-  font-family: var(--font-family-poppins-semibold);
+  color: var(--vulcan);
+  font-family: "Poppins";
   font-size: var(--font-size-m);
   font-weight: 600;
   height: 24px;
   letter-spacing: 0;
   line-height: 24px;
   min-height: 24px;
-  min-width: 106px;
+  min-width: 133px;
   mix-blend-mode: normal;
   text-align: center;
   white-space: nowrap;
-  width: 106px;
+  width: 133px;
 }
 .delete {
   color: var(--white);
-  font-family: var(--font-family-poppins-semibold);
+  font-family: "Poppins";
   font-size: var(--font-size-m);
   font-weight: 600;
   height: 24px;
   letter-spacing: 0;
   line-height: 24px;
   min-height: 24px;
-  min-width: 106px;
+  min-width: 133px;
   mix-blend-mode: normal;
   text-align: center;
   white-space: nowrap;
-  width: 106px;
+  width: 133px;
 }
 .delete-content {
   color: var(--black);
-  font-family: var(--font-family-poppins-semibold);
+  font-family: "Poppins";
   font-size: var(--font-size-l);
   font-weight: 600;
   letter-spacing: 0;
@@ -73,11 +74,11 @@
 .delete-flex-row {
   align-items: flex-start;
   display: flex;
-  margin-top: 31px;
-  min-width: 288px;
+  margin-top: 22px;
+  min-width: 344px;
 }
 .delete-popup {
-  margin-top: 50px;
+  margin-top: 100px;
   margin-left: 100px;
   align-items: flex-start;
   background-color: var(--white);
@@ -88,21 +89,24 @@
   min-height: 210px;
   mix-blend-mode: normal;
   padding: 27px 22px;
-  width: 334px;
+  width: 400px;
 }
 .delete-desc {
   color: var(--vulcan);
-  font-family: var(--font-family-public_sans-regular);
+  font-family: "Public Sans";
   font-size: var(--font-size-m);
   height: 40px;
   letter-spacing: 0;
   line-height: 20px;
-  margin-top: 13px;
+  margin-top: 22px;
   min-height: 40px;
   mix-blend-mode: normal;
   width: 282px;
 }
 
+* {
+  box-sizing: border-box;
+}
 .valign-text-middle {
   display: flex;
   flex-direction: column;

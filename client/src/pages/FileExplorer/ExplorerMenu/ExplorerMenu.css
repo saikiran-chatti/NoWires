@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:700,300,500");
 * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .explorer-main-menu {
-    position: absolute;
-    width: 1071px;
-    height: 100%;
-    left: 330px;
-    padding-top: 50px;
-    overflow: hidden;
+  position: absolute;
+  width: 1071px;
+  height: 100%;
+  left: 330px;
+  padding-top: 50px;
+  overflow: hidden;
 }
 
 /* .address {
@@ -21,7 +21,7 @@
 } */
 
 .bizarre-border-1px {
-    border: 1px solid var(--bizarre);
+  border: 1px solid var(--bizarre);
 }
 
 /* .client-documents {
@@ -33,35 +33,35 @@
 } */
 
 .create-folder {
-    height: 38px;
-    left: 33px;
-    letter-spacing: 0.6px;
-    position: absolute;
-    text-align: center;
-    top: 0px;
-    width: 129px;
+  height: 38px;
+  left: 33px;
+  letter-spacing: 0.6px;
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  width: 129px;
 }
 
 .dashboard-copy {
-    letter-spacing: 0.6px;
-    margin-top: 0.42px;
-    min-height: 33px;
-    opacity: 0.9;
-    width: 182px;
+  letter-spacing: 0.6px;
+  margin-top: 0.42px;
+  min-height: 33px;
+  opacity: 0.9;
+  width: 182px;
 }
 
 .explorer-data {
-    width: 854px;
-    height: 550px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-bottom: 100px;
+  width: 854px;
+  height: 550px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 100px;
 }
 
 .noFilesImage {
-    text-align: center;
-    width: 854px;
-    height: 450px;
+  text-align: center;
+  width: 854px;
+  height: 450px;
 }
 
 /* .date {
@@ -72,164 +72,164 @@
 } */
 
 .directory-path {
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    margin-left: 35px;
-    margin-top: 42px;
-    min-width: 800px;
-    max-width: 824px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  margin-left: 35px;
+  margin-top: 42px;
+  min-width: 800px;
+  max-width: 824px;
 }
 
 .frame-1 {
-    cursor: pointer;
-    align-items: flex-start;
-    display: flex;
-    min-width: 163px;
-    margin-right: 25px;
+  cursor: pointer;
+  align-items: flex-start;
+  display: flex;
+  min-width: 163px;
+  margin-right: 25px;
 }
 
 .directory-path-section-1 {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .explorer-header {
-    align-items: flex-start;
-    display: flex;
-    height: 38px;
-    /* margin-right: 26px; */
-    margin-top: 42px;
-    margin-left: 35px;
-    padding: 8px 0px;
-    width: 854px;
+  align-items: flex-start;
+  display: flex;
+  height: 38px;
+  /* margin-right: 26px; */
+  margin-top: 42px;
+  margin-left: 35px;
+  padding: 8px 0px;
+  width: 854px;
 }
 
 .icons8-add-older-50-1 {
-    height: 20px;
-    left: 13px;
-    object-fit: cover;
-    position: absolute;
-    top: 9px;
-    width: 20px;
+  height: 20px;
+  left: 13px;
+  object-fit: cover;
+  position: absolute;
+  top: 9px;
+  width: 20px;
 }
 
 .explorer-last-modified {
-    height: 21px;
-    letter-spacing: 0.6px;
-    margin-left: 280px;
-    min-height: 21px;
-    min-width: 100px;
-    text-align: center;
+  height: 21px;
+  letter-spacing: 0.6px;
+  margin-left: 280px;
+  min-height: 21px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .oval-9 {
-    height: 20px;
-    left: 5px;
-    position: absolute;
-    top: 4px;
-    width: 19px;
+  height: 20px;
+  left: 5px;
+  position: absolute;
+  top: 4px;
+  width: 19px;
 }
 
 /* GoBack */
 
 .goBack {
-    cursor: pointer;
-    margin-left: 10px;
-    max-height: 21px;
+  cursor: pointer;
+  margin-left: 10px;
+  max-height: 21px;
 }
 
 .goBackImg {
-    max-height: 21px;
-    max-width: 18px;
+  max-height: 21px;
+  max-width: 18px;
 }
 
 .upload {
-    cursor: pointer;
-    margin-left: 10px;
-    max-height: 21px;
+  cursor: pointer;
+  margin-left: 10px;
+  max-height: 21px;
 }
 
 .overlap-group {
-    height: 38px;
-    position: relative;
-    width: 162px;
+  height: 38px;
+  position: relative;
+  width: 162px;
 }
 
 .overlap-group img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .overlap-group-1 {
-    height: 20px;
-    margin-left: -1px;
-    position: relative;
-    width: 21px;
+  height: 20px;
+  margin-left: -1px;
+  position: relative;
+  width: 21px;
 }
 
 .overlap-group2 {
-    height: 30px;
-    margin-left: 453px;
-    margin-top: -0.09px;
-    position: relative;
-    width: 30px;
+  height: 30px;
+  margin-left: 453px;
+  margin-top: -0.09px;
+  position: relative;
+  width: 30px;
 }
 
 .path-6 {
-    height: 6px;
-    left: 19px;
-    position: absolute;
-    top: 20px;
-    width: 7px;
+  height: 6px;
+  left: 19px;
+  position: absolute;
+  top: 20px;
+  width: 7px;
 }
 
 .place {
-    height: 21px;
-    letter-spacing: 0.6px;
-    min-height: 21px;
-    width: 66px;
+  height: 21px;
+  letter-spacing: 0.6px;
+  min-height: 21px;
+  width: 66px;
 }
 
 .poppins-bold-black-27-3px {
-    color: black;
-    font-family: "Poppins", Helvetica, Arial, serif;
-    font-size: 27.3px;
-    font-style: normal;
-    font-weight: 700;
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 27.3px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .poppins-light-black-14px {
-    color: black;
-    font-family: "Poppins", Helvetica, Arial, serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 .poppins-medium-black-14px {
-    color: black;
-    font-family: "Poppins", Helvetica, Arial, serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
+  color: black;
+  font-family: "Poppins", Helvetica, Arial, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .rectangle-1 {
-    height: 38px;
-    left: 0px;
-    position: absolute;
-    top: 0px;
-    width: 160px;
+  height: 38px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 160px;
 }
 
 .rectangle-10 {
-    background-color: var(--mine-shaft);
-    border-radius: 2px;
-    height: 18px;
-    left: 0px;
-    position: absolute;
-    top: 2px;
-    width: 21px;
+  background-color: var(--mine-shaft);
+  border-radius: 2px;
+  height: 18px;
+  left: 0px;
+  position: absolute;
+  top: 2px;
+  width: 21px;
 }
 
 /* .rectangle-10-1 {
@@ -243,13 +243,13 @@
 } */
 
 .rectangle-5-copy {
-    background-color: var(--mine-shaft);
-    border-radius: 2px;
-    height: 10px;
-    left: 0px;
-    position: absolute;
-    top: 0px;
-    width: 11px;
+  background-color: var(--mine-shaft);
+  border-radius: 2px;
+  height: 10px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 11px;
 }
 
 /* 
@@ -264,13 +264,13 @@
 } */
 
 .rectangle-9 {
-    background-color: black;
-    border-radius: 1px;
-    height: 7px;
-    left: 8px;
-    position: absolute;
-    top: 2px;
-    width: 10px;
+  background-color: black;
+  border-radius: 1px;
+  height: 7px;
+  left: 8px;
+  position: absolute;
+  top: 2px;
+  width: 10px;
 }
 
 /* .rectangle-9-1 {
@@ -284,73 +284,83 @@
 } */
 
 .size {
-    height: 21px;
-    letter-spacing: 0.6px;
-    margin-left: 154px;
-    min-height: 21px;
-    min-width: 30px;
-    text-align: center;
+  height: 21px;
+  letter-spacing: 0.6px;
+  margin-left: 154px;
+  min-height: 21px;
+  min-width: 30px;
+  text-align: center;
 }
 
 .text-1 {
-    letter-spacing: 0.6px;
-    margin-left: 13px;
-    width: 200px;
-    white-space: nowrap;
-    overflow: auto;
+  letter-spacing: 0.6px;
+  margin-left: 13px;
+  width: 200px;
+  white-space: nowrap;
+  overflow: auto;
 }
 
 .explorer-path {
-    letter-spacing: 0.6px;
-    margin-left: 13px;
-    max-width: 350px;
-    white-space: nowrap;
-    overflow: auto;
+  letter-spacing: 0.6px;
+  margin-left: 13px;
+  max-width: 350px;
+  white-space: nowrap;
+  overflow: auto;
 }
 
 .explorer-title {
-    align-items: flex-start;
-    display: flex;
-    height: 53px;
-    min-width: 1071px;
+  align-items: flex-start;
+  display: flex;
+  height: 53px;
+  min-width: 1071px;
 }
 
 :root {
-    --bizarre: rgba(231, 220, 220, 1);
-    --casablanca: rgba(249, 181, 82, 1);
-    --golden-tainoi: rgba(255, 207, 92, 1);
-    --mine-shaft: rgba(48, 48, 48, 1);
+  --bizarre: rgba(231, 220, 220, 1);
+  --casablanca: rgba(249, 181, 82, 1);
+  --golden-tainoi: rgba(255, 207, 92, 1);
+  --mine-shaft: rgba(48, 48, 48, 1);
 }
 
 .valign-text-middle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Scrollbar */
 
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #fff;
+  background: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #C0C0C0;
+  background: #c0c0c0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #c0c0c0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background: #555;
 }
 
 .explorer-snackbar {
-    z-index: 99999999;
-    bottom: 0px;
-    right: 0px;
-    position: fixed;
-    margin-bottom: 50px;
-    margin-right: 45px;
+  z-index: 99999999;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  margin-bottom: 50px;
+  margin-right: 45px;
 }

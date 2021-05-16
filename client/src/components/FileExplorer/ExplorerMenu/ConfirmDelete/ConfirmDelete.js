@@ -15,8 +15,7 @@ const ConfirmDelete = (props) => {
     <div class="delete-popup">
       <div class="delete-content">Delete Content</div>
       <p class="delete-desc valign-text-middle">
-        Are you sure to remove this content ? This <br />
-        will remove the content permanently
+        Are you sure to remove this content ? This will remove the content permanently
       </p>
       <div class="delete-flex-row">
         <div class="cancel-1" onClick={close}>
