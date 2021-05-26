@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Header.css";
+import "./PlainHeader.css";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
 import { TweenMax } from "gsap";
@@ -7,38 +7,13 @@ import { useHistory } from "react-router-dom";
 import Contact from "../../pages/Contact/Contact";
 // import { Link } from 'react-router-dom'
 
-const Header = () => {
+const PlainHeader = () => {
   let history = useHistory();
   const [contactPageStatus, setContactPageStatus] = useState(false);
 
   const changeRoute = (path) => {
     history.push(path);
   };
-
-  useEffect(() => {
-    TweenMax.from(".navLogo", {
-      autoAlpha: 0,
-      duration: 1,
-      opacity: 0,
-      y: 10,
-      delay: 2,
-    });
-    TweenMax.from(".navToggle", {
-      autoAlpha: 0,
-      duration: 1,
-      opacity: 0,
-      y: 10,
-      delay: 2,
-    });
-    TweenMax.from(".navItem", {
-      autoAlpha: 0,
-      opacity: 0,
-      duration: 1,
-      delay: 2.1,
-      y: 30,
-      stagger: 0.2,
-    });
-  }, []);
 
   const revealContactPage = () => {
     console.log("reached");
@@ -112,4 +87,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default PlainHeader;

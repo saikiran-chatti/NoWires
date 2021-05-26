@@ -1,7 +1,29 @@
-.aboutSnackbar {
-    bottom: 0px;
-    right: 0px;
-    position: absolute;
-    margin-bottom: 60px;
-    margin-right: 45px;
+.social-list {
+  list-style: none;
+}
+
+.aboutDescription {
+  margin-top: 3rem;
+}
+
+.aboutImg {
+  margin-bottom: 7rem;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}
+.social-list a {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+}
+
+.social-media-icons-about {
+  width: 150px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

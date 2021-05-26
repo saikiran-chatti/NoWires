@@ -1,218 +1,219 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:500,700,400");
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .dashboard-copy {
-    letter-spacing: 0.6px;
-    margin-left: -0.32px;
-    min-height: 33px;
-    opacity: 0.9;
-    width: 169px;
+  letter-spacing: 0.6px;
+  margin-left: -0.32px;
+  min-height: 33px;
+  opacity: 0.9;
+  width: 169px;
 }
 
 .dashboard-recently-used-title {
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    height: 27px;
-    min-width: 716px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  height: 27px;
+  min-width: 716px;
 }
 
 .dashboard-screen {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    /* height: 100%; */
-    padding-top: 0.4px 0;
-    position: absolute;
-    left: 330px;
-    top: 50px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  padding-top: 0.4px 0;
+  position: absolute;
+  left: 330px;
+  top: 50px;
 }
 
 .recently-used-data {
-    align-items: flex-start;
-    display: flex;
-    height: 38px;
-    /* margin-right: 26px; */
-    margin-top: 23px;
-    margin-left: 35px;
-    padding: 8px 0px;
-    width: 854px;
+  align-items: flex-start;
+  display: flex;
+  height: 38px;
+  /* margin-right: 26px; */
+  margin-top: 23px;
+  margin-left: 35px;
+  padding: 8px 0px;
+  width: 854px;
 }
 
 .dashboard-storage-details {
-    align-items: flex-start;
-    display: flex;
-    height: 201px;
-    margin-top: 30px;
-    min-width: 399px;
+  align-items: flex-start;
+  display: flex;
+  height: 201px;
+  margin-top: 30px;
+  min-width: 399px;
 }
 
 .internal-storage {
-    letter-spacing: 0.6px;
-    margin-left: 32px;
-    margin-top: 9px;
-    min-height: 21px;
+  letter-spacing: 0.6px;
+  margin-left: 32px;
+  margin-top: 9px;
+  min-height: 21px;
 }
 
 .macos-folder-icon {
-    height: 40px;
-    width: 50px;
+  height: 40px;
+  width: 50px;
 }
 
 .dashboard-overlap-group {
-    cursor: pointer;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 8px 24px rgba(175, 189, 196, 0.25);
-    display: flex;
-    height: 167px;
-    min-width: 289px;
-    padding: 39px 36px 10px 36px;
+  cursor: pointer;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 8px 24px rgba(175, 189, 196, 0.25);
+  display: flex;
+  height: 167px;
+  min-width: 289px;
+  padding: 39px 36px 10px 36px;
 }
 
 .dashboard-overlap-group-header {
-    display: flex;
-    direction: row;
+  display: flex;
+  direction: row;
 }
 
 .poppins-bold-black-27-3px {
-    color: black;
-    font-family: "Poppins", Helvetica;
-    font-size: 27.3px;
-    font-style: normal;
-    font-weight: 700;
+  color: black;
+  font-family: "Poppins", Helvetica;
+  font-size: 27.3px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .poppins-light-black-14px {
-    color: black;
-    font-family: "Poppins", Helvetica;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
+  color: black;
+  font-family: "Poppins", Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 .poppins-regular-black-12px {
-    color: black;
-    font-family: "Poppins", Helvetica;
-    font-size: 12px;
-    font-weight: 500;
+  color: black;
+  font-family: "Poppins", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .poppins-medium-black-14px {
-    color: black;
-    font-family: "Poppins-Medium", Helvetica;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
+  color: black;
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .poppins-medium-black-18px {
-    color: black;
-    font-family: "Poppins-Medium", Helvetica;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
+  color: black;
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .poppins-regular-normal-black-14px {
-    color: black;
-    font-family: "Poppins-Regular", Helvetica;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
+  color: black;
+  font-family: "Poppins-Regular", Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .recently-used-explorer-data {
-    width: 854px;
-    height: 320px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-bottom: 20px;
+  width: 854px;
+  height: 320px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 20px;
 }
 
 .recently-used {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin-top: 39px;
-    width: 851px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 39px;
+  width: 851px;
 }
 
 .recently-used-1 {
-    min-height: 27px;
-    letter-spacing: 0.6px;
-    min-width: 300px;
-    max-width: 300px;
-    white-space: nowrap;
-    overflow: auto;
+  min-height: 27px;
+  letter-spacing: 0.6px;
+  min-width: 300px;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: auto;
+  display: flex;
+  align-items: center;
 }
 
 .recently-used-header {
-    align-items: flex-start;
-    align-self: flex-end;
-    display: flex;
-    height: 38px;
-    margin-top: 23px;
-    padding: 8px 16px;
-    width: 807px;
+  align-items: flex-start;
+  align-self: flex-end;
+  display: flex;
+  height: 38px;
+  margin-top: 23px;
+  padding: 8px 16px;
+  width: 807px;
 }
 
 .recently-used-last-m {
-    height: 21px;
-    letter-spacing: 0.6px;
-    margin-left: 277px;
-    min-height: 21px;
-    min-width: 100px;
-    text-align: center;
+  height: 21px;
+  letter-spacing: 0.6px;
+  margin-left: 277px;
+  min-height: 21px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .recently-used-name {
-    height: 21px;
-    letter-spacing: 0.6px;
-    min-height: 21px;
-    width: 66px;
+  height: 21px;
+  letter-spacing: 0.6px;
+  min-height: 21px;
+  width: 66px;
 }
 
 .recently-used-size {
-    height: 21px;
-    letter-spacing: 0.6px;
-    margin-left: 267px;
-    min-height: 21px;
-    min-width: 30px;
-    text-align: center;
+  height: 21px;
+  letter-spacing: 0.6px;
+  margin-left: 267px;
+  min-height: 21px;
+  min-width: 30px;
+  text-align: center;
 }
 
 .view-all {
-    cursor: pointer;
-    letter-spacing: 0.6px;
-    margin-top: 1px;
-    min-height: 20px;
-    width: 91px;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  margin-top: 1px;
+  min-height: 20px;
+  width: 91px;
 }
 
 .valign-text-middle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .downloadsPath {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 35px; 
-    justify-content: space-between;
-    min-width: 450px;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 35px;
+  justify-content: space-between;
+  min-width: 450px;
 }
 
 .noFilesImageDashboard {
-    text-align: center;
-    width: 854px;
-    height: 280px;
+  text-align: center;
+  width: 854px;
+  height: 280px;
 }
 
 /* .storage-progress-count {
@@ -223,43 +224,50 @@
 } */
 
 progress {
-    width: 40%;
-    display: block;
-    /* default: inline-block */
-    margin-top: 27px;
-    background: #EFF2F3;
-    border-radius: 14px;
+  width: 40%;
+  display: block;
+  /* default: inline-block */
+  margin-top: 27px;
+  background: #eff2f3;
+  border-radius: 14px;
 }
 
 progress::-moz-progress-bar {
-    border-radius: 12px;
-    background: black;
+  border-radius: 12px;
+  background: black;
 }
 
 /* webkit */
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    progress {
-        height: 10px;
-        width: 100%;
-        /* width: 200px; */
-    }
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  progress {
+    height: 10px;
+    width: 100%;
+    /* width: 200px; */
+  }
 }
 
 progress::-webkit-progress-bar {
-    background: transparent;
+  background: transparent;
 }
 
 progress::-webkit-progress-value {
-    border-radius: 12px;
-    background: #171717;
+  border-radius: 12px;
+  background: #171717;
 }
 
 .storage-progress-count {
-    margin-top: 5px;
-    /* width: 200px; */
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  margin-top: 5px;
+  /* width: 200px; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dashboard-file-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

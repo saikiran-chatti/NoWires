@@ -22,11 +22,9 @@ const Contact = (props) => {
                 <span class="AboutClosebot"></span>
             </div>
 
-            <p id="contact_us">Contact us</p>
+            <p id="contact_us">Contact Me</p>
             <h1 id="email">Jayanth Saikiran</h1>
-
-            <p id="Social Media" />
-            <div class="social-media-icons">
+            <div class="social-media-icons-contact">
                 <FaTwitter color="#fff" cursor="pointer" onClick={() => window.open("https://twitter.com/jayanthsaikiran", "_blank")} />
                 <ImInstagram color="fff" cursor="pointer" onClick={() => window.open("https://instagram.com/jayanthsaikiran", "_blank")} />
                 <AiFillLinkedin color="fff" cursor="pointer" onClick={() => window.open("https://www.linkedin.com/in/jayanthsaikiran/", "_blank")} />

@@ -249,7 +249,7 @@ const FilesMenu2 = () => {
           .catch((err) => {
             alert("error occured while uploading " + err);
             setConnectionLiveStatus(false);
-            setSearchTerm("");
+
             setErrorSVG(
               <div className="noFilesImageDashboard">
                 <NoConnection svgHeight={290} svgWidth={336} />
@@ -305,7 +305,6 @@ const FilesMenu2 = () => {
             </div>
           );
           console.log("error while deleting file");
-          setSearchTerm("");
         });
     } else {
       setTransferModalState(true);
@@ -335,7 +334,6 @@ const FilesMenu2 = () => {
               <NoConnection svgHeight={500} svgWidth={336} />
             </div>
           );
-          setSearchTerm("");
         });
     }
   };
@@ -387,7 +385,6 @@ const FilesMenu2 = () => {
               setTimeout(() => {
                 setSnackbarStatus(false);
               }, 2000);
-              setSearchTerm("");
               // alert(res.data + ' Implement a download progress bar');
             })
             .catch(() => {
@@ -398,7 +395,6 @@ const FilesMenu2 = () => {
                   <NoConnection svgHeight={290} svgWidth={336} />
                 </div>
               );
-              setSearchTerm("");
             });
         } else {
           // downloading a file
@@ -421,7 +417,6 @@ const FilesMenu2 = () => {
               setTimeout(() => {
                 setSnackbarStatus(false);
               }, 2000);
-              setSearchTerm("");
               // alert(res.data + ' Implement a download progress bar');
             })
             .catch((e) => {
@@ -431,7 +426,6 @@ const FilesMenu2 = () => {
                   <NoConnection svgHeight={290} svgWidth={336} />
                 </div>
               );
-              setSearchTerm("");
             });
         }
         break;
@@ -506,11 +500,9 @@ const FilesMenu2 = () => {
         .then((res) => {
           setLoading(false);
           setFileList(res.data);
-          setSearchTerm("");
         })
         .catch((e) => {
           setLoading(false);
-          setSearchTerm("");
           console.log("error while going back " + e);
         });
       setCurrentDirectoryPath(
@@ -576,11 +568,33 @@ const FilesMenu2 = () => {
       <div className="recently-used">
         <div className="dashboard-recently-used-title">
           <div className="downloadsPath">
-            <div className="recently-used-1 poppins-medium-black-18px">
+            {currentDirectoryPath === "/Download" && (
+              <div className="recently-used-1 poppins-medium-black-18px">
+                Downloads
+              </div>
+            )}
+
+            {currentDirectoryPath !== "/Download" && (
+              <div className="dashboard-file-icon">
+                <div className="overlap-group-1">
+                  <div className="rectangle-9"></div>
+                  <div className="rectangle-10"></div>
+                  <div className="rectangle-5-copy"></div>
+                </div>
+                <div className="recently-used-1 poppins-medium-black-14px">
+                  <span style={{ marginLeft: "13px" }}>
+                    {currentDirectoryPath.slice(1).replaceAll("/", ">")}
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* <div className="recently-used-1 poppins-medium-black-18px">
               {currentDirectoryPath === "/Download"
                 ? "Downloads "
                 : currentDirectoryPath.slice(1).replaceAll("/", " > ")}
-            </div>
+            </div> */}
+
             {currentDirectoryPath !== "/Download" ? (
               <span className="goBack">
                 <img

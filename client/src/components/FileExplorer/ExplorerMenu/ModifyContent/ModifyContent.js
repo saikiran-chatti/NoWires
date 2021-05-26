@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./ModifyContent.css";
 
 const ModifyContent = (props) => {
   const [value, setValue] = useState("");
+
 
   const handleChange = (e) => {
     setValue(e.target.value);

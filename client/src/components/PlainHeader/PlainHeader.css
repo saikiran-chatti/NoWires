@@ -1,0 +1,149 @@
+/*===== LAYOUT =====*/
+
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: 2rem;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--first-color);
+}
+
+/*===== NAV =====*/
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    padding: 3.5rem 1.5rem 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: 0.5s;
+  }
+}
+
+.navClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navItem {
+  margin-bottom: 2rem;
+}
+
+.navLink {
+  cursor: pointer;
+}
+
+.navClose,
+.navLink,
+.navLogo,
+.navToggle {
+  color: var(--black-color);
+}
+
+.navLink:hover {
+  color: var(--first-color-dark);
+}
+
+.navToggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navLogo,
+.navToggle,
+.navItem {
+  visibility: visible;
+}
+
+/*=== Show menu ===*/
+
+.show {
+  right: 0;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .navToggle,
+  .navClose {
+    display: none;
+  }
+  .navList {
+    display: flex;
+  }
+  .navItem {
+    margin-left: 3rem;
+    margin-bottom: 0;
+  }
+  .homeContainer {
+    height: 100vh;
+    grid-template-columns: repeat(2, max-content);
+    grid-template-rows: 1fr;
+    row-gap: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .homeImg {
+        order: 1;
+        width: 375px;
+        height: 289px;
+    }
+    .homeImg img {
+        width: 375px;
+        height: 580px;
+    } */
+}
+
+@media screen and (min-width: 1024px) {
+  .bd-grid-header {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .homeContainer {
+    justify-content: initial;
+    column-gap: 4.5rem;
+  }
+  /* .homeImg {
+        width: 604px;
+        height: 466px;
+    } */
+  /* .homeImg img {
+        width: 604px;
+    } */
+}
