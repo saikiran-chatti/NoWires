@@ -14,7 +14,9 @@ const Home = () => {
   const history = useHistory();
   const [qrcodeImg, setqrcodeImg] = useState(null);
   const [qrCodeData, setQrCodeData] = useState(null);
-  const [loopState, setLoopState] = useState(true);
+  const [count, setCount] = useState(0);
+
+  // const [loopState, setLoopState] = useState(true);
 
   useEffect(() => {
     // TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
@@ -56,14 +58,8 @@ const Home = () => {
 
   useEffect(() => {
     let interval = null;
-    console.log("triggering");
 
-    let interval2 = setInterval(() => {
-      setLoopState(false);
-    }, 10000);
-
-    if (loopState) {
-      // let check = false;
+    if (count < 6) {
       interval = setInterval(() => {
         axios
           .post("/deleteDoc", { uniq_id: qrCodeData })
@@ -83,23 +79,18 @@ const Home = () => {
               console.log(userData);
               dispatch({ type: actionTypes.STORE_USER_DATA, value: userData });
               history.push("/explorer");
-              setLoopState(false);
             }
           })
           .catch((e) => {
             console.log("Error while deleting doc " + e);
           });
+        setCount(count + 1);
       }, 2000);
-
-      // if (check) {
-      //     setLoopState(false)
-      // }
     } else {
-      clearInterval(interval);
+      setqrcodeImg("/images/image2.svg");
     }
-
-    return () => clearInterval(interval2, interval);
-  });
+    return () => clearInterval(interval);
+  }, [count]);
 
   // create QRCode
   const QRCodeComponent = () => {
@@ -123,7 +114,12 @@ const Home = () => {
           <div className="homeImg">
             <img className="mockup" alt="mockup" src="/images/mockup2@1x.svg" />
             <div className="qrcodeDiv">
-              <img alt="qrcode" className="qrcode" src={qrcodeImg} />
+              <img
+                alt="qrcode"
+                className="qrcode"
+                onClick={QRCodeComponent}
+                src={qrcodeImg}
+              />
             </div>
           </div>
           <div className="homeData">
