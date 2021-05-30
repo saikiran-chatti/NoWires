@@ -59,7 +59,7 @@ const Home = () => {
   useEffect(() => {
     let interval = null;
 
-    if (count < 6) {
+    if (count < 10) {
       interval = setInterval(() => {
         axios
           .post("/deleteDoc", { uniq_id: qrCodeData })
@@ -87,13 +87,14 @@ const Home = () => {
         setCount(count + 1);
       }, 2000);
     } else {
-      setqrcodeImg("/images/image2.svg");
+      setqrcodeImg("/images/reload.png");
     }
     return () => clearInterval(interval);
   }, [count]);
 
   // create QRCode
   const QRCodeComponent = () => {
+    setCount(0);
     axios
       .get("/generateQRImage")
       .then((res) => {
