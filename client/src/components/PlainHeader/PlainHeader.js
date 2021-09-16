@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./PlainHeader.css";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { IoCloseOutline } from "react-icons/io5";
-import { TweenMax } from "gsap";
 import { useHistory } from "react-router-dom";
 import Contact from "../../pages/Contact/Contact";
 // import { Link } from 'react-router-dom'

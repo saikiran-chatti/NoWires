@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { GoVerified } from "react-icons/go";
 import { VscClose } from "react-icons/vsc";
 import "./Snackbar.css";
 
-const homeDir = require("os").homedir();
-const desktopDir = `${homeDir}/Desktop`;
+// const homeDir = require("os").homedir();
 
 const Snackbar = (props) => {
   const handleClose = () => {
     props.handleSnackbarClose();
   };
 
-  const openExplorerLink = () => {};
 
   return (
     <div>

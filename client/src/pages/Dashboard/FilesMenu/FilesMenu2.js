@@ -8,7 +8,6 @@ import axios from "axios";
 import Snackbar from "../../../components/Snackbar/Snackbar";
 import Modal from "../../../components/Modal/Modal";
 import DownloadPopup from "../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup";
-import CreateFolder from "../../../components/FileExplorer/ExplorerMenu/CreateFolder/CreateFolder";
 import { useHistory } from "react-router-dom";
 import SearchBar from "../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar";
 import NoConnection from "../../../Errors/NoConnection/NoConnection";
@@ -103,7 +102,6 @@ const FilesMenu2 = () => {
       setErrorSVG(
         <div className="noFilesImageDashboard">
           <NoFiles />
-          <p>No Files</p>
         </div>
       );
     }
@@ -346,7 +344,6 @@ const FilesMenu2 = () => {
     switch (e.value) {
       case "rename":
         // logic to remove the row
-        console.log(fileName + " " + "rename"); // contain to item.id passed by `show`
         setRenameModalState(true);
         break;
 
@@ -548,6 +545,7 @@ const FilesMenu2 = () => {
         >
           <div className="dashboard-overlap-group-header">
             <img
+              alt="macos-folder-icon"
               className="macos-folder-icon"
               src="/images/macos-folder-icon.png"
             />
@@ -698,23 +696,23 @@ const FilesMenu2 = () => {
           <div className="recently-used-explorer-data" ref={ref}>
             {searchResults.length > 0 && connectionLiveStatus
               ? searchResults.map((item, index) => {
-                  return (
-                    <FileComponent
-                      key={index}
-                      id={item.name + item.type}
-                      onContextMenu={(e) =>
-                        displayMenu(e, item.name, item.type, item.size)
-                      }
-                      onClick={() =>
-                        changePath(item.name, item.type, item.size)
-                      }
-                      name={item.name}
-                      type={item.type}
-                      size={item.size}
-                      lastMod={item.modifiedAt}
-                    />
-                  );
-                })
+                return (
+                  <FileComponent
+                    key={index}
+                    id={item.name + item.type}
+                    onContextMenu={(e) =>
+                      displayMenu(e, item.name, item.type, item.size)
+                    }
+                    onClick={() =>
+                      changePath(item.name, item.type, item.size)
+                    }
+                    name={item.name}
+                    type={item.type}
+                    size={item.size}
+                    lastMod={item.modifiedAt}
+                  />
+                );
+              })
               : errorSVG}
 
             {/* <Menu id={MENU_ID}>

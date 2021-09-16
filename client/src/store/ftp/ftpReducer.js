@@ -8,8 +8,8 @@ const initialState = {
         password: null,
         secure: null,
         totalSize: null,
-        usedSpace: null,
-        totalSize: null
+        usedSpace: null
+        // totalSize: null
     }
 }
 
@@ -26,7 +26,7 @@ const ftpReducer = (state = initialState, action) => {
                 secure: action.value.secure,
                 totalSize: action.value.totalSize,
                 usedSpace: action.value.usedSpace,
-                totalSize: action.value.totalSize
+                // totalSize: action.value.totalSize
             }
         }
 

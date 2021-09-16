@@ -8,6 +8,8 @@ const NoFiles = (props) => {
                 height={props.height}
                 width={props.width}
             />
+            <p>No Files</p>
+
         </div>
     )
 }

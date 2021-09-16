@@ -4,7 +4,7 @@ import Modal from "../../../components/Modal/Modal";
 import axios from "axios";
 import "./ExplorerMenu.css";
 import DragAndDrop from "../../../components/DragAndDrop/DragAndDrop";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import DownloadPopup from "../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup";
 import FileSkeleton from "../../../components/skeleton/FileSkeleton2";
 
@@ -54,8 +54,8 @@ const ExplorerMenu = () => {
   });
 
   // File transfer
-  const [transferPercent, setTransferPercent] = useState(0);
-  const [files, setFiles] = useState(() => []);
+  // const [transferPercent, setTransferPercent] = useState(0);
+  // const [files, setFiles] = useState(() => []);
   // const [downloadFile, downloaderComponentUI] = useFileDownloader();
   const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
   const [snackbarStatus, setSnackbarStatus] = useState(false);
@@ -126,7 +126,6 @@ const ExplorerMenu = () => {
       setErrorSVG(
         <div className="noFilesImage">
           <NoFiles />
-          <p>No Files</p>
         </div>
       );
     }

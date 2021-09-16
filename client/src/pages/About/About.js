@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css";
-import Header from "../../components/Header/Header";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaTwitter } from "react-icons/fa";
 import { ImInstagram } from "react-icons/im";

@@ -11,8 +11,8 @@ const Phone = () => {
             <div className="phone-frame-1">
                 <h1 className="phone-text-1 poppins-semi-bold-black-36px">Transfer files with NoWires app and website.</h1>
                 <div className="phone-text-2 poppins-regular-normal-black-18px">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s
-                    standard dummy text ever since the 1500s.
+                    Seamlessly transfer files between laptop to phone viceversa just by downloading No Wires app. No Wires provides great
+                     UI for accessing phone files directly from your laptop.
                 </div>
                 <div className="phone-flex-row">
                     <div className="phone-start"><div className="phone-label phone-valign-text-middle poppins-semi-bold-white-18px">PlayStore</div></div>
