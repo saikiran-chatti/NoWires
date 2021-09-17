@@ -9,6 +9,9 @@ import "./Home.css";
 import Phone from "../../components/PhoneSection/Phone";
 import Footer from "../../components/Footer/Footer";
 
+import { fetch, Body } from "@tauri-apps/api/http";
+
+
 const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -61,29 +64,55 @@ const Home = () => {
 
     if (count < 10) {
       interval = setInterval(() => {
-        axios
-          .post("/deleteDoc", { uniq_id: qrCodeData })
-          .then((res) => {
-            if (res.data.secure === false) {
-              // check = true;
-              let userData = {
-                host: res.data.host,
-                port: res.data.port,
-                username: res.data.username,
-                password: res.data.password,
-                secure: res.data.secure,
-                megAvailable: res.data.megAvailable,
-                usedSpace: res.data.usedSpace,
-                totalSize: res.data.totalSize,
-              };
-              console.log(userData);
-              dispatch({ type: actionTypes.STORE_USER_DATA, value: userData });
-              history.push("/explorer");
-            }
-          })
+        // axios
+        //   .post("/deleteDoc", { uniq_id: qrCodeData })
+        //   .then((res) => {
+        //     if (res.data.secure === false) {
+        //       // check = true;
+        //       let userData = {
+        //         host: res.data.host,
+        //         port: res.data.port,
+        //         username: res.data.username,
+        //         password: res.data.password,
+        //         secure: res.data.secure,
+        //         megAvailable: res.data.megAvailable,
+        //         usedSpace: res.data.usedSpace,
+        //         totalSize: res.data.totalSize,
+        //       };
+        //       console.log(userData);
+        //       dispatch({ type: actionTypes.STORE_USER_DATA, value: userData });
+        //       history.push("/explorer");
+        //     }
+        //   })
+        //   .catch((e) => {
+        //     console.log("Error while deleting doc " + e);
+        //   });
+
+        fetch('http://localhost:8000/deleteDoc', {
+          method: 'POST',
+          body: Body.json({ uniq_id: qrCodeData })
+        }).then((res) => {
+          if (res.data.secure === false) {
+            // check = true;
+            let userData = {
+              host: res.data.host,
+              port: res.data.port,
+              username: res.data.username,
+              password: res.data.password,
+              secure: res.data.secure,
+              megAvailable: res.data.megAvailable,
+              usedSpace: res.data.usedSpace,
+              totalSize: res.data.totalSize,
+            };
+            console.log(userData);
+            dispatch({ type: actionTypes.STORE_USER_DATA, value: userData });
+            history.push("/explorer");
+          }
+        })
           .catch((e) => {
             console.log("Error while deleting doc " + e);
           });
+
         setCount(count + 1);
       }, 2000);
     } else {
@@ -95,16 +124,27 @@ const Home = () => {
   // create QRCode
   const QRCodeComponent = () => {
     setCount(0);
-    axios
-      .get("/generateQRImage")
-      .then((res) => {
-        console.log(res.data.data);
-        setQrCodeData(res.data.data);
-        setqrcodeImg(res.data.url);
-      })
+    // axios
+    //   .get("http://localhost:8000/generateQRImage")
+    //   .then((res) => {
+    //     console.log(res.data.data);
+    //     setQrCodeData(res.data.data);
+    //     setqrcodeImg(res.data.url);
+    //   })
+    //   .catch(() => {
+    //     console.log("error while fetching image");
+    //   });
+    fetch('http://localhost:8000/generateQRImage', {
+      method: 'GET'
+    }).then((res) => {
+      console.log(res.data.data);
+      setQrCodeData(res.data.data);
+      setqrcodeImg(res.data.url);
+    })
       .catch(() => {
         console.log("error while fetching image");
       });
+
   };
 
   return (

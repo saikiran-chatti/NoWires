@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Downloader.css";
 import Axios from "axios";
 
+import { fetch, Body, ResponseType } from "@tauri-apps/api/http";
+
 const Downloader = ({ files = [], remove }) => {
   return (
     <div className="downloader">
@@ -71,34 +73,54 @@ const DownloadItem = ({ name, file, filename, removeFile, currentDirectoryPath, 
     //   }, 4000);
     // });
 
-    Axios.post('/downloadFile', { path: currentDirectoryPath, name: name, connectionDetails: connectionDetails ,...options})
-      .then(response => {
-        console.log(response);
+    fetch('http://localhost:8000/downloadFile', {
+      method: 'POST',
+      responseType: ResponseType.Text,
+      body: Body.json({ path: currentDirectoryPath, name: name, connectionDetails: connectionDetails, ...options })
+    }).then(response => {
+      console.log(response);
 
-        // const url = window.URL.createObjectURL(
-        //   new Blob([response.data], {
-        //     type: response.headers["content-type"],
-        //   })
-        // );
+      setDownloadInfo((info) => ({
+        ...info,
+        completed: true,
+      }));
 
-        // const link = document.createElement("a");
-        // link.href = url;
-        // link.setAttribute("download", filename);
-        // document.body.appendChild(link);
-        // link.click();
-
-        setDownloadInfo((info) => ({
-          ...info,
-          completed: true,
-        }));
-
-        setTimeout(() => {
-          removeFile();
-        }, 4000);
-      })
+      setTimeout(() => {
+        removeFile();
+      }, 4000);
+    })
       .catch((e) => {
         console.log('error while going back ' + e);
       });
+
+    // Axios.post('/downloadFile', { path: currentDirectoryPath, name: name, connectionDetails: connectionDetails, ...options })
+    //   .then(response => {
+    //     console.log(response);
+
+    //     // const url = window.URL.createObjectURL(
+    //     //   new Blob([response.data], {
+    //     //     type: response.headers["content-type"],
+    //     //   })
+    //     // );
+
+    //     // const link = document.createElement("a");
+    //     // link.href = url;
+    //     // link.setAttribute("download", filename);
+    //     // document.body.appendChild(link);
+    //     // link.click();
+
+    //     setDownloadInfo((info) => ({
+    //       ...info,
+    //       completed: true,
+    //     }));
+
+    //     setTimeout(() => {
+    //       removeFile();
+    //     }, 4000);
+    //   })
+    //   .catch((e) => {
+    //     console.log('error while going back ' + e);
+    //   });
 
   }, []);
 
