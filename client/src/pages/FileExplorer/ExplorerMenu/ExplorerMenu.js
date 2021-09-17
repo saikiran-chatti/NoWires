@@ -188,6 +188,7 @@ const ExplorerMenu = () => {
 
   //CreateFolder
   const createFolder = (folderName) => {
+    setSearchTerm("");
     setTransferItemDetails({
       fileSize: transferItemDetails.fileSize,
       fileType: transferItemDetails.fileType,

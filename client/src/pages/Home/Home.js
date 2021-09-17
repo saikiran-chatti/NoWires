@@ -142,6 +142,7 @@ const Home = () => {
       setqrcodeImg(res.data.url);
     })
       .catch(() => {
+        setqrcodeImg("/images/reload.png");
         console.log("error while fetching image");
       });
 

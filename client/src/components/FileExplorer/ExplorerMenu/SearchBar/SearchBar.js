@@ -5,13 +5,12 @@ const SearchBar = ({ input: keyword, onChange: setKeyword }) => {
 
     return (
 
-
         <div className="searchBar">
             <input id="searchBar-search-box"
                 type="text"
                 class="searchBar-search-box"
                 name="q"
-                onChange={(e) => setKeyword(e.target.value)}
+                onChange={(e) => setKeyword(e.target.value.toLowerCase())}
                 value={keyword}
                 placeholder={"search"}
                 autocomplete="off" />
