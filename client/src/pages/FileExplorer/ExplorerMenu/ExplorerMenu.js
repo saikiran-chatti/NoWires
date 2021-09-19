@@ -481,6 +481,7 @@ const ExplorerMenu = () => {
 
   const handleDrop = (files) => {
     // Implement upload function
+    console.log('handling drop')
     setTransferModalState(true);
 
     for (let i = 0; i < files.length; i++) {

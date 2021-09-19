@@ -13,7 +13,7 @@ const FileComponent = (props) => {
     });
 
     useEffect(() => {
-        console.log(props.name + props.type);
+        // console.log(props.name + props.type);
         setFileProp(prevState => {
             return { ...prevState, type: props.type }
         })

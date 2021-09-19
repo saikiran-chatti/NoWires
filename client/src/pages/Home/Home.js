@@ -10,6 +10,7 @@ import Phone from "../../components/PhoneSection/Phone";
 import Footer from "../../components/Footer/Footer";
 
 import { fetch, Body } from "@tauri-apps/api/http";
+import { appWindow, WebviewWindow, LogicalSize, LogicalPosition, UserAttentionType, getCurrent } from "@tauri-apps/api/window";
 
 
 const Home = () => {
@@ -19,9 +20,19 @@ const Home = () => {
   const [qrCodeData, setQrCodeData] = useState(null);
   const [count, setCount] = useState(0);
 
+  let selectedWindow = getCurrent().label;
+  const windowMap = {
+    [selectedWindow]: appWindow
+  }
   // const [loopState, setLoopState] = useState(true);
 
   useEffect(() => {
+    try{
+      windowMap[selectedWindow].maximize();
+    }
+    catch(e){
+      console.log(e)
+    }
     // TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
     // TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
     // TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
