@@ -326,17 +326,18 @@ class FTPClient {
     async uploadFile(fileName, localPath, remotePath) {
         let self = this;
         self.client.ftp.verbose = true;
-        console.log('Local path: ' + localPath);
-        console.log('Remote Path: ' + remotePath);
+
         try {
             await self.client.access({
                 host: self.settings.host,
                 port: self.settings.port,
                 user: self.settings.user,
                 password: self.settings.password,
-                // secure: self.settings.secure
+                secure: self.settings.secure
             });
-            await self.client.uploadFrom(localPath, remotePath + fileName);
+
+            await self.client.ensureDir(remotePath);
+            await self.client.uploadFrom(localPath, remotePath + '/' + fileName);
             await self.client.cd(remotePath);
 
             let result = await self.client.list()

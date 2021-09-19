@@ -79,6 +79,10 @@ router.post('/uploadFile', (req, res) => {
     const localPath = req.body.localPath;
     const remotePath = req.body.remotePath;
 
+    console.log("fileName: " + fileName);
+    console.log("localPath: " + localPath);
+    console.log("remotePath: " + remotePath);
+    
     client.uploadFile(fileName, localPath, remotePath).then(result => {
         res.send(result);
     }).catch(err => {
