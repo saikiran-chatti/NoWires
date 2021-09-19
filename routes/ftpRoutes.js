@@ -74,12 +74,13 @@ router.post('/uploadFile', (req, res) => {
     const username = req.body.connectionDetails.username;
     const password = req.body.connectionDetails.password;
 
-    const client = new ftp(host, 2121, username, password, false)
-    const file = req.body.file;
-    const path = req.body.path;
+    const client = new ftp(host, 2121, username, password, false);
+    const fileName = req.body.fileName;
+    const localPath = req.body.localPath;
+    const remotePath = req.body.remotePath;
 
-    client.uploadFile(file, path).then(result => {
-        res.send(result)
+    client.uploadFile(fileName, localPath, remotePath).then(result => {
+        res.send(result);
     }).catch(err => {
         res.status(400).send(err)
     });

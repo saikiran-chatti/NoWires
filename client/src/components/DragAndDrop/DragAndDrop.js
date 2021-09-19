@@ -1,53 +1,58 @@
 import { React, Component, createRef } from 'react';
 import { event } from '@tauri-apps/api'
 import { extractUnlistener } from '../../helpers/DragAndDrop/Unlistener'
+
 class DragAndDrop extends Component {
     state = {
-        dragging: false,
+        dragging: false
     }
 
-    dropHoverlisten = null;
-    dropListen = null;
-    unlisten = null;
+    unlisten1 = null;
+    unlisten2 = null;
+    unlisten3 = null;
     dragCounter = 0;
+
     dropRef = createRef();
 
-    componentDidMount() {
-        let div = this.dropRef.current
-        console.log('calling functions')
-        this.dropHoverlisten = event.listen('tauri://file-drop-hover', (e) => {
-            this.dragCounter++;
-            console.log(e.dataTransfer.items);
-            if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-                this.setState({ dragging: true })
-            }
-        })
-        // div.addEventListener('dragenter', this.handleDragIn)
+    getValidPaths(paths) {
+        let validPaths = [];
+        for (const path of paths) {
+            validPaths.push(path);
+        }
+        return validPaths;
+    }
 
-        this.dropListen = event.listen('tauri://file-drop', (e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            this.setState({ dragging: false })
-            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                this.props.handleDrop(e.dataTransfer.files)
-                e.dataTransfer.clearData()
-                this.dragCounter = 0
+    componentDidMount() {
+
+        this.unlisten1 = event.listen('tauri://file-drop-hover', (e) => {
+            this.dragCounter++;
+            const validPaths = this.getValidPaths(e.payload);
+            if (validPaths.length > 0) {
+                this.setState({ dragging: true })
             }
         });
 
-        this.unlisten = event.listen('tauri://file-drop-cancelled', (e) => {
-            this.setState({ dragging: false })
-        })
+        this.unlisten2 = event.listen('tauri://file-drop-cancelled', (e) => {
+            this.dragCounter--;
+            if (this.dragCounter === 0) {
+                this.setState({ dragging: false });
+            }
+        });
 
-        // div.addEventListener('dragleave', this.handleDragOut)
+        this.unlisten3 = event.listen('tauri://file-drop', (e) => {
+            const validPaths = this.getValidPaths(e.payload);
+            if (validPaths.length > 0) {
+                this.setState({ dragging: false });
+                this.props.handleDrop(e.payload);
+                this.dragCounter = 0;
+            }
+        });
 
-        // div.addEventListener('dragover', this.handleDrag)
-        // div.addEventListener('drop', this.handleDrop)
     }
     componentWillUnmount() {
-        extractUnlistener(this.dropHoverlisten)
-        extractUnlistener(this.dropListen)
-        extractUnlistener(this.unlisten)
+        extractUnlistener(this.unlisten1);
+        extractUnlistener(this.unlisten2);
+        extractUnlistener(this.unlisten3);
     }
     render() {
         return (

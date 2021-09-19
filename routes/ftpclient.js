@@ -263,7 +263,7 @@ class FTPClient {
         catch (err) {
             console.log(err)
             self.client.close();
-            throw new Error("Error: " + err)
+            throw new Error("Error: " + err);
         }
     }
 
@@ -323,10 +323,11 @@ class FTPClient {
         }
     }
 
-    async uploadFile(data, path) {
-        let self = this
-        self.client.ftp.verbose = true
-        console.log('path: ' + path);
+    async uploadFile(fileName, localPath, remotePath) {
+        let self = this;
+        self.client.ftp.verbose = true;
+        console.log('Local path: ' + localPath);
+        console.log('Remote Path: ' + remotePath);
         try {
             await self.client.access({
                 host: self.settings.host,
@@ -334,10 +335,9 @@ class FTPClient {
                 user: self.settings.user,
                 password: self.settings.password,
                 // secure: self.settings.secure
-            })
-            path = path + '/convocation.pdf'
-            await self.client.uploadFrom('D:/convocation.pdf', path);
-            await self.client.cd(path)
+            });
+            await self.client.uploadFrom(localPath, remotePath + fileName);
+            await self.client.cd(remotePath);
 
             let result = await self.client.list()
             self.client.close();
@@ -346,7 +346,7 @@ class FTPClient {
         } catch (err) {
             self.client.close();
             console.log(err);
-            throw new Error("Error: " + err)
+            throw new Error("Error: " + err);
         }
     }
 

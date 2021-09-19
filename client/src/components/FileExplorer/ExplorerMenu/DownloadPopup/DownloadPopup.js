@@ -33,8 +33,8 @@ const DownloadPopup = (props) => {
                     </div>
                 </div>
             </div>
-            <div class="Progressui Progressblack Progressactive progress" data-percent="90">
-                <div class="Progressbar" style={{ width: "100%" }}></div>
+            <div className="Progressui Progressblack Progressactive progress" data-percent="90">
+                <div className="Progressbar" style={{ width: "100%" }}></div>
             </div>
         </div>
     )

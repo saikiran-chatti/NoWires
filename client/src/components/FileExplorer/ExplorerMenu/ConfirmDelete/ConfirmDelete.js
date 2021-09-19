@@ -12,17 +12,17 @@ const ConfirmDelete = (props) => {
   };
 
   return (
-    <div class="delete-popup">
-      <div class="delete-content">Delete Content</div>
-      <p class="delete-desc valign-text-middle">
+    <div className="delete-popup">
+      <div className="delete-content">Delete Content</div>
+      <p className="delete-desc valign-text-middle">
         Are you sure to remove this content ? This will remove the content permanently
       </p>
-      <div class="delete-flex-row">
-        <div class="cancel-1" onClick={close}>
-          <div class="cancel-2 valign-text-middle">Cancel</div>
+      <div className="delete-flex-row">
+        <div className="cancel-1" onClick={close}>
+          <div className="cancel-2 valign-text-middle">Cancel</div>
         </div>
-        <div class="cancel" onClick={confirmDel}>
-          <div class="delete valign-text-middle">Delete</div>
+        <div className="cancel" onClick={confirmDel}>
+          <div className="delete valign-text-middle">Delete</div>
         </div>
       </div>
     </div>

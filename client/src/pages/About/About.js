@@ -34,7 +34,7 @@ const About = () => {
             only five centuries
           </p>
 
-          <div class="social-media-icons-about">
+          <div className="social-media-icons-about">
             <FaTwitter
               color="#000"
               cursor="pointer"
@@ -61,35 +61,35 @@ const About = () => {
             />
           </div>
 
-          {/* <ul class="social-list">
+          {/* <ul className="social-list">
             <li>
-              <a class="icon icon-mail" href="mailto:jonny@toyfight.co"></a>
+              <a className="icon icon-mail" href="mailto:jonny@toyfight.co"></a>
             </li>
             <li>
               <a
                 target="_blank"
-                class="icon icon-twitter"
+                className="icon icon-twitter"
                 href="https://twitter.com/johnnyLander"
               ></a>
             </li>
             <li>
               <a
                 target="_blank"
-                class="icon icon-behance"
+                className="icon icon-behance"
                 href="https://www.behance.net/mrjonlander"
               ></a>
             </li>
             <li>
               <a
                 target="_blank"
-                class="icon icon-dribbble"
+                className="icon icon-dribbble"
                 href="https://dribbble.com/jonnyLander"
               ></a>
             </li>
             <li>
               <a
                 target="_blank"
-                class="icon icon-linkedin"
+                className="icon icon-linkedin"
                 href="https://www.linkedin.com/in/jonlander"
               ></a>
             </li>

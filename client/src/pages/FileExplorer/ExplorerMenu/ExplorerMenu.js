@@ -1,7 +1,6 @@
 import { React, useEffect, useState, useRef } from "react";
 import FileComponent from "../../../components/FileExplorer/FileComponent/FileComponent";
 import Modal from "../../../components/Modal/Modal";
-import axios from "axios";
 import "./ExplorerMenu.css";
 import DragAndDrop from "../../../components/DragAndDrop/DragAndDrop";
 import { useSelector } from "react-redux";
@@ -158,7 +157,7 @@ const ExplorerMenu = () => {
       //     );
       //   });
     }
-  }, [currentDirectoryPath]);
+  }, [currentDirectoryPath, connectionDetails]);
 
   useEffect(() => {
     let results = [];
@@ -370,8 +369,10 @@ const ExplorerMenu = () => {
         // alert(res.data + ' Implement a download progress bar');
       })
         .catch((e) => {
+
           setConnectionLiveStatus(false);
           console.log("error while going back " + e);
+          setTransferModalState(false);
           setErrorSVG(
             <div className="noFilesImage">
               <NoConnection svgHeight={500} svgWidth={336} />
@@ -479,80 +480,71 @@ const ExplorerMenu = () => {
     });
   };
 
+
+  const isFile = (path) => {
+    return path.includes('.');
+  }
+
+  const getFileName = (fileName) => new URL(fileName).pathname.split("/").pop();
+
+
   const handleDrop = (files) => {
     // Implement upload function
-    console.log('handling drop')
+    console.log(files);
     setTransferModalState(true);
 
     for (let i = 0; i < files.length; i++) {
       let fileType = "Folder";
-      let fileSize = files[i].size;
+      let fileSize = "123";
+      let fileName = getFileName(files[i]);
+      console.log(isFile(files[i]));
 
-      if (files[i].isFile) {
+      if (isFile(files[i])) {
+        console.log('file');
         fileType = 1;
-        fileSize = files[i].size;
-        console.log("file size: " + files[i].size);
+        fileSize = fileSize;
       }
 
       setTransferItemDetails({
-        fileName: files[i].name,
+        fileName: fileName,
         fileType: fileType,
         fileSize: fileSize,
         transferType: "Upload",
       });
 
-      getCodedBuffer(files[i]).then((result) => {
-        fetch('http://localhost:8000/handleDrop', {
-          method: 'POST',
-          body: Body.json({
-            value: result,
-            fileName: files[i].name,
-            path: currentDirectoryPath,
-            connectionDetails: connectionDetails,
-          })
-        }).then((res) => {
-          setTransferModalState(false);
-          setFileList(res.data);
-          setSnackbarStatus(true);
-          setTimeout(() => {
-            setSnackbarStatus(false);
-          }, 2000);
-        })
-          .catch((err) => {
-            alert("error occured while uploading " + err);
-            setConnectionLiveStatus(false);
-            setErrorSVG(
-              <div className="noFilesImage">
-                <NoConnection svgHeight={500} svgWidth={336} />
-              </div>
-            );
-          });
+      console.log(Body.json({
+        fileName: fileName,
+        localPath: files[i],
+        remotePath: currentDirectoryPath,
+        connectionDetails: connectionDetails
+      }))
 
-        // axios
-        //   .post("/handleDrop", {
-        //     value: result,
-        //     fileName: files[i].name,
-        //     path: currentDirectoryPath,
-        //     connectionDetails: connectionDetails,
-        //   })
-        //   .then((res) => {
-        //     setTransferModalState(false);
-        //     setFileList(res.data);
-        //     setSnackbarStatus(true);
-        //     setTimeout(() => {
-        //       setSnackbarStatus(false);
-        //     }, 2000);
-        //   })
-        //   .catch((err) => {
-        //     alert("error occured while uploading " + err);
-        //     setConnectionLiveStatus(false);
-        //     setErrorSVG(
-        //       <div className="noFilesImage">
-        //         <NoConnection svgHeight={500} svgWidth={336} />
-        //       </div>
-        //     );
-        //   });
-      });
+      fetch('http://localhost:8000/uploadFile', {
+        method: 'POST',
+        body: Body.json({
+          fileName: fileName,
+          localPath: files[i],
+          remotePath: currentDirectoryPath,
+          connectionDetails: connectionDetails
+        })
+      }).then((res) => {
+        console.log(res);
+        setTransferModalState(false);
+        setFileList(res.data);
+        setSnackbarStatus(true);
+        setTimeout(() => {
+          setSnackbarStatus(false);
+        }, 2000);
+      })
+        .catch((err) => {
+          console.log("error occured while uploading " + err);
+          setConnectionLiveStatus(false);
+          setErrorSVG(
+            <div className="noFilesImage">
+              <NoConnection svgHeight={500} svgWidth={336} />
+            </div>
+          );
+        });
     }
   };
 
@@ -840,12 +832,12 @@ const ExplorerMenu = () => {
           })
             .catch(() => {
               console.log("error while downloading");
-              setConnectionLiveStatus(false);
-              setErrorSVG(
-                <div className="noFilesImage">
-                  <NoConnection svgHeight={500} svgWidth={336} />
-                </div>
-              );
+              // setConnectionLiveStatus(false);
+              // setErrorSVG(
+              //   <div className="noFilesImage">
+              //     <NoConnection svgHeight={500} svgWidth={336} />
+              //   </div>
+              // );
             });
 
           // axios
@@ -900,12 +892,13 @@ const ExplorerMenu = () => {
           })
             .catch((e) => {
               console.log("error while going back " + e);
-              setConnectionLiveStatus(false);
-              setErrorSVG(
-                <div className="noFilesImage">
-                  <NoConnection svgHeight={500} svgWidth={336} />
-                </div>
-              );
+              // setConnectionLiveStatus(false);
+              // setTransferModalState(false);
+              // setErrorSVG(
+              //   <div className="noFilesImage">
+              //     <NoConnection svgHeight={500} svgWidth={336} />
+              //   </div>
+              // );
             });
 
           // axios

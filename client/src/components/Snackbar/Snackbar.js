@@ -13,11 +13,11 @@ const Snackbar = (props) => {
 
   return (
     <div>
-      <div class="snackbar-frame-1" style={{ opacity: props.show ? "1" : "0" }}>
-        <div class="snackbar-verified">
+      <div className="snackbar-frame-1" style={{ opacity: props.show ? "1" : "0" }}>
+        <div className="snackbar-verified">
           <GoVerified />
         </div>
-        <p class="snackbar-text-1 poppins-medium-black-14px">
+        <p className="snackbar-text-1 poppins-medium-black-14px">
           {(() => {
             switch (props.transferType) {
               case "Create Folder":
@@ -35,7 +35,7 @@ const Snackbar = (props) => {
             }
           })()}
         </p>
-        <div class="close" onClick={handleClose}>
+        <div className="close" onClick={handleClose}>
           <VscClose color="#484848" />
         </div>
       </div>

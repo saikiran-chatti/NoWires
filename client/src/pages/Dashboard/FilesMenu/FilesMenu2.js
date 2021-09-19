@@ -4,7 +4,6 @@ import "./FilesMenu2.css";
 import DragAndDrop from "../../../components/DragAndDrop/DragAndDrop";
 import FileComponent from "../../../components/FileExplorer/FileComponent/FileComponent";
 import NoFiles from "../../../Errors/NoFiles/NoFiles";
-import axios from "axios";
 import Snackbar from "../../../components/Snackbar/Snackbar";
 import Modal from "../../../components/Modal/Modal";
 import DownloadPopup from "../../../components/FileExplorer/ExplorerMenu/DownloadPopup/DownloadPopup";
@@ -116,7 +115,7 @@ const FilesMenu2 = () => {
     //       </div>
     //     );
     //   });
-  }, [currentDirectoryPath]);
+  }, [currentDirectoryPath, connectionDetails]);
 
   useEffect(() => {
     let results = [];
@@ -134,7 +133,7 @@ const FilesMenu2 = () => {
     }
 
     setSearchResults(results);
-  }, [searchTerm, fileList]);
+  }, [searchTerm, fileList, connectionDetails.host]);
 
   const refreshScrollBar = () => {
     ref.current.scrollTo(0, 0);
@@ -262,85 +261,64 @@ const FilesMenu2 = () => {
     });
   };
 
+  const getFileName = (fileName) => new URL(fileName).pathname.split("/").pop();
+
+
+  const isFile = (path) => {
+    return !path.includes('.');
+  }
+
   const handleDrop = (files) => {
     // Implement upload function
-    setTransferModalState(true);
+    console.log(files);
+    // setTransferModalState(true);
 
     for (let i = 0; i < files.length; i++) {
       let fileType = "Folder";
-      let fileSize = files[i].size;
+      let fileSize = "123";
+      let fileName = getFileName(files[i]);
+      console.log(isFile(files[i]));
 
-      if (files[i].isFile) {
+      if (isFile(files[i])) {
+        console.log('file');
         fileType = 1;
-        fileSize = files[i].size;
-        console.log("file size: " + files[i].size);
+        fileSize = fileSize;
       }
 
       setTransferItemDetails({
-        fileName: files[i].name,
+        fileName: fileName,
         fileType: fileType,
         fileSize: fileSize,
         transferType: "Upload",
       });
 
-      getCodedBuffer(files[i]).then((result) => {
+      console.log(Body.json({ fileName: fileName, localPath: files[i], remotePath: currentDirectoryPath }))
 
-        fetch('http://localhost:8000/handleDrop', {
-          method: 'POST',
-          body: Body.json({
-            value: result,
-            fileName: files[i].name,
-            path: currentDirectoryPath,
-            connectionDetails: connectionDetails,
-          })
-        }).then((res) => {
-          setTransferModalState(false);
-          setFileList(res.data);
-          setSnackbarStatus(true);
-          setTimeout(() => {
-            setSnackbarStatus(false);
-          }, 2000);
-          setSearchTerm("");
+      fetch('http://localhost:8000/uploadFile', {
+        method: 'POST',
+        body: Body.json({
+          fileName: fileName,
+          localPath: files[i],
+          remotePath: currentDirectoryPath,
+          connectionDetails: connectionDetails
         })
-          .catch((err) => {
-            alert("error occured while uploading " + err);
-            setConnectionLiveStatus(false);
-
-            setErrorSVG(
-              <div className="noFilesImageDashboard">
-                <NoConnection svgHeight={290} svgWidth={336} />
-              </div>
-            );
-          });
-
-
-        // axios
-        //   .post("/handleDrop", {
-        //     value: result,
-        //     fileName: files[i].name,
-        //     path: currentDirectoryPath,
-        //     connectionDetails: connectionDetails,
-        //   })
-        //   .then((res) => {
-        //     setTransferModalState(false);
-        //     setFileList(res.data);
-        //     setSnackbarStatus(true);
-        //     setTimeout(() => {
-        //       setSnackbarStatus(false);
-        //     }, 2000);
-        //     setSearchTerm("");
-        //   })
-        //   .catch((err) => {
-        //     alert("error occured while uploading " + err);
-        //     setConnectionLiveStatus(false);
-
-        //     setErrorSVG(
-        //       <div className="noFilesImageDashboard">
-        //         <NoConnection svgHeight={290} svgWidth={336} />
-        //       </div>
-        //     );
-        //   });
-      });
+      }).then((res) => {
+        setTransferModalState(false);
+        setFileList(res.data);
+        setSnackbarStatus(true);
+        setTimeout(() => {
+          setSnackbarStatus(false);
+        }, 2000);
+      })
+        .catch((err) => {
+          alert("error occured while uploading " + err);
+          setConnectionLiveStatus(false);
+          setErrorSVG(
+            <div className="noFilesImage">
+              <NoConnection svgHeight={500} svgWidth={336} />
+            </div>
+          );
+        });
     }
   };
 

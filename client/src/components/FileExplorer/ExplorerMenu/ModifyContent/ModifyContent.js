@@ -16,11 +16,11 @@ const ModifyContent = (props) => {
   };
 
   return (
-    <div class="modify-parent">
-      <div class="modify-overlap-group">
-        <div class="modify-content-title">{props.title}</div>
-        <p class="modify-content-desc valign-text-middle">{props.desc}</p>
-        {/* <div class="modify-rectangle-22"></div> */}
+    <div className="modify-parent">
+      <div className="modify-overlap-group">
+        <div className="modify-content-title">{props.title}</div>
+        <p className="modify-content-desc valign-text-middle">{props.desc}</p>
+        {/* <div className="modify-rectangle-22"></div> */}
         <input
           className="modify-popup-input"
           value={value}
@@ -29,14 +29,14 @@ const ModifyContent = (props) => {
           onChange={handleChange}
         ></input>
 
-        <div class="modify-flex-row">
-          <div class="modify-cancel-1" onClick={props.closeHandler}>
-            <div class="modify-overlap-group1">
-              <div class="modify-cancel-2 valign-text-middle">Cancel</div>
+        <div className="modify-flex-row">
+          <div className="modify-cancel-1" onClick={props.closeHandler}>
+            <div className="modify-overlap-group1">
+              <div className="modify-cancel-2 valign-text-middle">Cancel</div>
             </div>
           </div>
-          <div class="modify-cancel" onClick={action}>
-            <div class="modify-operation valign-text-middle">
+          <div className="modify-cancel" onClick={action}>
+            <div className="modify-operation valign-text-middle">
               {props.action}
             </div>
           </div>
