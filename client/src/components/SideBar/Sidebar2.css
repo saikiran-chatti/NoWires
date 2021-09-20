@@ -42,7 +42,7 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  width: 272px;
+  width: 17.7%;
 }
 
 .sidebar .auto-flex {
@@ -162,7 +162,6 @@
   height: 11px;
   width: 11px;
 }
-
 
 .sidebar .overlap-group {
   height: 54px;
