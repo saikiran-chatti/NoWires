@@ -291,7 +291,7 @@ class FTPClient {
         } catch (err) {
             self.client.close();
             console.log(err);
-            throw new Error("Error: " + err)
+            throw new Error("Error: " + err);
         }
     }
 

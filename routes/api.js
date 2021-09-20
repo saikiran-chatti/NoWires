@@ -61,34 +61,6 @@ router.post('/deleteDoc', (req, res) => {
             })
         }
     })
-
-    // QRCodeModel.find({ uniq_id: req.body.uniq_id })
-    //     .then((doc, err) => {
-
-    //         if (doc) {
-    //             console.log('found ' + req.body.uniq_id+"   "+typeof(doc));
-    //             checkDelCount = true;
-
-    //             QRCodeModel.find({ uniq_id: req.body.uniq_id }).deleteOne()
-    //                 .then(data => {
-    //                     console.log('Deleted document succesfully');
-    //                     res.send({ "message": data })
-    //                 })
-    //                 .catch(error => {
-    //                     console.log(error);
-    //                     res.send({ "message": "Error while deleting doc" });
-    //                 })
-    //         }
-    //         else {
-    //             console.log('No doc found ' + req.body.uniq_id);
-    //             res.send({ "message": "No doc found with that UID", "err": err });
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //         res.send({ "message": "error found" })
-    //     })
-
 })
 
 module.exports = router;

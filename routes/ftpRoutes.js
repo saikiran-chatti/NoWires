@@ -6,18 +6,7 @@ const router = express.Router();
 
 router.get('/test', (req, res) => {
     res.send("success")
-})
-
-// dummmy call
-router.get("/root", (req, res) => {
-    const rootclient = new ftp("192.168.0.4", 2121, "ftp", "ftp");
-    console.log('reached root method');
-
-    rootclient.rootFolder().then((result) => {
-        res.send(result);
-    });
-
-})
+});
 
 router.post('/rootDirectory', (req, res) => {
     const host = req.body.connectionDetails.host;
@@ -31,7 +20,7 @@ router.post('/rootDirectory', (req, res) => {
     rootclient.rootFolder().then((result) => {
         res.send(result);
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err)
     });
 
 })
@@ -48,7 +37,7 @@ router.post('/changePath', (req, res) => {
     client.changePath(remotePath).then(result => {
         res.send(result);
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err);
     });
 })
 
@@ -64,7 +53,7 @@ router.post('/createFolder', (req, res) => {
     client.createFolder(name, path).then(result => {
         res.send(result);
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err);
     });
 })
 
@@ -82,11 +71,11 @@ router.post('/uploadFile', (req, res) => {
     console.log("fileName: " + fileName);
     console.log("localPath: " + localPath);
     console.log("remotePath: " + remotePath);
-    
+
     client.uploadFile(fileName, localPath, remotePath).then(result => {
         res.send(result);
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err);
     });
 })
 
@@ -101,7 +90,7 @@ router.post('/handleDrop', (req, res) => {
     client.uploadDragFile(req.body).then(result => {
         res.send(result)
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err);
     });
 })
 
@@ -119,7 +108,7 @@ router.post('/downloadDirectory', (req, res) => {
     client.downloadDirectory(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("error while downloading " + e);
+        throw new Error("Error: " + err);
     });
 })
 
@@ -136,7 +125,7 @@ router.post('/downloadFile', (req, res) => {
     client.downloadFile(name, path).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("error while downloading");
+        throw new Error("Error: " + err);
     })
 })
 
@@ -154,7 +143,7 @@ router.post('/renameFile', (req, res) => {
     client.renameFile(oldname, newname, path).then(result => {
         res.send(result)
     }).catch(err => {
-        res.status(400).send(err)
+        throw new Error("Error: " + err);
     });
 })
 
@@ -171,7 +160,7 @@ router.post('/deleteFile', (req, res) => {
     client.deleteFile(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("Error while Deleting " + e);
+        throw new Error("Error: " + err);
     })
 })
 
@@ -188,20 +177,8 @@ router.post('/deleteDir', (req, res) => {
     client.deleteFolder(path, name).then(result => {
         res.send(result)
     }).catch(e => {
-        res.status(400).send("Error while Deleting " + e);
+        throw new Error("Error: " + err);
     })
 })
-
-// router.post('/trackProgress',(req,res) => {
-//     const host = req.body.connectionDetails.host;
-//     const port = req.body.connectionDetails.port;
-//     const username = req.body.connectionDetails.username;
-//     const password = req.body.connectionDetails.password;
-
-//     const client = new ftp(host, 2121, username, password, false)
-//     const path = req.body.path;
-//     const name = req.body.fileName;
-
-// })
 
 module.exports = router;

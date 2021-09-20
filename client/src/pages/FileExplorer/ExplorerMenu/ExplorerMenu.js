@@ -53,10 +53,7 @@ const ExplorerMenu = () => {
     fileSize: "230 Mb",
   });
 
-  // File transfer
-  // const [transferPercent, setTransferPercent] = useState(0);
-  // const [files, setFiles] = useState(() => []);
-  // const [downloadFile, downloaderComponentUI] = useFileDownloader();
+
   const [downloaderComponentUI, setDownloaderComponentUI] = useState(true);
   const [snackbarStatus, setSnackbarStatus] = useState(false);
 
@@ -78,38 +75,20 @@ const ExplorerMenu = () => {
         method: 'POST',
         body: Body.json({ connectionDetails: connectionDetails })
       }).then((res) => {
+        console.log(res);
         setFileList(res.data);
         // refreshScrollBar();
         setLoading(false);
-      })
-        .catch((e) => {
-          console.log("error while fetching files list " + e);
-          setLoading(false);
-          setConnectionLiveStatus(false);
-          setErrorSVG(
-            <div className="noFilesImage">
-              <NoConnection svgHeight={500} svgWidth={336} />
-            </div>
-          );
-        });
-
-      // axios
-      //   .post("/rootDirectory", { connectionDetails: connectionDetails })
-      //   .then((res) => {
-      //     setFileList(res.data);
-      //     // refreshScrollBar();
-      //     setLoading(false);
-      //   })
-      //   .catch((e) => {
-      //     console.log("error while fetching files list " + e);
-      //     setLoading(false);
-      //     setConnectionLiveStatus(false);
-      //     setErrorSVG(
-      //       <div className="noFilesImage">
-      //         <NoConnection svgHeight={500} svgWidth={336} />
-      //       </div>
-      //     );
-      //   });
+      }).catch((e) => {
+        console.log("error while fetching files list " + e);
+        setLoading(false);
+        setConnectionLiveStatus(false);
+        setErrorSVG(
+          <div className="noFilesImage">
+            <NoConnection svgHeight={500} svgWidth={336} />
+          </div>
+        );
+      });
     } else {
 
       fetch('http://localhost:8000/changePath', {
@@ -134,28 +113,6 @@ const ExplorerMenu = () => {
             </div>
           );
         });
-
-      // axios
-      //   .post("/changePath", {
-      //     path: currentDirectoryPath,
-      //     connectionDetails: connectionDetails,
-      //   })
-      //   .then((res) => {
-      //     setLoading(false);
-      //     setFileList(res.data);
-      //     setSearchTerm("");
-      //     refreshScrollBar();
-      //   })
-      //   .catch((e) => {
-      //     setLoading(false);
-      //     console.log("error while fetching files list " + e);
-      //     setConnectionLiveStatus(false);
-      //     setErrorSVG(
-      //       <div className="noFilesImage">
-      //         <NoConnection svgHeight={500} svgWidth={336} />
-      //       </div>
-      //     );
-      //   });
     }
   }, [currentDirectoryPath, connectionDetails]);
 
