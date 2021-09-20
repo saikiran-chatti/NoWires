@@ -6,31 +6,18 @@
 
 .explorer-main-menu {
   position: absolute;
-  width: 82.3%;
+  width: 73.3%;
   height: 100%;
   left: 330px;
   padding-top: 50px;
   overflow: hidden;
 }
 
-/* .address {
-    letter-spacing: 0.6px;
-    margin-left: 268px;
-    margin-top: 1px;
-    min-height: 21px;
-} */
 
 .bizarre-border-1px {
   border: 1px solid var(--bizarre);
 }
 
-/* .client-documents {
-    letter-spacing: 0.6px;
-    margin-left: 20px;
-    margin-top: 1px;
-    min-height: 21px;
-    min-width: 138px;
-} */
 
 .create-folder {
   height: 38px;
