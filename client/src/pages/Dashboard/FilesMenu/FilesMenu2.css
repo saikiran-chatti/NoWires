@@ -23,10 +23,13 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  height: -webkit-calc(100% - 50px);
+  height: -moz-calc(100% - 50px);
+  height: calc(100% - 50px);
+  width: 73.3%;
   padding-top: 0.4px 0;
   position: absolute;
-  left: 330px;
+  left: 21.5%;
   top: 50px;
 }
 
@@ -52,7 +55,7 @@
 .internal-storage {
   letter-spacing: 0.6px;
   margin-left: 32px;
-  margin-top: 9px;
+  margin-top: 9px;  
   min-height: 21px;
 }
 

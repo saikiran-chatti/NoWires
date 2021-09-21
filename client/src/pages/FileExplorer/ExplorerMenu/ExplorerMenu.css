@@ -8,16 +8,14 @@
   position: absolute;
   width: 73.3%;
   height: 100%;
-  left: 330px;
+  left: 21.5%;
   padding-top: 50px;
   overflow: hidden;
 }
 
-
 .bizarre-border-1px {
   border: 1px solid var(--bizarre);
 }
-
 
 .create-folder {
   height: 38px;

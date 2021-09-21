@@ -10,7 +10,7 @@ import DownloadPopup from "../../../components/FileExplorer/ExplorerMenu/Downloa
 import { useHistory } from "react-router-dom";
 import SearchBar from "../../../components/FileExplorer/ExplorerMenu/SearchBar/SearchBar";
 import NoConnection from "../../../Errors/NoConnection/NoConnection";
-import FileSkeleton from "../../../components/skeleton/FileSkeleton2";
+import FileSkeletonSmall from "../../../components/skeleton/FileSkeletonSmall"
 import ConfirmDelete from "../../../components/FileExplorer/ExplorerMenu/ConfirmDelete/ConfirmDelete";
 import ModifyContent from "../../../components/FileExplorer/ExplorerMenu/ModifyContent/ModifyContent";
 
@@ -89,32 +89,11 @@ const FilesMenu2 = () => {
         console.log("error while fetching files list " + e);
         setErrorSVG(
           <div className="noFilesImageDashboard">
-            <NoConnection svgHeight={290} svgWidth={336} />
+            <NoConnection file="small" file="small" svgHeight={290} svgWidth={336} />
           </div>
         );
       });
 
-    // axios
-    //   .post("/changePath", {
-    //     path: currentDirectoryPath,
-    //     connectionDetails: connectionDetails,
-    //   })
-    //   .then((res) => {
-    //     setFileList(res.data);
-    //     setLoading(false);
-    //     setSearchTerm("");
-    //     refreshScrollBar();
-    //   })
-    //   .catch((e) => {
-    //     setConnectionLiveStatus(false);
-    //     setLoading(false);
-    //     console.log("error while fetching files list " + e);
-    //     setErrorSVG(
-    //       <div className="noFilesImageDashboard">
-    //         <NoConnection svgHeight={290} svgWidth={336} />
-    //       </div>
-    //     );
-    //   });
   }, [currentDirectoryPath, connectionDetails]);
 
   useEffect(() => {
@@ -159,21 +138,6 @@ const FilesMenu2 = () => {
     } else {
       // file name without extension = filename.split('.').slice(0, -1).join('.')
 
-      // const file = {
-      //     name: name,
-      //     // name: "photo-1",
-      //     thumb:
-      //         "https://images.unsplash.com/photo-1604263439201-171fb8c0fddc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=427&q=80 427w",
-      //     file:
-      //         "https://images.unsplash.com/photo-1604263439201-171fb8c0fddc?rnd=" +
-      //         Math.random(),
-
-      //     filename: name,
-      //     // filename: "photo-1.jpg",
-      //     currentDirectoryPath: currentDirectoryPath,
-      //     connectionDetails: connectionDetails
-      // };
-
       // downloadFile(file)
 
       // Download file function..
@@ -206,38 +170,11 @@ const FilesMenu2 = () => {
           setConnectionLiveStatus(false);
           setErrorSVG(
             <div className="noFilesImageDashboard">
-              <NoConnection svgHeight={290} svgWidth={336} />
+              <NoConnection file="small" svgHeight={290} svgWidth={336} />
             </div>
           );
         });
 
-      // axios
-      //   .post("/downloadFile", {
-      //     path: currentDirectoryPath,
-      //     name: name,
-      //     connectionDetails: connectionDetails,
-      //   })
-      //   .then((res) => {
-      //     console.log("After download: " + downloaderComponentUI);
-      //     setDownloaderComponentUI(false);
-      //     setTransferModalState(false);
-      //     setSnackbarStatus(true);
-      //     setTimeout(() => {
-      //       setSnackbarStatus(false);
-      //     }, 2000);
-      //     setSearchTerm("");
-      //     // alert(res.data + ' Implement a download progress bar');
-      //   })
-      //   .catch((e) => {
-      //     console.log("error while going back " + e);
-      //     setConnectionLiveStatus(false);
-      //     setErrorSVG(
-      //       <div className="noFilesImageDashboard">
-      //         <NoConnection svgHeight={290} svgWidth={336} />
-      //       </div>
-      //     );
-      //   });
-      // }
     }
   };
 
@@ -315,7 +252,7 @@ const FilesMenu2 = () => {
           setConnectionLiveStatus(false);
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" svgHeight={500} svgWidth={336} />
             </div>
           );
         });
@@ -364,37 +301,12 @@ const FilesMenu2 = () => {
           setConnectionLiveStatus(false);
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" svgHeight={500} svgWidth={336} />
             </div>
           );
           console.log("error while deleting file");
         });
 
-      // axios
-      //   .post("/deleteDir", {
-      //     path: currentDirectoryPath,
-      //     fileName: fileName,
-      //     connectionDetails: connectionDetails,
-      //   })
-      //   .then((res) => {
-      //     setTransferModalState(false);
-
-      //     setFileList(res.data);
-      //     setSnackbarStatus(true);
-      //     setTimeout(() => {
-      //       setSnackbarStatus(false);
-      //     }, 2000);
-      //     setSearchTerm("");
-      //   })
-      //   .catch(() => {
-      //     setConnectionLiveStatus(false);
-      //     setErrorSVG(
-      //       <div className="noFilesImage">
-      //         <NoConnection svgHeight={500} svgWidth={336} />
-      //       </div>
-      //     );
-      //     console.log("error while deleting file");
-      //   });
     } else {
       setTransferModalState(true);
 
@@ -422,35 +334,10 @@ const FilesMenu2 = () => {
           setConnectionLiveStatus(false);
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" svgHeight={500} svgWidth={336} />
             </div>
           );
         });
-
-      // axios
-      //   .post("/deleteFile", {
-      //     path: currentDirectoryPath,
-      //     fileName: fileName,
-      //     connectionDetails: connectionDetails,
-      //   })
-      //   .then((res) => {
-      //     setTransferModalState(false);
-      //     setFileList(res.data);
-      //     setSnackbarStatus(true);
-      //     setTimeout(() => {
-      //       setSnackbarStatus(false);
-      //     }, 2000);
-      //     setSearchTerm("");
-      //   })
-      //   .catch(() => {
-      //     console.log("error while deleting file");
-      //     setConnectionLiveStatus(false);
-      //     setErrorSVG(
-      //       <div className="noFilesImage">
-      //         <NoConnection svgHeight={500} svgWidth={336} />
-      //       </div>
-      //     );
-      //   });
     }
   };
 
@@ -508,36 +395,11 @@ const FilesMenu2 = () => {
               setConnectionLiveStatus(false);
               setErrorSVG(
                 <div className="noFilesImageDashboard">
-                  <NoConnection svgHeight={290} svgWidth={336} />
+                  <NoConnection file="small" svgHeight={290} svgWidth={336} />
                 </div>
               );
             });
 
-
-          // axios
-          //   .post("/downloadDirectory", {
-          //     path: currentDirectoryPath,
-          //     name: fileName,
-          //     connectionDetails: connectionDetails,
-          //   })
-          //   .then((res) => {
-          //     setDownloaderComponentUI(false);
-          //     setTransferModalState(false);
-          //     setSnackbarStatus(true);
-          //     setTimeout(() => {
-          //       setSnackbarStatus(false);
-          //     }, 2000);
-          //     // alert(res.data + ' Implement a download progress bar');
-          //   })
-          //   .catch(() => {
-          //     console.log("error while going back");
-          //     setConnectionLiveStatus(false);
-          //     setErrorSVG(
-          //       <div className="noFilesImageDashboard">
-          //         <NoConnection svgHeight={290} svgWidth={336} />
-          //       </div>
-          //     );
-          //   });
         } else {
           // downloading a file
           setTransferModalState(true);
@@ -568,35 +430,10 @@ const FilesMenu2 = () => {
               setConnectionLiveStatus(false);
               setErrorSVG(
                 <div className="noFilesImageDashboard">
-                  <NoConnection svgHeight={290} svgWidth={336} />
+                  <NoConnection file="small" svgHeight={290} svgWidth={336} />
                 </div>
               );
             });
-
-          // axios
-          //   .post("/downloadFile", {
-          //     path: currentDirectoryPath,
-          //     name: fileName,
-          //     connectionDetails: connectionDetails,
-          //   })
-          //   .then((res) => {
-          //     console.log("After download: " + downloaderComponentUI);
-          //     setDownloaderComponentUI(false);
-          //     setTransferModalState(false);
-          //     setSnackbarStatus(true);
-          //     setTimeout(() => {
-          //       setSnackbarStatus(false);
-          //     }, 2000);
-          //     // alert(res.data + ' Implement a download progress bar');
-          //   })
-          //   .catch((e) => {
-          //     setConnectionLiveStatus(false);
-          //     setErrorSVG(
-          //       <div className="noFilesImageDashboard">
-          //         <NoConnection svgHeight={290} svgWidth={336} />
-          //       </div>
-          //     );
-          //   });
         }
         break;
       default:
@@ -641,26 +478,6 @@ const FilesMenu2 = () => {
         setSearchTerm("");
         console.log("error while renaming file " + e);
       });
-
-    // axios
-    //   .post("/renameFile", {
-    //     oldName: oldName,
-    //     path: currentDirectoryPath,
-    //     newName: newName,
-    //     connectionDetails: connectionDetails,
-    //   })
-    //   .then((res) => {
-    //     setFileList(res.data);
-    //     setSnackbarStatus(true);
-    //     setTimeout(() => {
-    //       setSnackbarStatus(false);
-    //     }, 2000);
-    //     setSearchTerm("");
-    //   })
-    //   .catch((e) => {
-    //     setSearchTerm("");
-    //     console.log("error while renaming file " + e);
-    //   });
   };
 
   const closeRenameModal = () => {
@@ -897,10 +714,10 @@ const FilesMenu2 = () => {
           />
         </div>
 
-        <div className="App">{loading && <FileSkeleton />}</div>
+        <div className="App">{loading && <FileSkeletonSmall />}</div>
 
         <DragAndDrop handleDrop={handleDrop}>
-          <div className="recently-used-explorer-data" ref={ref}>
+          {!loading && (<div className="recently-used-explorer-data" ref={ref}>
             {searchResults.length > 0 && connectionLiveStatus
               ? searchResults.map((item, index) => {
                 return (
@@ -949,7 +766,7 @@ const FilesMenu2 = () => {
                 Download
               </MenuItem>
             </ControlledMenu>
-          </div>
+          </div>)}
         </DragAndDrop>
       </div>
     </div>

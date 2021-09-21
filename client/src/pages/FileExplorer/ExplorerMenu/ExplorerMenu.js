@@ -474,7 +474,7 @@ const ExplorerMenu = () => {
         localPath: files[i],
         remotePath: currentDirectoryPath,
         connectionDetails: connectionDetails
-      }))
+      }));
 
       fetch('http://localhost:8000/uploadFile', {
         method: 'POST',
@@ -494,6 +494,7 @@ const ExplorerMenu = () => {
         }, 2000);
       })
         .catch((err) => {
+          setTransferModalState(false);
           console.log("error occured while uploading " + err);
           setConnectionLiveStatus(false);
           setErrorSVG(
@@ -980,11 +981,6 @@ const ExplorerMenu = () => {
         </div>
       </div>
 
-      {/*
-                <span className="upload">
-                    <input type="file" name="u" />
-                </span> */}
-      {/* Modal */}
       <Modal show={modalState} modalClosed={closeModal} color="#fff">
         <ModifyContent
           desc="Are you sure to create folder ?"
@@ -1089,7 +1085,7 @@ const ExplorerMenu = () => {
 
       <div className="App">{loading && <FileSkeleton />}</div>
       <DragAndDrop handleDrop={handleDrop}>
-        <div ref={ref} className="explorer-data" id="explorer-data-files">
+        {!loading && (<div ref={ref} className="explorer-data" id="explorer-data-files">
           {searchResults.length > 0 && connectionLiveStatus
             ? searchResults.map((item, index) => {
               return (
@@ -1139,7 +1135,7 @@ const ExplorerMenu = () => {
               Download
             </MenuItem>
           </ControlledMenu>
-        </div>
+        </div>)}
       </DragAndDrop>
     </div>
   );

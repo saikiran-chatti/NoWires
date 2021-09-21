@@ -1,6 +1,6 @@
 import React from 'react';
 import noConnection from '../../assets/lotties/lf30_editor_b0ep6v8m.json'
-// import noConnection from '../../assets/lotties/lf20_nTfkVR.json'
+import noConnectionSmall from '../../assets/lotties/no_network_without_cloud.json'
 
 import Lottie from 'react-lottie'
 
@@ -10,7 +10,7 @@ const NoConnection = (props) => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: noConnection,
+        animationData: props.file ? noConnectionSmall : noConnection,
         rendererSettings: {
             preserveAspectRatio: "xMidYMid slice"
         }
