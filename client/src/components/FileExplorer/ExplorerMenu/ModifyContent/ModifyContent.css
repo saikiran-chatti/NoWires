@@ -62,7 +62,7 @@
 }
 .modify-overlap-group {
   align-items: flex-start;
-  background-image: url(https://anima-uploads.s3.amazonaws.com/projects/60a0b42580f5d99d5309b6fd/releases/60a0c44b80f5d99d5309b716/img/rectangle-1@2x.svg);
+  /* background-image: url(https://anima-uploads.s3.amazonaws.com/projects/60a0b42580f5d99d5309b6fd/releases/60a0c44b80f5d99d5309b716/img/rectangle-1@2x.svg); */
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;

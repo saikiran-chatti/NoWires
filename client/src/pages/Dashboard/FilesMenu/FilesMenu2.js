@@ -87,9 +87,10 @@ const FilesMenu2 = () => {
         setConnectionLiveStatus(false);
         setLoading(false);
         console.log("error while fetching files list " + e);
+
         setErrorSVG(
           <div className="noFilesImageDashboard">
-            <NoConnection file="small" file="small" svgHeight={290} svgWidth={336} />
+            <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={290} svgWidth={336} />
           </div>
         );
       });
@@ -168,34 +169,14 @@ const FilesMenu2 = () => {
         .catch((e) => {
           console.log("error while going back " + e);
           setConnectionLiveStatus(false);
+        
           setErrorSVG(
             <div className="noFilesImageDashboard">
-              <NoConnection file="small" svgHeight={290} svgWidth={336} />
+              <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={290} svgWidth={336} />
             </div>
           );
         });
-
     }
-  };
-
-  const getCodedBuffer = (file) => {
-    return new Promise(function (resolve, reject) {
-      let fileReader = new FileReader();
-      fileReader.readAsArrayBuffer(file);
-
-      fileReader.onload = function (ev) {
-        const array = new Uint8Array(ev.target.result);
-        // const fileByteArray = [];
-        let codedBuffer = "";
-
-        for (let i = 0; i < array.length; i++) {
-          // fileByteArray.push(array[i]);
-          codedBuffer += String.fromCharCode(array[i]);
-        }
-        resolve(codedBuffer); // successful
-      };
-      fileReader.onerror = reject; // call reject if error
-    });
   };
 
   const getFileName = (fileName) => new URL(fileName).pathname.split("/").pop();
@@ -250,9 +231,10 @@ const FilesMenu2 = () => {
         .catch((err) => {
           alert("error occured while uploading " + err);
           setConnectionLiveStatus(false);
+      
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection file="small" svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={500} svgWidth={336} />
             </div>
           );
         });
@@ -299,9 +281,10 @@ const FilesMenu2 = () => {
       })
         .catch(() => {
           setConnectionLiveStatus(false);
+    
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection file="small" svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={500} svgWidth={336} />
             </div>
           );
           console.log("error while deleting file");
@@ -332,9 +315,10 @@ const FilesMenu2 = () => {
         .catch(() => {
           console.log("error while deleting file");
           setConnectionLiveStatus(false);
+       
           setErrorSVG(
             <div className="noFilesImage">
-              <NoConnection file="small" svgHeight={500} svgWidth={336} />
+              <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={500} svgWidth={336} />
             </div>
           );
         });
@@ -393,9 +377,10 @@ const FilesMenu2 = () => {
             .catch(() => {
               console.log("error while going back");
               setConnectionLiveStatus(false);
+      
               setErrorSVG(
                 <div className="noFilesImageDashboard">
-                  <NoConnection file="small" svgHeight={290} svgWidth={336} />
+                  <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={290} svgWidth={336} />
                 </div>
               );
             });
@@ -428,9 +413,10 @@ const FilesMenu2 = () => {
           })
             .catch((e) => {
               setConnectionLiveStatus(false);
+           
               setErrorSVG(
                 <div className="noFilesImageDashboard">
-                  <NoConnection file="small" svgHeight={290} svgWidth={336} />
+                  <NoConnection file="small" refresh={() => setCurrentDirectoryPath('/')} path={currentDirectoryPath} svgHeight={290} svgWidth={336} />
                 </div>
               );
             });
