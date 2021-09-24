@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Downloader.css";
-import Axios from "axios";
 
 import { fetch, Body, ResponseType } from "@tauri-apps/api/http";
 
