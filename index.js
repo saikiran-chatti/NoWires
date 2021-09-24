@@ -4,7 +4,6 @@ const routes = require('./routes/api.js')
 const ftpRoutes = require('./routes/ftpRoutes.js')
 const mongoose = require('mongoose');
 const app = express()
-const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000
 
 // Mongo db
@@ -22,8 +21,9 @@ mongoose.connection.on('connected', () => {
 })
 
 // app.use(express.json())
-app.use(bodyParser.json({ limit: "5000mb" }))
-app.use(bodyParser.urlencoded({ limit: "5000mb", extended: true, parameterLimit: 50000 }))
+app.use(express.urlencoded({ limit: "5000mb", extended: true, parameterLimit: 50000 }));
+app.use(express.json({ limit: "5000mb" }))
+
 
 app.use(express.urlencoded({ extended: false }))
 
