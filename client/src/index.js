@@ -12,7 +12,6 @@ import reducer from '../src/store/ftp/ftpReducer'
 
 // const middleware = [thunk]
 const store = createStore(reducer, composeWithDevTools());
-// const store2 = createStore(reducer)
 
 
 ReactDOM.render(
