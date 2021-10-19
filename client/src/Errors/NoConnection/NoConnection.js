@@ -2,7 +2,6 @@ import React from 'react';
 import noConnection from '../../assets/lotties/lf30_editor_b0ep6v8m.json'
 import noConnectionSmall from '../../assets/lotties/no_network_without_cloud.json'
 
-import { fetch, Body } from "@tauri-apps/api/http";
 
 import Lottie from 'react-lottie'
 

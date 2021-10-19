@@ -133,10 +133,6 @@ const ExplorerMenu = () => {
       );
     }
 
-    // fileList.map((jsFrameworksSearch) => {
-    //     if (jsFrameworksSearch.name.toLowerCase().includes(searchTerm.trim()))
-    //         results.push(jsFrameworksSearch)
-    // });
     setSearchResults(results);
   }, [searchTerm, fileList]);
 

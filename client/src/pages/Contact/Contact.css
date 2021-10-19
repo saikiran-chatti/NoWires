@@ -242,6 +242,11 @@
   margin-top: 35px;
 }
 
+.social-media-icons-contact img{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
 /* close contact */
 
 @-webkit-keyframes scale-out-vertical {

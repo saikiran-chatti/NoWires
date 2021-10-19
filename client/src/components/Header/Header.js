@@ -66,35 +66,29 @@ const Header = () => {
           <ul className="navList">
             {/* <Link style={{ textDecoration: "none" }} to='/home'> */}
             <li className="navItem navLink">
-              <a onClick={() => changeRoute("/")} className="navLink">
+              <a href onClick={() => changeRoute("/")} className="navLink">
                 Home
               </a>
             </li>
-            {/* </Link> */}
 
-            {/* <Link style={{ textDecoration: "none" }} to='/myOrders'> */}
             <li className="navItem">
-              <a onClick={() => changeRoute("/explorer")} className="navLink">
+              <a href onClick={() => changeRoute("/explorer")} className="navLink">
                 Explorer
               </a>
             </li>
-            {/* </Link> */}
 
-            {/* <Link style={{ textDecoration: "none" }} to='/about'> */}
             <li className="navItem">
-              <a onClick={() => changeRoute("/about")} className="navLink">
+              <a href onClick={() => changeRoute("/about")} className="navLink">
                 About
               </a>
             </li>
-            {/* </Link> */}
 
-            {/* <Link style={{ textDecoration: "none" }} to='/contact'> */}
             <li className="navItem">
-              <a onClick={() => revealContactPage()} className="navLink">
+              <a href onClick={() => revealContactPage()} className="navLink">
                 Contact
               </a>
             </li>
-            {/* </Link> */}
+
           </ul>
         </div>
       </nav>

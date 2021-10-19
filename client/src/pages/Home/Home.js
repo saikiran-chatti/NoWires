@@ -19,9 +19,6 @@ const Home = () => {
   const [qrCodeData, setQrCodeData] = useState(null);
   const [count, setCount] = useState(0);
 
-
-  // const [loopState, setLoopState] = useState(true);
-
   useEffect(() => {
     try {
       const selectedWindow = getCurrent().label;
@@ -36,11 +33,7 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    // TweenMax.from('.homeTitle', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.6, y: 30 });
-    // TweenMax.from('.homeDescription', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.8, y: 30 })
-    // TweenMax.from('.homeButton', { autoAlpha: 0, opacity: 0, duration: 1, delay: 2.1, y: 30 })
-    // TweenMax.from('.homeImg', { autoAlpha: 0, opacity: 0, duration: 1, delay: 1.3, y: 30 })
-
+  
     TweenMax.from(".homeTitle", {
       autoAlpha: 0,
       opacity: 0,
@@ -78,29 +71,6 @@ const Home = () => {
 
     if (count < 10) {
       interval = setInterval(() => {
-        // axios
-        //   .post("/deleteDoc", { uniq_id: qrCodeData })
-        //   .then((res) => {
-        //     if (res.data.secure === false) {
-        //       // check = true;
-        //       let userData = {
-        //         host: res.data.host,
-        //         port: res.data.port,
-        //         username: res.data.username,
-        //         password: res.data.password,
-        //         secure: res.data.secure,
-        //         megAvailable: res.data.megAvailable,
-        //         usedSpace: res.data.usedSpace,
-        //         totalSize: res.data.totalSize,
-        //       };
-        //       console.log(userData);
-        //       dispatch({ type: actionTypes.STORE_USER_DATA, value: userData });
-        //       history.push("/explorer");
-        //     }
-        //   })
-        //   .catch((e) => {
-        //     console.log("Error while deleting doc " + e);
-        //   });
 
         fetch('http://localhost:8000/deleteDoc', {
           method: 'POST',
@@ -138,16 +108,7 @@ const Home = () => {
   // create QRCode
   const QRCodeComponent = () => {
     setCount(0);
-    // axios
-    //   .get("http://localhost:8000/generateQRImage")
-    //   .then((res) => {
-    //     console.log(res.data.data);
-    //     setQrCodeData(res.data.data);
-    //     setqrcodeImg(res.data.url);
-    //   })
-    //   .catch(() => {
-    //     console.log("error while fetching image");
-    //   });
+
     fetch('http://localhost:8000/generateQRImage', {
       method: 'GET'
     }).then((res) => {

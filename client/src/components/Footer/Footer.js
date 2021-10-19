@@ -1,6 +1,3 @@
-import React from 'react';
-import { FaTwitter } from "react-icons/fa";
-import { ImInstagram, ImYoutube } from "react-icons/im";
 import './Footer.css'
 
 const Footer = () => {
@@ -9,9 +6,9 @@ const Footer = () => {
             <p className="footer-title">No Wires</p>
             <p className="terms-conditions">Terms of service &nbsp; &nbsp; . &nbsp; &nbsp; Privacy policy </p>
             <div className="social-media-icons">
-                <ImYoutube color="fff" cursor="pointer" onClick={() => window.open("https://youtube.com", "_blank")} />
-                <FaTwitter color="#fff" cursor="pointer" onClick={() => window.open("https://twitter.com", "_blank")} />
-                <ImInstagram color="fff" cursor="pointer" onClick={() => window.open("https://instagram.com", "_blank")} />
+                <img src="/images/linkedin.svg" alt="linkedin" onClick={() => window.open("https://www.linkedin.com/in/jayanthsaikiran/", "_blank")}/>
+                <img src="/images/github.svg" alt="github" onClick={() => window.open("https://github.com/jayanthsaikiran", "_blank")}/>
+                <img src="/images/twitter.svg" alt="twitter" onClick={() => window.open("https://twitter.com/jayanthsaikiran", "_blank")} />
             </div>
         </div>
     )

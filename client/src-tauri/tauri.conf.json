@@ -56,9 +56,11 @@
     "windows": [
       {
         "title": "No Wires",
-        "resizable": true,
+        "resizable": false,
         "fullscreen": false,
-        "maximized": true
+        "maximized": true,
+        "maxWidth": 1440,
+        "maxHeight": 900
       }
     ],
     "security": {

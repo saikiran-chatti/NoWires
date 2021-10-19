@@ -6,6 +6,10 @@
   margin-top: 3rem;
 }
 
+.aboutContainer {
+  background-color: var(--first-color);
+}
+
 .aboutImg {
   margin-bottom: 7rem;
 }
@@ -26,4 +30,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+
+.social-media-icons-about img{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }

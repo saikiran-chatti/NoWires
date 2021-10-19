@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
 import './Sidebar2.css'
 import { useHistory } from "react-router-dom";
 
@@ -13,25 +12,17 @@ const Sidebar2 = () => {
 
     return (
         <div className="sidebar">
-            <div className="logo">
-                <div className="overlap-group">
+            <div className="logo" onClick={() => changeRoute("/")}>
                     <img
                         alt="Logo"
-                        className="logo-1"
-                        src="/images/icons/Logo.svg"
+                        src="/logo.svg"
+                        width="20px"
+                        height="20px"
                     />
-                    <div className="no-wires cursor-pointer poppins-semi-bold-black-16-4px"
-                        onClick={() => changeRoute("/")}>No Wires</div>
-                </div>
+                    <div className="cursor-pointer poppins-semi-bold-black-16-4px"
+                        >No Wires</div>
             </div>
             <div className="auto-flex">
-                <div className="frame-3">
-                    <img
-                        alt="shadow"
-                        className="oval-5"
-                        src="/images/icons/shadow.svg"
-                    />
-                </div>
                 <div className="sidebar-menu">
                     <div className="menu-1" onClick={() => changeRoute("/dashboard")}>
                         {/* <Link to="/dashboard" style={{ textDecoration: "none" }}> */}
@@ -59,24 +50,7 @@ const Sidebar2 = () => {
                         <div className="wallet-1 valign-text-middle poppins-normal-black-12-7px">Explorer</div>
                         {/* </Link> */}
                     </div>
-                    {/* <div className="menu-3" onClick={() => changeRoute("/")}>
-                        <img
-                            alt="message"
-                            className="message"
-                            src="/images/icons/Message.svg"
-                        />
-                        <div className="messages poppins-normal-mine-shaft-12-7px">
-                            <span className="span1">Message</span><span className="span2">s</span>
-                        </div>
-                    </div>
-                    <div className="menu-4" onClick={() => changeRoute("/")}>
-                        <img
-                            alt="trade"
-                            className="trade"
-                            src="/images/icons/Trade.svg"
-                        />
-                        <div className="trade-1 poppins-normal-mine-shaft-12-7px-2">Settings</div>
-                    </div> */}
+                
                 </div>
             </div>
         </div>

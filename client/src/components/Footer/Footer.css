@@ -15,8 +15,14 @@
 .social-media-icons {
     width: 200px;
     min-width: 200px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.social-media-icons img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
