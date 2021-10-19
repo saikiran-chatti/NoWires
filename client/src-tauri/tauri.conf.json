@@ -58,9 +58,10 @@
         "title": "No Wires",
         "resizable": false,
         "fullscreen": false,
-        "maximized": true,
-        "maxWidth": 1440,
-        "maxHeight": 900
+        "width": 1920,
+        "height": 800,
+        "maxWidth": 1920,
+        "maxHeight": 800
       }
     ],
     "security": {
