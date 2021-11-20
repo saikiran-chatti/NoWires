@@ -25,11 +25,10 @@ const About = () => {
           </p>
 
           <p className="homeDescription aboutDescription" style={{ visibility: "visible" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries
+          I’m a Web Developer with a passion for participate in every stage of digital product,
+           from discovery to delivery. Helping to focus the business goals on users.I am currently
+           working as a WebDeveloper and I'm looking for new opportunities.
+
           </p>
 
           <div className="social-media-icons-about">

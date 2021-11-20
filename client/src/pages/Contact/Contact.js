@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './Contact.css'
-import { AiFillLinkedin } from "react-icons/ai"
-import { FaTwitter } from "react-icons/fa";
-import { ImInstagram } from "react-icons/im";
+
 
 const Contact = (props) => {
 
