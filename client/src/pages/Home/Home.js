@@ -11,7 +11,6 @@ import Footer from "../../components/Footer/Footer";
 import { fetch, Body } from "@tauri-apps/api/http";
 import { appWindow, getCurrent } from "@tauri-apps/api/window";
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -141,13 +140,13 @@ const Home = () => {
           </div>
           <div className="homeData">
             <p className="homeTitle">
-              Transfer files seamlessly without hassle, wires
+              Browse files seamlessly without hassle, wires
             </p>
             <p className="homeDescription">
               Download the NoWires app <br /> from playstore.
             </p>
             <button className="homeButton" href="/home">
-              Get Started
+              Download App
             </button>
           </div>
         </div>

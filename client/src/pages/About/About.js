@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-
+import {open} from "@tauri-apps/api/shell"
 import PlainHeader from "../../components/PlainHeader/PlainHeader";
 
 const About = () => {
@@ -32,9 +32,9 @@ const About = () => {
           </p>
 
           <div className="social-media-icons-about">
-            <img src="/images/linkedinBlack.svg" alt="linkedin" onClick={() => window.open("https://www.linkedin.com/in/jayanthsaikiran/", "_blank")}/>
-            <img src="/images/githubBlack.svg" alt="github" onClick={() => window.open("https://github.com/jayanthsaikiran", "_blank")}/>
-            <img src="/images/twitterBlack.svg" alt="twitter" onClick={() => window.open("https://twitter.com/jayanthsaikiran", "_blank")} />
+            <img src="/images/linkedinBlack.svg" alt="linkedin" onClick={async() => open("https://www.linkedin.com/in/jayanthsaikiran/", "_blank")}/>
+            <img src="/images/githubBlack.svg" alt="github" onClick={async() => open("https://github.com/jayanthsaikiran")}/>
+            <img src="/images/twitterBlack.svg" alt="twitter" onClick={async() => open("https://twitter.com/jayanthsaikiran")} />
           </div>
         </div>
       </div>
