@@ -84,6 +84,7 @@
 }
 
 .homeButton {
+  cursor: pointer;
   font-family: var(--body-font);
   visibility: hidden;
   display: inline-block;
