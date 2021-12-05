@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import "./Home.css";
 import Phone from "../../components/PhoneSection/Phone";
 import Footer from "../../components/Footer/Footer";
+import {open} from "@tauri-apps/api/shell"
 
 import { fetch, Body } from "@tauri-apps/api/http";
 import { appWindow, getCurrent } from "@tauri-apps/api/window";
@@ -20,11 +21,7 @@ const Home = () => {
 
   useEffect(() => {
     try {
-      const selectedWindow = getCurrent().label;
-      const windowMap = {
-        [selectedWindow]: appWindow
-      }
-      windowMap[selectedWindow].maximize();
+      appWindow.toggleMaximize();
     }
     catch (e) {
       console.log(e)
@@ -145,7 +142,7 @@ const Home = () => {
             <p className="homeDescription">
               Download the NoWires app <br /> from playstore.
             </p>
-            <button className="homeButton" href="/home">
+            <button className="homeButton" href="/home" onClick={async() =>await open("https://play.google.com/store/apps/details?id=me.jayanthsaikiran.nowires")}>
               Download App
             </button>
           </div>

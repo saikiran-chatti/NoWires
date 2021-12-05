@@ -56,11 +56,13 @@
     "windows": [
       {
         "title": "No Wires",
-        "resizable": false,
+        "resizable": true,
         "fullscreen": false,
+        "width": 1920,
+        "height": 800,
+        "visible": true,
         "maximized": true,
-        "maxHeight": 800,
-        "maxWidth": 1920
+        "fileDropEnabled": true
       }
     ],
     "security": {
